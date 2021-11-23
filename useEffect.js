@@ -49,6 +49,7 @@ function FriendStatusWithCounter(props) {
 * You can tell React to skip applying an effect if certain values haven’t changed between re-renders. To do so, pass an array as an optional second argument to useEffect:
 
  •  Dependency array - 
+    - A way for React to know whether it should re-run the useEffect function
     - useEffect “depends” on these state values to decide whether or not to re-render the effect
     - if the value/state has changed on the first render, then you need a callback function like above, otherwise if the value/state has NOT changed after the first render, then it won’t render again - but only one time
 
