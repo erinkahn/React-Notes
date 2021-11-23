@@ -11,3 +11,22 @@ setThing is a function (second parameter is a function)
 
 A parent component can pass a state back to its children by using props. 
 This is what we call “Lifting state up” and then having a “top-down” data flow.
+
+
+useState() hook - returns an array, hooks the component into a state
+	
+Example:
+
+function Button() {
+  const [counter, setCounter] = useState(0)
+	return (
+        <button onClick={() => setCounter(counter+1)}>
+          {counter}
+        </button>;
+    )
+}
+
+ReactDOM.render(
+  <Button />, 
+  document.getElementById('mountNode'),
+);
