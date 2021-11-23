@@ -60,3 +60,39 @@ our component re-renders with count still equal to 5, React will compare [5]
 
 * If a variable/state called count changes, you would add [count] as the second argument
 
+
+* Example: 
+https://scrimba.com/learn/learnreact/useeffect-for-fetching-data-cof924a3f92d4ca7648780a8d
+
+    /**
+     * Quiz:
+     * 1. What will happen if I put back our Star Wars API call into the effect function? 
+     A: it will change the state and re-runs everything again
+
+     * 2. How will the useEffect be different if I use setStarWarsData() instead of console.log()? 
+     A: it will change the state and therefore will re-render everything
+
+     * 3. What SHOULD be in our dependencies array in this case?
+     A:a blank array
+     */
+
+    export default function App() {
+    const [starWarsData, setStarWarsData] = React.useState({})
+    const [count, setCount] = React.useState(0)
+    
+    React.useEffect(function() {
+        console.log("Effect ran")
+        fetch("https://swapi.dev/api/people/1")
+            .then(res => res.json())
+            .then(data => setStarWarsData(data))
+    }, []) //no dependecies so an empty array will not change anything and wont re-render the component
+    
+    return (
+        <div>
+            <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+            <h2>The count is {count}</h2>
+            <button onClick={() => setCount(prevCount => prevCount + 1)}>Add</button>
+        </div>
+    )
+}
+
