@@ -1,12 +1,12 @@
 Context
 A way to pass data thru the component tree w/o having to pass props down manually at every level
-Context lets us pass a value deep into the component tree without explicitly threading it through every component.
+Context lets us pass a value deep into the component tree without explicitly threading it through every component which creates bloated code.
 
 - When should I use this?
    when you have data or props that are global, meaning they need to be passed down to every component
 
 Use cases:
-current user, dark and light theme, preferred language
+current user profile details (id/image/bio), dark and light theme, preferred language, currency
 
 component composition:
 - if you ONLY want to avoid passing some props thru many levels, then you should use **component composition** which is simpler than context
