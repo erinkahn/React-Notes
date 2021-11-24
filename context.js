@@ -58,12 +58,48 @@ class ThemedButton extends React.Component {
   }
 }
 
-React context API
-A state management library API used for React 
-- Uses the createContext function to define the context
-- Uses a Provider component to wrap the component tree with which requires access to the context
-- Either consumer or context or useContext can be used to access the state
-    - Consumer component
-    - Context class member
-    - useContext hook 
-    
+React.createContext 
+- creates a Context object
+- when react renders a component that subscribes to this Context object, it will read the current context value from the closest matching Provider above it in the tree
+
+   const MyContext = React.createContext(defaultValue);
+
+   - the defaultValue arg is only used when a component does NOT have a matching Provider above it in the tree
+
+
+Context.Provider
+- every context object comes with a Provider React componenet that allows consuming compoenents to subscribe to context changes
+- one Provider can be connected to many consumers. 
+- Providers can be nested to override values depper within the tree
+
+   <MyContext.Provider value={/* some value */}>
+      
+   - the Provider component accepts a value prop to be passed to consuming componenets that are descendants of this Provider. 
+   - the consumers/descendants of a Provider will re-render whenever the Provider's value prop changes
+
+
+Class.contextType
+- the contextType property lets you consume the nearest current value of that Context type using this.context
+
+   MyClass.contextType = MyContext;
+
+
+Context.Consumer
+-A React component that subscribes to context changes. Using this component lets you subscribe to a context within a function component.
+- requires a function as a child which receives the current context value and returns a react node
+- The value argument passed to the function will be equal to the value prop of the closest Provider for this context above in the tree. 
+- If there is no Provider for this context above, the value argument will be equal to the defaultValue that was passed to createContext().
+
+   <MyContext.Consumer>
+      {value => /* render something based on the context value */}
+   </MyContext.Consumer>
+
+
+Context.displayName
+- Context object accepts a displayName string property.
+
+   const MyContext = React.createContext(/* some value */);
+   MyContext.displayName = 'MyDisplayName';
+
+   <MyContext.Provider> // "MyDisplayName.Provider" in DevTools
+   <MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
