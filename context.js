@@ -16,9 +16,8 @@ Example: using a theme to change from dark to light
     - This provider takes a prop, value
     - The children prop means it can wrap any component and any component inside the tree wrapped with this component will have access to the context provided by it
 
-- the code:
 
-// Create a context for the current theme (with "light" as the default).
+   // Create a context for the current theme (with "light" as the default).
 
    import React, {createContext} from 'react;
 
@@ -47,7 +46,6 @@ Example: using a theme to change from dark to light
 
 
 
-
 Steps for creating a context:
 1 Create the context
 2 Create the provider for that context
@@ -71,7 +69,7 @@ Context.Provider
       
    - the Provider component accepts a value prop to be passed to consuming componenets that are descendants of this Provider. 
    - the consumers/descendants of a Provider will re-render whenever the Provider's value prop changes
-
+   
    example:
       import React, {createContext} from "react";
 
@@ -88,8 +86,30 @@ Context.Provider
       };
       export { ThemeContext, ThemeProvider };
 
-      //this provider will wrap our <App /> component and give it the value="dark" so that we can read the theme from any component.
 
+
+Any component nested inside the ThemeProvider can now access the context by importing the ThemeContext and passing it to the useContext() hook
+example: 
+      import React, {useContext} from "react";
+      import {ThemeContext, ThemeProvider} from "./ThemeContext.js";
+
+      function App() {
+          return (<>
+             <ThemeProvider>
+               <Nav />
+             </ThemeProvider>
+          </>);
+      }
+
+      function Nav() {
+          return <Button>Login</Button>;
+      }
+
+      function Button(props) {
+          const theme = useContext(ThemeContext);
+          console.log(theme); // "dark"
+          return <button>{props.children}</button>;
+      }
 
 
 Class.contextType
