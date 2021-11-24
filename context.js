@@ -58,24 +58,48 @@ class ThemedButton extends React.Component {
   }
 }
 
+
+Steps for creating a context:
+1 Create the context
+2 Create the provider for that context
+3 Export the context & the provider.
+- The provider will wrap our components and provide them with the value (some global data).
+
+
 React.createContext 
 - creates a Context object
 - when react renders a component that subscribes to this Context object, it will read the current context value from the closest matching Provider above it in the tree
 
-   const MyContext = React.createContext(defaultValue);
+   const MyContextVariableName = React.createContext(defaultValue);
 
    - the defaultValue arg is only used when a component does NOT have a matching Provider above it in the tree
 
 
 Context.Provider
-- every context object comes with a Provider React componenet that allows consuming compoenents to subscribe to context changes
-- one Provider can be connected to many consumers. 
-- Providers can be nested to override values depper within the tree
+- every context object needs a Provider which will provide the data to the context
 
    <MyContext.Provider value={/* some value */}>
       
    - the Provider component accepts a value prop to be passed to consuming componenets that are descendants of this Provider. 
    - the consumers/descendants of a Provider will re-render whenever the Provider's value prop changes
+
+   example:
+      import React, {createContext} from "react";
+
+      const ThemeContext = createContext();
+
+      function ThemeProvider(props) {
+        const theme = "dark";
+
+        return (
+          <ThemeContext.Provider value={theme}>  // the value that all the childern will be able to receive
+            {props.children}             
+          </ThemeContext.Provider>
+        );
+      };
+      export { ThemeContext, ThemeProvider };
+
+      //this provider will wrap our <App /> component and give it the value="dark" so that we can read the theme from any component.
 
 
 Class.contextType
