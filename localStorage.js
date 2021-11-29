@@ -1,6 +1,6 @@
-localStorage API
+localStorage
 
-used to remember save data and retrieve remembered saved data without it being erased in the browser
+an API used to remember save data and retrieve remembered saved data without it being erased in the browser
 
 
 localStorage.getItem('key')          
@@ -15,3 +15,10 @@ value you save MUST be a string
 
 - then when you need to get those items frmo localStorage you must use:
   JSON.parse(stringifiedValue)
+
+
+
+example:
+everytime you're state's value changes, you need to save it to localStorage (JSON.stringify)
+
+when app first loads, when you initialize the initial state not only as an empty string/array but INSTEAD with the items that are saved in localStorage (JSON.parse)
