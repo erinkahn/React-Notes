@@ -34,3 +34,20 @@ everytime you're state's value changes, you need to save it to localStorage (JSO
         localStorage.setItem('notes', JSON.stringify(notes)) // turn array into string 
     }, [notes])
 
+3. the issue above is, on every render of the component, our notes state is reaching into localStorage every time and causing performance issues
+4. to solve this you need to LAZY INITIALIZE the notes state so that you only reach into localStorage the first time the app loads/renders like so:
+
+    const [notes, setNotes] = React.useState(
+      function() {
+        return JSON.parse(localStorage.getItem('notes')) || []
+      }
+    )
+           
+           or the es6 way:
+           
+    const [notes, setNotes] = React.useState(
+      () => JSON.parse(localStorage.getItem('notes')) || []
+    )
+
+  
+
