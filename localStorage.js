@@ -21,4 +21,5 @@ value you save MUST be a string
 example:
 everytime you're state's value changes, you need to save it to localStorage (JSON.stringify)
 
-when app first loads, when you initialize the initial state not only as an empty string/array but INSTEAD with the items that are saved in localStorage (JSON.parse)
+1. when app first loads, you need to set up a side effect (useEffect)
+2. when you initialize the initial state not only as an empty string/array but INSTEAD with the items that are saved in localStorage (JSON.parse)
