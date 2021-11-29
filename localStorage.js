@@ -23,3 +23,14 @@ everytime you're state's value changes, you need to save it to localStorage (JSO
 
 1. when app first loads, you need to set up a side effect (useEffect)
 2. when you initialize the initial state not only as an empty string/array but INSTEAD with the items that are saved in localStorage (JSON.parse)
+
+
+    const [notes, setNotes] = React.useState(
+      JSON.parse(localStorage.getItem('notes')) || [] // get state by accessing local storage
+    )
+    
+    // every time the notes array changes, save it to local storage
+    React.useEffect(() => {
+        localStorage.setItem('notes', JSON.stringify(notes)) // turn array into string 
+    }, [notes])
+
