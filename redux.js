@@ -20,16 +20,16 @@ when the action is generated, it notifies other parts of the app which means it 
 
 examples: 
 
-  const action = {
+  const action = {           - you can name this addNewTodo
     type: 'todos/addTodo',   - string value
     payload: 'Take selfies'   - info related to the action (add take selfies as new to do )
   };
 
-  const action = {
+  const action = {             - you could name this removeOldTodo
     type: 'todos/removeTodo',   - string value
     payload: 'Pack snacks'      - remove pack snacks to do
   }
 
-  const action = {
+  const deleteAllTodos = {     - the action
     type: 'todos/removeAll'   - doesn't need payload bc no additional info
   }
