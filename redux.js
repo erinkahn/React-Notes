@@ -46,6 +46,7 @@
 //   2. They are not allowed to modify the existing state. They must make immutable updates, by copying the existing state and making changes to the copied values like [...state].
 //   3. they should not do any asynchronous logic or other 'side effects' like (log a value to console, make AZAX HTTP request, mody some state existing outside of function, generate random numbers)
 
+- immutably - the reducer function doesn’t change, or mutate, the arguments, it makes a copy
   
 // Reducer function
   // defines how the current state and action are used together to create a new state
