@@ -13,12 +13,23 @@ Redux helps SEPARATE the state, view and actions by requiring the state be manag
 
 ————
 
+ACTIONS
+every action must have a TYPE property with a string value
+an action can (optional) have a payload property that is related to the action
+when the action is generated, it notifies other parts of the app which means it is DISPATCHED
 
-example: 
-
-	const state = [ 'Take Five', 'Claire de Lune', 'Respect' ];
+examples: 
 
   const action = {
     type: 'todos/addTodo',   - string value
-    payload: 'Take selfies'   - info related to the action (todo text)
+    payload: 'Take selfies'   - info related to the action (add take selfies as new to do )
   };
+
+  const action = {
+    type: 'todos/removeTodo',   - string value
+    payload: 'Pack snacks'      - remove pack snacks to do
+  }
+
+  const action = {
+    type: 'todos/removeAll'   - doesn't need payload bc no additional info
+  }
