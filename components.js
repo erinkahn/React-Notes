@@ -2,7 +2,7 @@
 // To create a component:
 ReactDOM.render(
 	<component />,
-// 	DOM node (html element to hold react markup)
+	// 	DOM node (html element to hold react markup)
 )
 
 // 3 basic concepts of react:
