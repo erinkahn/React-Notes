@@ -61,3 +61,39 @@
       }
     }
   }
+  
+
+// Actions and Reducer functions combined example:
+
+    const initialState = [ 'Take Five', 'Claire de Lune', 'Respect' ];
+
+    const addNewSong = {
+      type: 'songs/addSong',
+      payload: 'Halo'
+    };
+
+    const removeSong = {
+      type: 'songs/removeSong',
+      payload: 'Take Five'
+    };
+
+    const removeAll = {
+      type: 'songs/removeAll'
+    }
+
+    const reducer = (state = initialState, action) => {
+      switch (action.type) {
+        case 'songs/addSong' : {
+          return [...state, addNewSong.payload] // adds halo
+        }
+        case 'songs/removeSong' : {
+          return state.filter(song => song !== removeSong.payload) // removes respect
+        }
+        case 'songs/removeAll' : {
+          return []
+        }
+        default: {
+          return state;
+        }
+      }
+    }
