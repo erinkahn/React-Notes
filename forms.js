@@ -1,5 +1,5 @@
 
-Forms
+// Forms
 
 import React from "react"
 
@@ -20,8 +20,8 @@ export default function Form() {
 
         setFormData(prevFormData => {
             return {
-                ...prevFormData,****
-                [name]: type === "checkbox" ? checked : value ****
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value 
             }
         })
     }
@@ -109,7 +109,7 @@ export default function Form() {
 
 
 
-Form labels
+// Form labels
  <input 
          type="checkbox" 
          id="isFriendly" 
