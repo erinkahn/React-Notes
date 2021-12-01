@@ -223,10 +223,11 @@
       store.dispatch({type: 'toggle}) // update the state
       console.log(store.getState());   // prints 'off'
 
+
   // SUBSCRIBE - respond to state changes
     // subscribe a change listener to print out the current state in response to state changes automatically.
     
-    // example 1:
+    // example:
         // listener function (subscribed to the store)
         const reactToChange = () => { 
           console.log('the light was' , ${store.getState()}) // print state value when function is called
@@ -234,52 +235,72 @@
         const unsubscribe = store.subscribe(reactToChange)  // causes reactToChange function NOT to execute
         store.dispatch(toggle())                            // change state (toggle)
         unsubscribe()                                       // reactToChange is now unsubscribed
-        
-    // example 2:
-        import { createStore } from 'redux';
-
-        const increment = () => {       // action creator
-          return { type: 'increment' }  
-        }
-
-        const decrement = () => {       // action creator
-          return { type: 'decrement' }
-        }
-
-        const initialState = 0;
-        const countReducer = (state = initialState, action) => {   // reducer / store
-          switch (action.type) {
-            case 'increment':
-              return state + 1;
-            case 'decrement':
-              return state - 1;
-            default:
-              return state;
-          }
-        }
-
-        const store = createStore(countReducer);
-
-        // Store State Change Listener
-        const printCountStatus = () => console.log(`The count is ${store.getState()}`)
-        
-        // subscribe the listener above to the store so that it's called each time the state changes
-        store.subscribe(printCountStatus)
-
-        store.dispatch(decrement()); // store.getState() === -1
-        store.dispatch(increment()); // store.getState() === 0
-        store.dispatch(increment()); // store.getState() === 1
 
 
-   // implementing the store UI
-      // 1. Create a Redux store
-      // 2. Render the initial state of the application.
-      // 3. Subscribe to updates. Inside the subscription callback:
-        // a. Get the current store state
-        // b. Select the data needed by this piece of UI
-        // c. Update the UI with the data
-      // 4. Respond to UI events by dispatching Redux actions
-        
-        
+  // implementing the UI
+     // 1. Create a Redux store
+     // 2. Render the initial state of the application.
+     // 3. Subscribe to updates. Inside the subscription callback:
+       // a. Get the current store state
+       // b. Select the data needed by this piece of UI
+       // c. Update the UI with the data
+     // 4. Respond to UI events by dispatching Redux actions
+
+        // Example
+            import { createStore } from 'redux';
+            const { createStore } = require('redux');
+
+            // Action Creators
+            function increment() { 
+              return {type: 'increment'}
+            }
+
+            function decrement() { 
+              return {type: 'decrement'}
+            }
+
+            // Reducer / Store
+            const initialState = 0;
+            const countReducer = (state = initialState, action) => {
+              switch (action.type) {
+                case 'increment':
+                  return state + 1; 
+                case 'decrement':
+                  return state - 1; 
+                default:
+                  return state;
+              }
+            };  
+            const store = createStore(countReducer);
+
+            // dom Elements
+            const counterElement = document.getElementById('counter');
+            const incrementer = document.getElementById('incrementer');
+            const decrementer = document.getElementById('decrementer');
+
+
+            // Store State Change Listener
+            const render = () => {
+              counterElement.innerHTML = store.getState(); // set element text to the current state
+            }
+
+            render(); // render the current state to the page
+
+            // DOM Event Handlers
+            const incrementerClicked = () => {
+              store.dispatch(increment()) // call the + function at the top to add 1
+            }
+            incrementer.addEventListener('click', incrementerClicked);
+            store.subscribe(render); // render the state on every increment change
+
+            const decrementerClicked = () => {
+              store.dispatch(decrement()) // call the - function at the top to subtract 1
+            }
+            decrementer.addEventListener('click', decrementerClicked);
+            store.subscribe(render) // render the state on every decrement change
+
+
+
+
         
         
