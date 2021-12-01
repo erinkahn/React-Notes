@@ -223,4 +223,20 @@
     store.dispatch({type: 'toggle}) // update the state
     console.log(store.getState());   // prints 'off'
 
-
+  // SUBSCRIBE - respond to state changes
+    // subscribe a change listener to print out the current state in response to state changes automatically.
+    
+    // example:
+        const reactToChange = () => { // listener function is subscribed to the store
+          console.log('the light was' , ${store.getState()}) // print state value when function is called
+        }
+        const unsubscribe = store.subscribe(reactToChange) // causes reactToChange function NOT to execute
+        store.dispatch(toggle())
+        unsubscribe() // reactToChange is now unsubscribed
+        
+           
+        
+        
+        
+        
+        
