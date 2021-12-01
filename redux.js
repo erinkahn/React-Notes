@@ -202,4 +202,20 @@
     // slices - relatable parts that are specific to data/actions inside the store's state
     // slice reducer - the reducer that handles actions + updates data for a given slice(relatable part)
       
+  // example:
+    import { createStore } from 'redux'
+ 
+    const initialState = 'on';
+    const lightSwitchReducer = (state = initialState, action) => {
+      switch (action.type) {
+        case 'toggle':
+          return state === 'on' ? 'off' : 'on';
+        default:
+          return state;
+      }
+    }
+
+    const store = createStore(lightSwitchReducer);
+
+
 
