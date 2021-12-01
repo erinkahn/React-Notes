@@ -231,8 +231,8 @@
 
         const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
 
-        console.log(store.getState());  // prints on 
-        store.dispatch({type: 'toggle}) // update the state
+        console.log(store.getState());   // prints on 
+        store.dispatch({type:'toggle'}); // update the state
         console.log(store.getState());   // prints off
 
 
