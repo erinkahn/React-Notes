@@ -1,5 +1,7 @@
 // REDUX
   // is a State management library that you can use to manage state in large and complicated applications.
+  // redux is a standalone library that can be used with any framework like Vue, React, Vanilla JS...
+  // redux is separate from react so you use a UI binding library (react redux) to tie them together
 
   // Shared information is stored in A SINGLE OBJECT and not in components
 
@@ -202,7 +204,7 @@
     // slices - relatable parts that are specific to data/actions inside the store's state
     // slice reducer - the reducer that handles actions + updates data for a given slice(relatable part)
       
-  // example:
+  // store example:
     import { createStore } from 'redux'
  
     const initialState = 'on';
@@ -215,7 +217,10 @@
       }
     }
 
-    const store = createStore(lightSwitchReducer);
+    const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
 
+    console.log(store.getState());  // prints 'on' 
+    store.dispatch({type: 'toggle}) // update the state
+    console.log(store.getState());   // prints 'off'
 
 
