@@ -15,7 +15,8 @@
 // -------
 
 
-// ACTIONS
+// ACTION
+  // a JS object that describes what happened to the state (describes the action)
   // every action must have a TYPE property with a string value
   // an action can (optional) have a payload property that is related to the action
   // when the action is generated, it notifies other parts of the app which means it is DISPATCHED
@@ -42,20 +43,18 @@
 // -------
 
   
-// REDUCERS
-// how the actions above carried out in JS
+// REDUCER
+  // a function that ties state and actions together
+  // determines the next state given a current state and action
   
 // ** rules of reducers
 //   1. they should only calculate the new state value based on the state and action args
 //   2. They are not allowed to modify the existing state. They must make immutable updates, by copying the existing state and making changes to the copied values like [...state].
 //   3. they should not do any asynchronous logic or other 'side effects' like (log a value to console, make AZAX HTTP request, mody some state existing outside of function, generate random numbers)
 
-- immutably - the reducer function doesn’t change, or mutate, the arguments, it makes a copy
-  
-// Reducer function
-  // determines the next state given a current state and action
+// immutably - the reducer function doesn’t change, or mutate, the arguments, it makes a copy
 
-// example: 
+  // example: 
 
     const initialState = [ 'Print trail map', 'Pack snacks', 'Summit the mountain' ];
 
@@ -74,7 +73,7 @@
     }
   
 
-// Actions and Reducer functions combined example:
+  // Actions and Reducer functions combined example:
 
     const initialState = [ 'Take Five', 'Claire de Lune', 'Respect' ];
 
@@ -109,8 +108,8 @@
       }
     }
   
-    
-// another example:
+      
+  // another example:
 
     const todoReducer = (state = [], action) => {
      switch (action.type) {
@@ -135,8 +134,7 @@
 // -------
 
 
-//pure functions - important to have
-
+// pure functions - important to have
   // when methods are moved OUTSIDE of functions rather than inside
 
     //example
@@ -159,17 +157,14 @@
       // (moving slice outside function, removing the 1st index in the array of a,b,c,d)
 
       // before: (impure function / incorrect)
-
         const removeItemAtIndex = (list, index) => {
-         list.splice(index, 1);
+         list.slice(index, 1);
          return list;
         };
-
         console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
 
 
       // after: (pure function)
-
         const removeItemAtIndex = (list, index) => {
           return [
             ...list.slice(0, index),  // start at 0 and move 1 (the index) to the right 
@@ -177,7 +172,6 @@
                                                   // move 1, 2 to the right out of 4 items == b
           ]
         };
-
         console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1)); // returns ['a', 'c', 'd']
 
 
@@ -187,14 +181,25 @@
 // STORE
   // a container for state
   // receives actions and calls the reducer function with the action and current state
+  // https://www.codecademy.com/learn/learn-redux/modules/core-redux-api/cheatsheet
 
-// data flow:
-    // 1. The store initializes the state with a default value.
-    // 2. The view displays that state.
-    // 3. When a user interacts with the view, like clicking a button, an action is dispatched to the store.
-    // 4. The dispatched action and the current state are combined in the store’s reducer to determine the next state.
-    // 5. The view is updated to display the new state.
+  // store data flow:
+  // 1. The store initializes the state with a default value.
+  // 2. The view displays that state.
+  // 3. When a user interacts with the view, like clicking a button, an action is dispatched to the store.
+  // 4. The dispatched action and the current state are combined in the store’s reducer to determine the next state.
+  // 5. The view is updated to display the new state.
 
+  // creating a redux store
+    const store = createStore(theReducerFunction) // creates and returns a store object that holds the complete state tree of an app
+      // the required argument is a reducer function, which is called each time an action is dispatched
 
+    // 3 store methods that make sure actions and states are updated
+      store.getState()            // get the state
+      store.dispatch(action)      // change the state 
+      store.subscribe(listener)   // adds a callback function to a list of store callbacks. so when the state changes, all of the listener callbacks get executed
 
+    // slices - relatable parts that are specific to data/actions inside the store's state
+    // slice reducer - the reducer that handles actions + updates data for a given slice(relatable part)
+      
 
