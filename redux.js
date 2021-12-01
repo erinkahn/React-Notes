@@ -231,9 +231,10 @@
 
         const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
 
-        console.log(store.getState());  // prints 'on' 
+        console.log(store.getState());  // prints on 
         store.dispatch({type: 'toggle}) // update the state
-        console.log(store.getState());   // prints 'off'
+        console.log(store.getState());   // prints off
+
 
 
   // SUBSCRIBE - respond to state changes
@@ -248,6 +249,7 @@
         const unsubscribe = store.subscribe(reactToChange)  // causes reactToChange function NOT to execute
         store.dispatch(toggle())                            // change state (toggle)
         unsubscribe()                                       // reactToChange is now unsubscribed
+
 
 
   // implementing the UI
@@ -305,12 +307,14 @@
             const incrementerClicked = () => {
               store.dispatch(increment()) // call the + function at the top to add 1
             }
+            
             incrementer.addEventListener('click', incrementerClicked);
             store.subscribe(render); // render the state on every increment change
 
             const decrementerClicked = () => {
               store.dispatch(decrement()) // call the - function at the top to subtract 1
             }
+            
             decrementer.addEventListener('click', decrementerClicked);
             store.subscribe(render) // render the state on every decrement change
 
