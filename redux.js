@@ -148,3 +148,27 @@
         const addItemToList = (list, item) => {  // function
             return [...list, item];
         };
+
+
+    // example (moving slice outside function, removing the 1st index in the array of a,b,c,d)
+
+      // before: (impure function / incorrect)
+
+        const removeItemAtIndex = (list, index) => {
+         list.splice(index, 1);
+         return list;
+        };
+
+        console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
+
+
+      // after: (pure function)
+
+        const removeItemAtIndex = (list, index) => {
+          return [
+            ...list.slice(0, 1),
+            ...list.slice(2)
+          ]
+        };
+
+        console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
