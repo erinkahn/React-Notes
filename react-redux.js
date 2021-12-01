@@ -125,5 +125,9 @@
         )
       }
       // import that Counter component inside App.js and render it inside of <App>
-
+  
+     // now anytime you click + or -:
+        // The corresponding Redux action will be dispatched to the store
+        // The counter slice reducer will see the actions and update its state
+        // The <Counter> component will see the new state value from the store and re-render itself with the new data
 
