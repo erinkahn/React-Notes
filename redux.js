@@ -226,15 +226,50 @@
   // SUBSCRIBE - respond to state changes
     // subscribe a change listener to print out the current state in response to state changes automatically.
     
-    // example:
-        const reactToChange = () => { // listener function is subscribed to the store
+    // example 1:
+        // listener function (subscribed to the store)
+        const reactToChange = () => { 
           console.log('the light was' , ${store.getState()}) // print state value when function is called
         }
-        const unsubscribe = store.subscribe(reactToChange) // causes reactToChange function NOT to execute
-        store.dispatch(toggle())
-        unsubscribe() // reactToChange is now unsubscribed
+        const unsubscribe = store.subscribe(reactToChange)  // causes reactToChange function NOT to execute
+        store.dispatch(toggle())                            // change state (toggle)
+        unsubscribe()                                       // reactToChange is now unsubscribed
         
-           
+    // example 2:
+        import { createStore } from 'redux';
+
+        const increment = () => {
+          return { type: 'increment' }
+        }
+
+        const decrement = () => {
+          return { type: 'decrement' }
+        }
+
+        const initialState = 0;
+        const countReducer = (state = initialState, action) => {
+          switch (action.type) {
+            case 'increment':
+              return state + 1;
+            case 'decrement':
+              return state - 1;
+            default:
+              return state;
+          }
+        }
+
+        const store = createStore(countReducer);
+
+        // Define your change listener function here.
+        const printCountStatus = () => console.log(`The count is ${store.getState()}`)
+        
+        // subscribe the listener above to the store so that it's called each time the state changes
+        store.subscribe(printCountStatus)
+
+        store.dispatch(decrement()); // store.getState() === -1
+        store.dispatch(increment()); // store.getState() === 0
+        store.dispatch(increment()); // store.getState() === 1
+
         
         
         
