@@ -11,7 +11,9 @@
 
 // Redux helps SEPARATE the state, view and actions by requiring the state be managed by a SINGLE SOURCE
 
-// ————
+
+// -------
+
 
 // ACTIONS
   // every action must have a TYPE property with a string value
@@ -36,8 +38,10 @@
     type: 'songs/removeAll',
   }
   
-// ____
+  
+// -------
 
+  
 // REDUCERS
 // how the actions above carried out in JS
   
@@ -49,25 +53,25 @@
 - immutably - the reducer function doesn’t change, or mutate, the arguments, it makes a copy
   
 // Reducer function
-  // defines how the current state and action are used together to create a new state
+  // determines the next state given a current state and action
 
 // example: 
 
-  const initialState = [ 'Print trail map', 'Pack snacks', 'Summit the mountain' ];
- 
-  const todoReducer = (state = initialState, action) => {
-    switch (action.type) {   // checking what kind of action
-      case 'todos/addTodo': {   // if you add a to do, state changes
-        return [ ...state, action.payload];  //copy the current state and any changed values into a new object
-      }
-      case 'todos/removeAll': {  // if you remove all to dos, state changes to empty
-        return [];  
-      }
-      default: {    // if no state is provided, it returns the default state
-        return state;
+    const initialState = [ 'Print trail map', 'Pack snacks', 'Summit the mountain' ];
+
+    const todoReducer = (state = initialState, action) => {
+      switch (action.type) {   // checking what kind of action
+        case 'todos/addTodo': {   // if you add a to do, state changes
+          return [ ...state, action.payload];  //copy the current state and any changed values into a new object
+        }
+        case 'todos/removeAll': {  // if you remove all to dos, state changes to empty
+          return [];  
+        }
+        default: {    // if no state is provided, it returns the default state
+          return state;
+        }
       }
     }
-  }
   
 
 // Actions and Reducer functions combined example:
@@ -130,6 +134,7 @@
 
 // -------
 
+
 //pure functions - important to have
 
   // when methods are moved OUTSIDE of functions rather than inside
@@ -174,3 +179,22 @@
         };
 
         console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1)); // returns ['a', 'c', 'd']
+
+
+// -------
+
+
+// STORE
+  // a container for state
+  // receives actions and calls the reducer function with the action and current state
+
+// data flow:
+    // 1. The store initializes the state with a default value.
+    // 2. The view displays that state.
+    // 3. When a user interacts with the view, like clicking a button, an action is dispatched to the store.
+    // 4. The dispatched action and the current state are combined in the store’s reducer to determine the next state.
+    // 5. The view is updated to display the new state.
+
+
+
+
