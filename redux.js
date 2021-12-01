@@ -205,23 +205,23 @@
     // slice reducer - the reducer that handles actions + updates data for a given slice(relatable part)
       
   // store example:
-    import { createStore } from 'redux'
- 
-    const initialState = 'on';
-    const lightSwitchReducer = (state = initialState, action) => {
-      switch (action.type) {
-        case 'toggle':
-          return state === 'on' ? 'off' : 'on';
-        default:
-          return state;
+      import { createStore } from 'redux'
+
+      const initialState = 'on';
+      const lightSwitchReducer = (state = initialState, action) => {
+        switch (action.type) {
+          case 'toggle':
+            return state === 'on' ? 'off' : 'on';
+          default:
+            return state;
+        }
       }
-    }
 
-    const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
+      const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
 
-    console.log(store.getState());  // prints 'on' 
-    store.dispatch({type: 'toggle}) // update the state
-    console.log(store.getState());   // prints 'off'
+      console.log(store.getState());  // prints 'on' 
+      store.dispatch({type: 'toggle}) // update the state
+      console.log(store.getState());   // prints 'off'
 
   // SUBSCRIBE - respond to state changes
     // subscribe a change listener to print out the current state in response to state changes automatically.
@@ -238,16 +238,16 @@
     // example 2:
         import { createStore } from 'redux';
 
-        const increment = () => {
-          return { type: 'increment' }
+        const increment = () => {       // action creator
+          return { type: 'increment' }  
         }
 
-        const decrement = () => {
+        const decrement = () => {       // action creator
           return { type: 'decrement' }
         }
 
         const initialState = 0;
-        const countReducer = (state = initialState, action) => {
+        const countReducer = (state = initialState, action) => {   // reducer / store
           switch (action.type) {
             case 'increment':
               return state + 1;
@@ -260,7 +260,7 @@
 
         const store = createStore(countReducer);
 
-        // Define your change listener function here.
+        // Store State Change Listener
         const printCountStatus = () => console.log(`The count is ${store.getState()}`)
         
         // subscribe the listener above to the store so that it's called each time the state changes
@@ -270,7 +270,15 @@
         store.dispatch(increment()); // store.getState() === 0
         store.dispatch(increment()); // store.getState() === 1
 
-        
+
+   // implementing the store UI
+      // 1. Create a Redux store
+      // 2. Render the initial state of the application.
+      // 3. Subscribe to updates. Inside the subscription callback:
+        // a. Get the current store state
+        // b. Select the data needed by this piece of UI
+        // c. Update the UI with the data
+      // 4. Respond to UI events by dispatching Redux actions
         
         
         
