@@ -1,8 +1,5 @@
 // React Redux
   // https://react-redux.js.org/tutorials/quick-start
-
-  // redux is a standalone library that can be used with any framework like Vue, React, Vanilla JS...
-  // redux is separate from react so you use a UI binding library (react redux) to tie them together
   // A UI binding library like React Redux handles the store interaction logic, so you don't have to write that code yourself.
 
 // why use react redux?
