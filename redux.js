@@ -150,7 +150,8 @@
         };
 
 
-    // example (moving slice outside function, removing the 1st index in the array of a,b,c,d)
+    // example using SLICE 
+      // (moving slice outside function, removing the 1st index in the array of a,b,c,d)
 
       // before: (impure function / incorrect)
 
@@ -166,8 +167,8 @@
 
         const removeItemAtIndex = (list, index) => {
           return [
-            ...list.slice(0, 1),
-            ...list.slice(2)
+            ...list.slice(0, 1),  // start at 0 and move 1 to the right == b
+            ...list.slice(2)      // remove 1 (b)
           ]
         };
 
