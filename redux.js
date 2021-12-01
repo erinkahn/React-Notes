@@ -167,9 +167,10 @@
 
         const removeItemAtIndex = (list, index) => {
           return [
-            ...list.slice(0, 1),  // start at 0 and move 1 to the right == b
-            ...list.slice(2)      // remove 1 (b)
+            ...list.slice(0, index),  // start at 0 and move 1 (the index) to the right 
+            ...list.slice(index+1, list.length)   // index is now 1...so + 1 is 2, the length of the list is 4 
+                                                  // move 1, 2 to the right out of 4 items == b
           ]
         };
 
-        console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
+        console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1)); // returns ['a', 'c', 'd']
