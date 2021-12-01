@@ -106,7 +106,6 @@
     }
   
     
-    
 // another example:
 
     const todoReducer = (state = [], action) => {
@@ -127,3 +126,25 @@
     const state = [ 'Print trail map', 'Pack snacks', 'Summit the mountain' ];
     const addTodoAction = { type: 'todos/addTodo', payload: 'Descend' };
     const newState = todoReducer(state, addTodoAction);
+
+
+// -------
+
+//pure functions - important to have
+
+  // when methods are moved OUTSIDE of functions rather than inside
+
+    //example
+        let item;
+        fetch('https://anything.com/endpoint')  // method is outside
+          .then(response => {
+            if (!response.ok) {
+              item = {};
+            }
+
+            item = response.json();
+         });
+
+        const addItemToList = (list, item) => {  // function
+            return [...list, item];
+        };
