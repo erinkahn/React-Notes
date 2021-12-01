@@ -133,13 +133,16 @@
     const newState = todoReducer(state, addTodoAction);
 
 
+
 // -------
+
 
 
 // pure functions - important to have
   // when methods are moved OUTSIDE of functions rather than inside
 
-    //example
+    // example: 
+
         let item;
         fetch('https://anything.com/endpoint')  // method is outside
           .then(response => {
@@ -155,7 +158,9 @@
         };
 
 
-    // example using SLICE 
+
+    // example using SLICE: 
+
       // (moving slice outside function, removing the 1st index in the array of a,b,c,d)
 
       // before: (impure function / incorrect)
@@ -164,7 +169,6 @@
          return list;
         };
         console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
-
 
       // after: (pure function)
         const removeItemAtIndex = (list, index) => {
@@ -177,7 +181,9 @@
         console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1)); // returns ['a', 'c', 'd']
 
 
+
 // -------
+
 
 
 // STORE
@@ -192,42 +198,49 @@
   // 4. The dispatched action and the current state are combined in the store’s reducer to determine the next state.
   // 5. The view is updated to display the new state.
 
-  // creating a redux store
+
+  // creating a redux store:
+
     const store = createStore(theReducerFunction) // creates and returns a store object that holds the complete state tree of an app
       // the required argument is a reducer function, which is called each time an action is dispatched
 
+    
     // 3 store methods that make sure actions and states are updated
       store.getState()            // get the state
       store.dispatch(action)      // change the state 
       store.subscribe(listener)   // adds a callback function to a list of store callbacks. so when the state changes, all of the listener callbacks get executed
 
+
     // slices - relatable parts that are specific to data/actions inside the store's state
     // slice reducer - the reducer that handles actions + updates data for a given slice(relatable part)
       
-  // store example:
-      import { createStore } from 'redux'
 
-      const initialState = 'on';
-      const lightSwitchReducer = (state = initialState, action) => {
-        switch (action.type) {
-          case 'toggle':
-            return state === 'on' ? 'off' : 'on';
-          default:
-            return state;
+      // store example:
+
+        import { createStore } from 'redux'
+
+        const initialState = 'on';
+        const lightSwitchReducer = (state = initialState, action) => {
+          switch (action.type) {
+            case 'toggle':
+              return state === 'on' ? 'off' : 'on';
+            default:
+              return state;
+          }
         }
-      }
 
-      const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
+        const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
 
-      console.log(store.getState());  // prints 'on' 
-      store.dispatch({type: 'toggle}) // update the state
-      console.log(store.getState());   // prints 'off'
+        console.log(store.getState());  // prints 'on' 
+        store.dispatch({type: 'toggle}) // update the state
+        console.log(store.getState());   // prints 'off'
 
 
   // SUBSCRIBE - respond to state changes
     // subscribe a change listener to print out the current state in response to state changes automatically.
     
-    // example:
+      // example:
+
         // listener function (subscribed to the store)
         const reactToChange = () => { 
           console.log('the light was' , ${store.getState()}) // print state value when function is called
@@ -246,7 +259,9 @@
        // c. Update the UI with the data
      // 4. Respond to UI events by dispatching Redux actions
 
-        // Example
+
+        // Example:
+
             import { createStore } from 'redux';
             const { createStore } = require('redux');
 
