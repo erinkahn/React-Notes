@@ -26,65 +26,77 @@
         // Read data from the store with the useSelector hook
         // Get the dispatch function with the useDispatch hook, and dispatch actions as needed
 
-  //example:
 
-    import React from 'react';
-    import ReactDOM from 'react-dom';
-    import { createStore } from 'redux';
+          // example:
 
-    // REDUX CODE
-    ///////////////////////////////////
+              import React from 'react';
+              import ReactDOM from 'react-dom';
+              import { createStore } from 'redux';
 
-    const toggle = () => {
-      return {type: 'toggle'} 
-    }
+              // REDUX CODE
+              ///////////////////////////////////
 
-    const initialState = 'off';
-    const lightSwitchReducer = (state = initialState, action) => {
-      switch (action.type) {
-        case 'toggle':
-          return state === 'on' ? 'off' : 'on';
-        default:
-          return state; 
-      }
-    } 
+              const increment = () => {
+                return {type: 'increment'} 
+              }
 
-    const store = createStore(lightSwitchReducer);
+              const decrement = () => { 
+                return {type: 'decrement'}
+              }
 
-    // REACT CODE
-    ///////////////////////////////////
+              const initialState = 0;
+              const counterReducer = (state = initialState, action) => {
+                switch (action.type) {
+                  case 'increment':
+                    return state + 1;
+                  case 'decrement':
+                    return state - 1;
+                  default:
+                    return state; 
+                }
+              } 
 
-    // Pass the store's current state as a prop to the LightSwitch component.
-    const render = () => {
-      ReactDOM.render(
-        <LightSwitch 
-          state={store.getState()}
-        />,
-        document.getElementById('root')
-      )
-    }
+              const store = createStore(counterReducer);
 
-    render(); // Execute once to render with the initial state.
-    store.subscribe(render); // Re-render in response to state changes.
+              // REACT CODE
+              ///////////////////////////////////
 
-    // Receive the store's state as a prop.
-    function LightSwitch(props) {
-      const state = props.state; 
+              const render = () => {
+                ReactDOM.render(
+                  <CounterApp 
+                    state={store.getState()}
+                  />,
+                  document.getElementById('root')
+                )
+              }
 
-      // Adjust the UI based on the store's current state.
-      const bgColor = state === 'on' ? 'white' : 'black';
-      const textColor = state === 'on' ? 'black' : 'white';  
 
-      // The click handler dispatches an action to the store.
-      const handleLightSwitchClick = () => {
-        store.dispatch(toggle());
-      }
+              // Render once with the initial state.
+              render()
 
-      return (  
-        <div style={{background : bgColor, color: textColor}}>
-          <button onClick={handleLightSwitchClick}>
-            {state}
-          </button>
-        </div>
-      )
-}
+              // Subscribe render to changes to the store's state.
+
+              function CounterApp(props) {
+                let state = props.state;
+
+                const onIncrementButtonClicked = () => {
+                  // Dispatch an 'increment' action.
+                  store.dispatch(increment())
+                }
+
+                const onDecrementButtonClicked = () => {
+                  // Dispatch an 'decrement' action.
+                  store.dispatch(decrement())
+                }
+
+                return (   
+                  <div id='counter-app'>
+                    <h1> {state} </h1>
+                    <button onClick={onIncrementButtonClicked}>+</button> 
+                    <button onClick={onDecrementButtonClicked}>-</button>
+                  </div>
+                )
+              }
+
+              // re-render the component every time the state changes
+              store.subscribe(render)
