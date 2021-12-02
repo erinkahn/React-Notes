@@ -5,6 +5,9 @@
 // why use react redux?
   // React Redux implements many performance optimizations internally, so that your own component only re-renders when it actually needs to.
 
+// when to use it?
+  // when apps have many features and a lot of data where it could benefit from having a centralized store to keep it all organized. 
+
 // setup command:
   npm install @reduxjs/toolkit react-redux 
 
