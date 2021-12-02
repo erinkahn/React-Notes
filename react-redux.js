@@ -97,6 +97,18 @@
                   </div>
                 )
               }
-
+              
               // re-render the component every time the state changes
               store.subscribe(render)
+
+
+        // 9 steps completed:
+          // 1. Install the redux library into your project using npm install redux.
+          // 2. Import the createStore() helper function from the 'redux' library.
+          // 3. Create a store object that holds the entire state of your Redux application using createStore().
+          // 4. Get the current state of the store using store.getState() as a prop
+          // 5. Dispatch actions to the store using store.dispatch(action).
+          // 6. Create action creators/functions to reduce the repetitive creation of action objects.
+          // 7. Register a change listener function to respond to changes to the store using store.subscribe(listener).
+          // 8. Recognize the pattern for connecting Redux to any user interface.
+          // 9. Implement a Redux application using either the HTML DOM API or React.
