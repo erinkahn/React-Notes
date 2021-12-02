@@ -115,3 +115,8 @@
           // 7. Register a change listener function to respond to changes to the store using store.subscribe(listener).
           // 8. Recognize the pattern for connecting Redux to any user interface.
           // 9. Implement a Redux application using either the HTML DOM API or React.
+
+
+// more complex state example:  https://codesandbox.io/s/redux-recipes-app-phzud
+
+
