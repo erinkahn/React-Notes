@@ -1,6 +1,11 @@
-// Context
+// Context AI
    // A way to pass data thru the component tree w/o having to pass props down manually at every level
    // Context lets us pass a value deep into the component tree without explicitly threading it through every component which creates bloated code.
+
+// 3 building blocks:
+   // 1. Context Object
+   // 2. Context Provider
+   // 3. Context Consumer
 
 // When should I use this?
    // when you have data or props that are global, meaning they need to be passed down to every component
@@ -72,21 +77,27 @@
    
       // example:
       
-         import React, {createContext} from "react";
+         import React, {createContext, useState} from "react";
 
-         const ThemeContext = createContext();
+         export const ThemeContext = createContext();
 
-         function ThemeProvider(props) {
-           const theme = "dark";
-
+         export default function ThemeProvider(props) {
+           const [theme, setTheme] = "dark";
+           
+           const toggleTheme = () => {
+              if (theme === 'dark') {
+                  setTheme("light");
+              } else {
+                  setTheme("dark");
+              }
+           }
+           
            return (
-             <ThemeContext.Provider value={theme}>  // the value that all the childern will be able to receive
+             <ThemeContext.Provider value={theme, toggleTheme}>  // the value that all the childern will be able to receive
                {props.children}             
              </ThemeContext.Provider>
            );
          };
-         export { ThemeContext, ThemeProvider };
-
 
 
 // Any component nested inside the ThemeProvider can now access the context by importing the ThemeContext and passing it to the useContext() hook
@@ -98,20 +109,20 @@
 
       function App() {
           return (<>
-             <ThemeProvider>
+             <ThemeProvider> // use Theme context component here to wrap all children
                <Nav />
              </ThemeProvider>
           </>);
       }
 
       function Nav() {
-          return <Button>Login</Button>;
+          return <Button>Login</Button>; // Button component used here
       }
 
       function Button(props) {
-          const theme = useContext(ThemeContext);
+          const {theme, toggleTheme} = useContext(ThemeContext);
           console.log(theme); // "dark"
-          return <button>{props.children}</button>;
+          return <button OnClick={toggleTheme}>{props.children}</button>;
       }
 
 
