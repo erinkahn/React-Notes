@@ -3,10 +3,12 @@
   // A UI binding library like React Redux handles the store interaction logic, so you don't have to write that code yourself.
 
 // why use react redux?
-  // React Redux implements many performance optimizations internally, so that your own component only re-renders when it actually needs to.
+  // React Redux implements many performance optimizations internally, so that your own component only re-renders when it actually needs to
 
 // when to use it?
   // when apps have many features and a lot of data where it could benefit from having a centralized store to keep it all organized. 
+  // you should use Redux when you have a large application that has many states that change
+  // you should NOT use Redux when you have smaller apps or larger apps that only have a few states that don't change much - because using Context can take care of this
 
 // setup command:
   npm install @reduxjs/toolkit react-redux 
