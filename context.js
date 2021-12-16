@@ -9,6 +9,8 @@
 
 // When should I use this?
    // when you have data or props that are global, meaning they need to be passed down to every component
+   // if you are building a small application or a large application with few states that change, then you should use Context... HOWEVER
+   // if you are building a large application with many states that change, you should use Redux, because performance will be bad if your state changes a lot and you use context.
 
 // Use cases:
    // current user profile details (id/image/bio), dark and light theme, preferred language, currency
@@ -52,10 +54,10 @@
 
 
 // Steps for creating a context:
-   // 1 Create the context
-   // 2 Create the provider for that context
-   // 3 Export the context & the provider.
-   // - The provider will wrap our components and provide them with the value (some global data).
+   // 1 Create the context   ( createContext() )
+   // 2 Create the provider for that context   ( TheProvider() )
+   // 3 Export the context & the provider.   
+   // - The provider will wrap our components and provide them with the value (some global data).   ( <Context.Provider value="{value}">{props.children}</Context> )
 
 
 // React.createContext 
