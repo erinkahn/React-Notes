@@ -146,7 +146,7 @@
 
 
 // Context.displayName
-   - Context object accepts a displayName string property.
+   // - Context object accepts a displayName string property.
 
    const MyContext = React.createContext(/* some value */);
    MyContext.displayName = 'MyDisplayName';
