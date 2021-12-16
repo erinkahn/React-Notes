@@ -1,6 +1,9 @@
 // Context AI
    // A way to pass data thru the component tree w/o having to pass props down manually at every level
-   // Context lets us pass a value deep into the component tree without explicitly threading it through every component which creates bloated code.
+   // Context lets us pass a value deep into the component tree without explicitly threading it through every component which creates bloated code
+    
+// Negatives of using Context
+   // If the context value changes too often and a component somewhere high in the tree consumes useContext it will cause a re-render of all its children and affect performance in a negative way (unless they are memoized)
 
 // 3 building blocks:
    // 1. Context Object
