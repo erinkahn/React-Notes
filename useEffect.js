@@ -29,6 +29,16 @@
 
 // cleanup
     // If you return a function from the effect, it cleans it up 
+    // prevents memory leaks
+    // when our effect is dependent on our prop or anytime we set up something that persists, we then have a reason to call the cleanup function.
+
+    useEffect(() => {
+        API.subscribe()
+        
+        return() => {
+            API.unsubscribe()
+        }
+    })
 
 
 // Dependency array 
