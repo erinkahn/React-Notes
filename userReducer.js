@@ -61,4 +61,7 @@
 
 // example: https://codesandbox.io/s/userreducer-hook-myz9b?file=/src/Stopwatch.js
     
-  
+
+
+// filtering example: https://codesandbox.io/s/userreducer-hook-filtering-ocqvo?file=/src/Filtering.js
+
