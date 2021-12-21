@@ -79,4 +79,39 @@
     }
 
 
+
+// Pages Route example:
+
+    import React, { Suspense, lazy } from 'react';
+    import { Routes, Route } from "react-router-dom";
+
+    const Home = lazy(() => import('./Pages/Home'));
+    const About = lazy(() => import('./Pages/About'));
+    const Resume = lazy(() => import('./Pages/Resume'));
+    const Contact = lazy(() => import('./Pages/Contact'));
+
+    export default function Routez() {
+        return (
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>        
+                    <Route exact path='/'
+                        element={<Home/>}>
+                    </Route>
+                    <Route exact path='/about'
+                        element={<About/>}>
+                    </Route>
+                    <Route exact path='/resume'
+                        element={<Resume/>}>
+                    </Route>
+                    <Route exact path='/contact'
+                        element={<Contact/>}>
+                    </Route>
+                </Routes>
+            </Suspense>
+        )
+    }
+
+    
+    
+    
 // *** Do not lazy load every single component. This will make your app slower. Generally, try to lazy load components that are very large and that do not show up immediately above the fold.
