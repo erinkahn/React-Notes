@@ -15,5 +15,7 @@
   // useEffect - lets you perform an effect in your component after the component renders and the DOM has been updated ( examples: setTimeout, onScroll, change document.title, setInterval, fetch data, setup a subscription, change the DOM )
       
 
+// custom hooks - used to share common logic bt multiple components 
+
 
 
