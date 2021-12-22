@@ -11,24 +11,32 @@
       import { useLayoutEffect, useState } from "react";
 
       export const useScrollPos = () => {
+
         const [scrollPos, setScrollPos] = useState({
           x: 0,
           y: 0
         });
-        
+
         useLayoutEffect(() => {
+
           const getScrollPos = () =>
             setScrollPos({
               x: window.pageXOffset,
               y: window.pageYOffset
             });
-          
+
           window.addEventListener("scroll", getScrollPos);
+
           return () => window.removeEventListener("scroll", getScrollPos);
         }, []);
-        
-        return scrollPos;
+
+        return (
+          <div>
+            {scrollPos.x} {scrollPos.y}
+          </div>
+        );
       };
+
 
 
     // --- then in App.js or your component file call the hook
