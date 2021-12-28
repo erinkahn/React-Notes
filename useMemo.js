@@ -30,7 +30,20 @@
 
 // example
 
-    const Instructions = React.memo((props) => {
+    const App = () => {
+      const someValue = useMemo(() => ({ value: "someValue" }))  // prevents needless re-render by memoizing the object someValue
+      const doSomething = () => {
+        return someValue
+      }
+
+      return (
+        <div>
+          <Instructions doSomething={doSomething} /> 
+        </div>
+      )
+    }
+
+    const Instructions = React.memo((props) => { 
       return (
         <div style={{ background: 'black', color: 'yellow', padding: "1rem" }}>
           <p>Follow the instructions above as closely as possible</p>
