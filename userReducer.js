@@ -10,34 +10,17 @@
     // it then returns an array of 2 items: the current state and the dispatch function
     // action object -> dispatch -> reducer -> state
 
-        const initialState = {width: 30, active: true};
+       1. const initialState = {something: ''};
 
-        const reducerFunction = (state, action) => {
+       2. const reducerFunction = (state, action) => {
            switch(action {
-              case 'plus':
-                return {
-                    ...state,
-                    width: state.width + 30
-                }
-            case 'minus':
-                return {
-                    ...state,
-                    width: Math.max(state.width - 30, 2)
-                }
-            default:
-                throw new Error('error')
-           })
+              case 'string here':
+           ....
         }
 
-        const Bar = () => {
-            const [state, dispatchFunction] = useReducer(reducerFunction, initialState);
-            
-            return (
-                <div className="bar" style={{ width: state.width }}></div>
-                <button onClick={() => dispatchFunction('plus')}>Increase bar size</button>
-                <button onClick={() => dispatchFunction('minus'}}>Decrease bar size</button>
-            )
-        }
+       3. const [state, dispatchFunction] = useReducer(reducerFunction, initialState);
+           
+       4. dispatch
 
         
 // dispatch
@@ -84,6 +67,40 @@
         return newState;
      }
 
+
+
+// example 2
+
+    const initialState = {width: 30, active: true};
+
+        const reducerFunction = (state, action) => {
+           switch(action {
+              case 'plus':
+                return {
+                    ...state,
+                    width: state.width + 30
+                }
+            case 'minus':
+                return {
+                    ...state,
+                    width: Math.max(state.width - 30, 2)
+                }
+            default:
+                throw new Error('error')
+           })
+        }
+
+        const Bar = () => {
+            const [state, dispatchFunction] = useReducer(reducerFunction, initialState);
+            
+            return (
+                <div className="bar" style={{ width: state.width }}></div>
+                <button onClick={() => dispatchFunction('plus')}>Increase bar size</button>
+                <button onClick={() => dispatchFunction('minus'}}>Decrease bar size</button>
+            )
+        }
+
+        
 
 // example: https://codesandbox.io/s/userreducer-hook-myz9b?file=/src/Stopwatch.js
     
