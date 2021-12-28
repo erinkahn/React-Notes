@@ -1,4 +1,5 @@
 // useReducer
+    // using complex state logic that depends on previous state values
     // lets you separate state management from the rendering logic of the component
     // lets you optimize performance for components that trigger deep updates because you can pass dispatch down instead of callbacks
     // an alternative to useState, it takes 2 arguments: useReducer(reducerFunction, initialState). 
