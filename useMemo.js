@@ -7,7 +7,7 @@
 
 
 // syntax
-  const memoizedResult = useMemo(() => expensiveComputation(a, b), [a, b])
+  const memoizedValue = useMemo(functionThatReturnsValue, arrayDepencies)
 
 
 // when to use
@@ -50,3 +50,5 @@
         </div>
       )
     })
+    
+// https://reactjs.org/docs/hooks-reference.html#usememo
