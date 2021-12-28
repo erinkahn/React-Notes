@@ -42,6 +42,29 @@
     }
 
     
+// example
+    
+    const MemoizedLogout = React.memo(Logout);
+
+    function MyApp({ store, cookies }) {
+        
+      const onLogout = useCallback(
+        () => cookies.clear('session'), 
+        [cookies]
+      );
+        
+      return (
+        <div className="main">
+          <header>
+            <MemoizedLogout
+              username={store.username}
+              onLogout={onLogout}
+            />
+          </header>
+          {store.content}
+        </div>
+      );
+    }
     
     
     
