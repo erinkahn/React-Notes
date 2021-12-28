@@ -24,10 +24,9 @@
 
     return (
       <section>
-          <button onClick={handleBtnClick}>Focus and Populate Text Field</button>
-
           <label htmlFor="story">The input box below will be focused and populated with some text (imperatively) upon clicking the button above.</label>
           <textarea ref={textAreaEl} id="story" rows="5" cols="33" />
+          <button onClick={handleBtnClick}>Focus and Populate Text Field</button>
       </section>
     );
 };
