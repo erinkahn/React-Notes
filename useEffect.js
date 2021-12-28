@@ -1,6 +1,5 @@
 // useEffect
-    // useEffect runs as soon as the component loads (first render)
-    // The Dom is updated by the time react runs the effects
+    // useEffect runs AFTER the browser screen is painted and as soon as the component loads
     // When your component needs to do something after it renders, react will call your effect function later after performing data fetching or call some other API
 
 
