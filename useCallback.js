@@ -14,32 +14,31 @@
 
     
 // example
-    import useSearch from './fetch-items';
 
-    function MyBigList({ term, onItemClick }) {    // onItemClick is memoized by the callback, as long as term is the same, the callback returns the same function object
-      const items = useSearch(term);
-      const map = item => <div onClick={onItemClick}>{item}</div>;
+    const Notes = () => {
+         const [notes, setNotes] = useState([]);
         
-      return <div>{items.map(map)}</div>;
-    }
-    export default React.memo(MyBigList);
+         const addNote = useCallback(() => {
+               const newNote = "random";
+               setNotes(n => [...n, newNote]);
+         }, [setNotes];
+        
+         return (<>
+               <Button addNote={addNote} />
+               {notes.map((note, index) => (
+                     <p key={index}>{note}</p>
+               ))}
+         </>);
+    };
 
+    const Button = ({ addNote }) => {
+         console.log("Button re-rendered :( ");
+        
+         return (<>
+               <button onClick={addNote}>Add</button>
+         </>);
+    };
 
-
-    import {useCallback} from 'react';
-
-    export function MyParent({ term }) => {      // When MyParent re-renders, onItemClick function object remains the same and doesn't break the memoization of MyBigList.
-        const doSomething = useCallback(event => {      // callback function will only re-render when value changes / not on every click
-            console.log('you clicked', event.currentTarget)
-        }, [term]
-
-        return (
-           <MyBigList
-              term={term}
-              onItemClick={onItemClick}   // trigger the callback when an action is performed or inside useEffect
-            />
-        )      
-    }
 
     
 // example
