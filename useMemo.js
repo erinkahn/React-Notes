@@ -26,5 +26,14 @@
       );
     }
     export const MemoizedMovie = React.memo(Movie); // React.memo(Movie) returns a new memoized component MemoizedMovie.
-
   
+
+// example
+
+    const Instructions = React.memo((props) => {
+      return (
+        <div style={{ background: 'black', color: 'yellow', padding: "1rem" }}>
+          <p>Follow the instructions above as closely as possible</p>
+        </div>
+      )
+    })
