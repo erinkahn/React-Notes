@@ -1,9 +1,13 @@
-// Performance testing a React app
+// Performance testing a React app 
+  // https://web.dev/fast
 
 // BASIC RULES OF THUMB:
   // 1. always have width and height on images + aspect ratio in css ( aspect-ratio: width / height; )
   // 2. optimize your images 
-  // 3. reserve enough space for dynamic content by creating a container with a height and width so it won't jump when the content comes in (example: news banner)
+  // 3. lazy load images and video
+  // 4. reserve enough space for dynamic content by creating a container with a height and width so it won't jump when the content comes in (example: news banner)
+  // 5. to avoid web fonts from flashing unstyled text or invisible text use: font-display: optional, <Link rel=preload>
+  // 6. 
 
 // Considerations:
   // 1. Perceived load speed: how quickly a page can load and render all of its visual elements to the screen.
