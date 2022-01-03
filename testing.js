@@ -1,11 +1,13 @@
 // Performance testing a React app
 
+
 // Considerations:
   // 1. Perceived load speed: how quickly a page can load and render all of its visual elements to the screen.
   // 2. Load responsiveness: how quickly a page can load and execute any required JavaScript code in order for components to respond quickly to user interaction
   // 3. Runtime responsiveness: after page load, how quickly can the page respond to user interaction.
   // 4. Visual stability: do elements on the page shift in ways that users don't expect and potentially interfere with their interactions?
   // 5. Smoothness: do transitions and animations render at a consistent frame rate and flow fluidly from one state to the next
+
 
 // Metrics to measure:
   // FCP (first contentful paint) - https://web.dev/fcp/
@@ -15,8 +17,8 @@
   // TTI (time to interactive) - https://web.dev/tti/
   // TBT (total blocking time) - https://web.dev/tbt/
 
-// --- Web Vitals
 
+// --- Web Vitals
   // check if web-vitals is installed in package.json
   // if not, install it 
   // npm install web-vitals
@@ -33,6 +35,7 @@
   // then inspect and see the issues going on
 
 
+// --- TOOLS
 // Pageseed Insights - https://pagespeed.web.dev/?utm_source=psi&utm_medium=redirect
 // Webpage test - https://webpagetest.org/
 // google search console - https://search.google.com/search-console/welcome
