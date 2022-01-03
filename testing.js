@@ -1,5 +1,8 @@
 // Performance testing a React app
 
+// BASIC RULES OF THUMB:
+  // 1. always have width and height on images + aspect ratio in css ( aspect-ratio: width / height; )
+  // 2. reserve enough space for dynamic content by creating a container with a height and width so it won't jump when the content comes in
 
 // Considerations:
   // 1. Perceived load speed: how quickly a page can load and render all of its visual elements to the screen.
@@ -38,6 +41,8 @@
 // --- TOOLS
 // Pageseed Insights - https://pagespeed.web.dev/?utm_source=psi&utm_medium=redirect
 // Webpage test - https://webpagetest.org/
+// Lighthouse in dev tools (check out: avoid large layout shifts to find elements causing issues)
 // google search console - https://search.google.com/search-console/welcome
-// --- Jest - https://jestjs.io/ 
-// --- react testing library - https://github.com/testing-library/react-testing-library 
+// Jest - https://jestjs.io/ 
+// react testing library - https://github.com/testing-library/react-testing-library 
+// performance tab in dev tools (look at experience)
