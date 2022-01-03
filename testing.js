@@ -1,31 +1,25 @@
 // Performance testing a React app
 
-// Web Vitals
+// BASICS:
+  // LCP (largest contentful paint) should be 2.5 seconds or less
+  // FID (first input delay) event should be 100 milliseconds or less
+  // CLS (cumulative layout shift) should be 0.1 or less
+
+// --- Web Vitals
+
   // check if web-vitals is installed in package.json
   // if not, install it 
   // npm install web-vitals
 
-  // then, create a file called WebVitals.js and paste this code
-  
-    import { useEffect } from "react";
-    import { getCLS, getFID, getLCP, getTTFB } from "web-vitals";
+  // then, in index.js paste
+    import {getLCP, getFID, getCLS} from 'web-vitals';
 
-    const WebVitals = () => {
-      useEffect(() => {
-        getTTFB(console.log);
-        getCLS(console.log);
-        getFID(console.log);
-        getLCP(console.log);
-      }, []);
+    getCLS(console.log); // cumulative layout shift (loading)
+    getFID(console.log); // first input delay (interactivity)
+    getLCP(console.log); // largest contentful paint (visual stability)
 
-      return null;
-    };
+  // then inspect and see the issues going on
 
-    export default WebVitals;
 
-  // inside App.js import the WebVitals component like so:
-
-    import WebVitals from './test/WebVitals'; // for testing
-    
-  // and render it inside your app component
-    <WebVitals/>
+// Pageseed Insights - https://pagespeed.web.dev/?utm_source=psi&utm_medium=redirect
+// Webpage test - https://webpagetest.org/
