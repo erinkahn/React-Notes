@@ -2,7 +2,8 @@
 
 // BASIC RULES OF THUMB:
   // 1. always have width and height on images + aspect ratio in css ( aspect-ratio: width / height; )
-  // 2. reserve enough space for dynamic content by creating a container with a height and width so it won't jump when the content comes in (example: news banner)
+  // 2. optimize your images 
+  // 3. reserve enough space for dynamic content by creating a container with a height and width so it won't jump when the content comes in (example: news banner)
 
 // Considerations:
   // 1. Perceived load speed: how quickly a page can load and render all of its visual elements to the screen.
@@ -45,4 +46,4 @@
 // google search console - https://search.google.com/search-console/welcome
 // Jest - https://jestjs.io/ 
 // react testing library - https://github.com/testing-library/react-testing-library 
-// performance tab in dev tools (look at experience)
+// performance tab in dev tools (look at experience, inside the Summary tab look for largest contentful paint)
