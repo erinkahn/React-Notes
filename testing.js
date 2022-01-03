@@ -35,8 +35,6 @@
 
 // Pageseed Insights - https://pagespeed.web.dev/?utm_source=psi&utm_medium=redirect
 // Webpage test - https://webpagetest.org/
-
-
-
+// google search console - https://search.google.com/search-console/welcome
 // --- Jest - https://jestjs.io/ 
 // --- react testing library - https://github.com/testing-library/react-testing-library 
