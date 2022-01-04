@@ -11,11 +11,10 @@
 
 
 // Considerations:
-  // 1. Perceived load speed: how quickly a page can load and render all of its visual elements to the screen.
-  // 2. Load responsiveness: how quickly a page can load and execute any required JavaScript code in order for components to respond quickly to user interaction
-  // 3. Runtime responsiveness: after page load, how quickly can the page respond to user interaction.
-  // 4. Visual stability: do elements on the page shift in ways that users don't expect and potentially interfere with their interactions?
-  // 5. Smoothness: do transitions and animations render at a consistent frame rate and flow fluidly from one state to the next
+  // 1. load speed
+  // 2. execution speed / response time 
+  // 4. are elements shifting
+  // 5. smooth transitions / animations
 
 
 // Metrics to measure:
