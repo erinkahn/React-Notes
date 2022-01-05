@@ -5,9 +5,18 @@
 // BASIC RULES OF THUMB:
   // 1. always have width and height on images + aspect ratio in css ( aspect-ratio: width / height; )
   // 2. optimize your images & use webp as main src and jpg as fallback
-  // 3. lazy load images and video
+  // 3. lazy load images and video that are below the fold
   // 4. reserve enough space for dynamic content by creating a container with a height and width so it won't jump when the content comes in (example: news banner)
   // 5. to avoid web fonts from flashing unstyled text or invisible text use: font-display: optional, <Link rel=preload>
+  // 6. before pushing to production, minify your app by running npm run build to get a production build
+
+
+// EXTENSIONS/TOOLS YOU NEED:
+  // react developer tools
+  // React performance devtool extension
+  // chrome devtools 
+  // why did you update library (enable during development but disable in production) - https://github.com/welldone-software/why-did-you-render
+  // uglifyjs-plugin, compression-webpack-plugin
 
 
 // Considerations:
@@ -58,7 +67,7 @@
      ? <img src="./path/to/img.webp" />
      : <img src="./path/to/img.png" />
   
-
+       
 
 // --- TOOLS
     // Lighthouse in dev tools (check out: avoid large layout shifts to find elements causing issues)
@@ -68,3 +77,4 @@
     // Jest - https://jestjs.io/ 
     // react testing library - https://github.com/testing-library/react-testing-library 
     // performance tab in dev tools (look at experience, inside the Summary tab look for largest contentful paint)
+    // react lazyload library - https://github.com/twobin/react-lazyload
