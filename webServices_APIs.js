@@ -31,7 +31,13 @@
    
 
     // SOAP Web Services
-        // exchanges structured data using XML and HTTP and SMTP for transmission
+        // uses XML and HTTP and SMTP for transmission that has a envelope, header, body, and fault and looks like: 
+            <?xml version='1.0' ?>
+                <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"> 
+                     <env:Header>   
+                       .........
+                 </env:Body>
+            </env:Envelope>
 
 
 // API vs Web Services
