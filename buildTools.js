@@ -23,9 +23,9 @@
 
 
 /// bundlers
-  // package JS files, stylesheets, images, and fonts into bundled files. 
-  // remove unused and duplicated code
-  // improve download speed
+  // package JS files, stylesheets, images, and fonts into bundled files 
+  // use code-splitting
+  // remove unused and duplicated code which improve download speed
   // use dependency graphs to map out connected resources
 
 
