@@ -221,3 +221,6 @@
     }
 
 
+// helpful links:
+    https://nicklusk.com/javascript-api-return-json-display.html
+    https://jsonplaceholder.typicode.com/
