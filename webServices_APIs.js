@@ -17,9 +17,16 @@
         // XML-RPC   - Remote Procedure Call - most basic XML protocol, uses HTTP to transfer data from client to server
 
 
+    // HTTP - a protocol
+        // list of commands used by browsers and web servers to communicate 
+        // example:
+            Browser: GET /path/to/file/index.html HTTP/1.0
+            Server: HTTP/1.0 200 OK (then page source code goes here)
+
+
     // SOAP VS REST Web Services (amazon and eBay use both of these):
 
-         REST   // - easier and lighter, uses URLs
+         REST   // - interface API, easier and lighter, uses URLs (example: Google Maps API is a REST service)
                 // - lightweight, readable, easier to build
                 // - cons: - point to point communication, lack of standards
                 // - uses HTTP and JSON
@@ -54,12 +61,16 @@
                         xhttp.send("Your JSON Data Here");
 
                     // XML (envelope, header, body, fault):
-                        <?xml version='1.0' ?>
-                            <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"> 
-                                 <env:Header>   
-                                   .........
-                             </env:Body>
-                        </env:Envelope>
+                        <?xml version="1.0"?>
+                        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+                          <soap:Header>
+                          </soap:Header>
+                          <soap:Body>
+                            <m:GetUser>
+                              <m:UserId>123</m:UserId>
+                            </m:GetUser>
+                          </soap:Body>
+                        </soap:Envelope>
         
          
      // PAYLOAD - data sent over the internet, and when a payload is “heavy,” it requires more resources. 
@@ -86,7 +97,7 @@
 
 
 
-// 3 Tools for making HTTP requests in JavaScript:
+// 3 Tools/Methods/Techniques for making HTTP requests in JavaScript:
 
     // 1: fetch() - API, provides interface for fetching data, built into the window object so doesn't need to be installed
 
@@ -106,7 +117,7 @@
                     el.innerHTML = generateErrorHTMLOutput(error);
             }
 
-    // 3: AJAX - asynchronous (do multiple things without refreshing the page) JS and XML, builds websites and apps, NOT a language, acessed web servers from a web page
+    // 3: AJAX - asynchronous (do multiple things without refreshing the page) JS and XML, builds websites and apps, NOT a language, accesses web servers from a web page
         
             (function() {
               var httpRequest;
