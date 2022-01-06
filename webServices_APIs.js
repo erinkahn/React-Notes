@@ -3,29 +3,35 @@
     // data exchange systems
     // NOT the same thing as an API *** 
 
+
     // supports communication among apps with HTML, XML, WSDL, SOAP
         // XML tags the data
         // SOAP transfers the message
         // WSDL describes the service's accessibility
 
+
     // web service types:
-        REST // - API based tasks using HTTP protocols
-        SOAP // - XML based tasks using HTTP or SMTP protocols
-        UDDI // - Unisersal description discovery and integration - XML based for detailsing publishing, basically an internet registry for businesses (ex: ecommerce)
-        XML-RPC // - Remote Procedure Call - most basic XML protocol, uses HTTP to transfer data from client to server
+        // REST      - API based tasks using HTTP protocols
+        // SOAP      - XML based tasks using HTTP or SMTP protocols
+        // UDDI      - Unisersal description discovery and integration - XML based for detailsing publishing, basically an internet registry for businesses (ex: ecommerce)
+        // XML-RPC   - Remote Procedure Call - most basic XML protocol, uses HTTP to transfer data from client to server
+
 
     // SOAP VS REST Web Services (amazon and eBay use both of these)
-     <3  REST // - lightweight, readable, easier to build
-             // cons: - point to point communication, lack of standards
+         REST // - lightweight, readable, easier to build
+              // - cons: - point to point communication, lack of standards
+     
          SOAP // - easier to consume, more standards
-             // cons: difficult set-up, more convoluted code, harder to develop
+              // - cons: difficult set-up, more convoluted code, harder to develop
 
-    // RESTFUL Web Services
+         
+    // RESTful Web Services
         Representational State Transfer
         // each unique URL represents an object
         // uses HTTP and supports HTTP methods like:        
             GET, POST, PUT, DELETE
    
+
     // SOAP Web Services
         Simple Object Access Protocol 
         // exchanges structured data using XML and HTTP and SMTP for transmission
@@ -36,7 +42,7 @@
 
     // DIFFERENCES:
         // ALL web services can be APIS BUT not all APIs can be web services
-        // web service can only be hosted on Internet Ifnormation Services (IIS) BUT APIS can be hosted within an APP 
+        // web service can only be hosted on Internet Information Services (IIS) BUT APIS can be hosted within an APP 
         // web services are NOT open source BUT APIS are open source
         // web services are used to understand JSON or XML BUT APIS are only used for XML
         // Web services are NOT lightweight BUT APIs are lightweight and have limited bandwidth
