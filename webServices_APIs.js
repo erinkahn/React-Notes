@@ -6,8 +6,8 @@
 
     // Web Services platforms
         // XML tags the data
-        // SOAP transfers the message
-        // WSDL describes the service's accessibility
+        // SOAP (Representational State Transfer) transfers the message
+        // WSDL (web service definition language) describes the service's accessibility
 
 
     // web services use components like:
