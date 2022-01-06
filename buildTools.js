@@ -11,6 +11,7 @@
 
 
 // web development ecosystem:
+  // - a set of tools that are used to build web applications and how they interact with each other to make a finished product
   // 1. development - HTML, CSS, JS, REACT, NODE
   // 2. testing - JEST, Mocha
-  // 3. deployment - task runners and bundlers
+  // 3. deployment - task runners and bundlers (build and automate)
