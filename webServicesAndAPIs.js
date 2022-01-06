@@ -108,43 +108,42 @@
                     console.log(JSON.stringify(myJSON));
                 })
 
-    // 2: Axios - lets you make XMLHttpRequests from browser, HTTP requests from node, automatically transforms JSON data for you instead of having to stringify json, must install it in npm to use it
+    // 2: Axios - library that lets you make http requests, automatically transforms JSON data for you instead of having to stringify json, must install it in npm to use it
 
-            axios.get(url)
-                .then(function(response) {
-                     el.innerHTML = generateSuccessHTMLOutput(response);
-                }).catch(function (error) {
-                    el.innerHTML = generateErrorHTMLOutput(error);
-            }
+            const fetchUsers = () => {
+                axios.get('https://jsonplaceholder.typicode.com/users')
+                    .then(response => {
+                        const users = response.data;
+                        console.log(`GET list users`, users);
+                        // append to DOM
+                        appendToDOM(users);
+                    })
+                    .catch(error => console.error(error));
+            };
+            fetchUsers();
 
     // 3: AJAX - asynchronous (do multiple things without refreshing the page) JS and XML, builds websites and apps, NOT a language, accesses web servers from a web page
         
-            (function() {
-              var httpRequest;
-              document.getElementById("ajaxButton").addEventListener('click', makeRequest);
-
-              function makeRequest() {
-                httpRequest = new XMLHttpRequest();
-
-                if (!httpRequest) {
-                  alert('Giving up :( Cannot create an XMLHTTP instance');
-                  return false;
-                }
-                httpRequest.onreadystatechange = alertContents;
-                httpRequest.open('GET', 'test.html');
-                httpRequest.send();
-              }
-
-              function alertContents() {
-                if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                  if (httpRequest.status === 200) {
-                    alert(httpRequest.responseText);
-                  } else {
-                    alert('There was a problem with the request.');
+            function getJSON() {
+              var ajax_req = new XMLHttpRequest();
+              ajax_req.open('GET', 'https://jsonplaceholder.typicode.com/todos', true);
+              ajax_req.onload = function () {
+                if (this.status === 200) {
+                  var json = JSON.parse(this.responseText);
+                  var row = '';
+                  for (i in json) {
+                    row += '<tr><td>' + json[i].userId +
+                      '</td><td>' +
+                      json[i].id + '</td><td>' +
+                      json[i].title + '</td><td>' +
+                      json[i].completed + '</td></tr>';
                   }
+                  document.getElementById('users').innerHTML = row;
                 }
               }
-            })();
+              ajax_req.send();
+            }
+            window.onload = getJSON();
 
 
 
