@@ -15,3 +15,19 @@
   // 1. development - HTML, CSS, JS, REACT, NODE
   // 2. testing - JEST, Mocha
   // 3. deployment - task runners and bundlers (build and automate)
+
+
+// task runners
+  // compile SCSS to CSS
+  // compiled Typescript to JS
+
+
+/// bundlers
+  // package JS files, stylesheets, images, and fonts into bundled files. 
+  // remove unused and duplicated code
+  // improve download speed
+
+
+// dependency graphs
+  // maps the connections between different files to tell the bundler what needs to be included in order to build the application
+  // when one file depends on another etc
