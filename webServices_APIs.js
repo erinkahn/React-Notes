@@ -6,11 +6,11 @@
 
     // Web Services platforms
         // XML tags the data
-        // SOAP (Representational State Transfer) transfers the message
+        // SOAP (Simple Object Access Protocol) transfers the message
         // WSDL (web service definition language) describes the service's accessibility
 
 
-    // web services use components like:
+    // components/protocols that web services use:
         // REST      - API based tasks using HTTP protocols
         // SOAP      - XML based tasks using HTTP or SMTP protocols
         // UDDI      - Unisersal description discovery and integration - XML based for detailsing publishing, basically an internet registry for businesses (ex: ecommerce)
