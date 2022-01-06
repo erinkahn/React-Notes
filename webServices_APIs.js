@@ -5,9 +5,9 @@
 
 
     // Web Services platforms
-        // XML (extensive markup language) marks up the data with human readable tags
-        // SOAP (Simple Object Access Protocol) sends the message
-        // WSDL (web service definition language) describes the service's accessibility
+        // XML   (extensive markup language) marks up the data with human readable tags
+        // SOAP  (Simple Object Access Protocol) sends the message
+        // WSDL  (web service definition language) describes the service's accessibility
 
 
     // components/protocols that web services use:
@@ -17,28 +17,55 @@
         // XML-RPC   - Remote Procedure Call - most basic XML protocol, uses HTTP to transfer data from client to server
 
 
-    // SOAP VS REST Web Services (amazon and eBay use both of these)
-         REST // - lightweight, readable, easier to build
-              // - cons: - point to point communication, lack of standards
-     
-         SOAP // - easier to consume, more standards
-              // - cons: difficult set-up, more convoluted code, harder to develop
+    // SOAP VS REST Web Services (amazon and eBay use both of these):
 
+         REST   // - easier and lighter, uses URLs
+                // - lightweight, readable, easier to build
+                // - cons: - point to point communication, lack of standards
+                // - uses HTTP and JSON
+                // - supports HTTP methods like: GET, POST, PUT, DELETE
          
-    // RESTful Web Services
-        // uses HTTP and supports HTTP methods like: 
-         GET, POST, PUT, DELETE
-   
+                    // REST Request:
+                        GET https://api.twitter.com/1.1/friends/list.json?cursor=-1&screen_name=twitterapi&skip_status=true&include_user_entities=false
+                    
+                    // some use CURL
+                       $ curl --request GET 
+                          --url 'https://api.twitter.com/1.1/followers/ids.json?screen_name=twitterdev' 
+                          --header 'authorization: OAuth oauth_consumer_key="consumer-key-for-app", 
+                          oauth_nonce="generated-nonce", oauth_signature="generated-signature", 
+                          oauth_signature_method="HMAC-SHA1", oauth_timestamp="generated-timestamp", 
+                          oauth_version="1.0"'
 
-    // SOAP Web Services
-        // uses XML and HTTP and SMTP for transmission that has a envelope, header, body, and fault and looks like: 
-            <?xml version='1.0' ?>
-                <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"> 
-                     <env:Header>   
-                       .........
-                 </env:Body>
-            </env:Envelope>
+     
+         SOAP   // - more complicated, more traffic, uses XML
+                // - easier to consume, more standards
+                // - cons: difficult set-up, more convoluted code, harder to develop
+                // - uses XML and XMLHttpRequest syntax
+         
+                    // SOAP Request:
+                        var xhttp = new XMLHttpRequest(); *** 
+                        xhttp.onreadystatechange = function() {
+                             if (this.readyState == 4 && this.status == 200) {
+                                 alert(this.responseText);
+                             }
+                        };
+                        xhttp.open("POST", "Your Rest URL Here", true);
+                        xhttp.setRequestHeader("Content-type", "application/json");
+                        xhttp.send("Your JSON Data Here");
 
+                    // XML (envelope, header, body, fault):
+                        <?xml version='1.0' ?>
+                            <env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope"> 
+                                 <env:Header>   
+                                   .........
+                             </env:Body>
+                        </env:Envelope>
+        
+         
+     // PAYLOAD - data sent over the internet, and when a payload is “heavy,” it requires more resources. 
+         // rest's payload is lighter while soaps payload is heaver
+
+ 
 
 // API vs Web Services
     // web services faciliate interaction bt 2 machines over a network
@@ -59,7 +86,55 @@
 
 
 
-// API's
+// 3 Tools for making HTTP requests in JavaScript:
+
+    // 1: fetch() - API, provides interface for fetching data, built into the window object so doesn't need to be installed
+
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                }).then(function(myJSON) {
+                    console.log(JSON.stringify(myJSON));
+                })
+
+    // 2: Axios - lets you make XMLHttpRequests from browser, HTTP requests from node, automatically transforms JSON data for you instead of having to stringify json, must install it in npm to use it
+
+            axios.get(url)
+                .then(function(response) {
+                     el.innerHTML = generateSuccessHTMLOutput(response);
+                }).catch(function (error) {
+                    el.innerHTML = generateErrorHTMLOutput(error);
+            }
+
+    // 3: AJAX - asynchronous (do multiple things without refreshing the page) JS and XML, builds websites and apps, NOT a language, acessed web servers from a web page
+        
+            (function() {
+              var httpRequest;
+              document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+
+              function makeRequest() {
+                httpRequest = new XMLHttpRequest();
+
+                if (!httpRequest) {
+                  alert('Giving up :( Cannot create an XMLHTTP instance');
+                  return false;
+                }
+                httpRequest.onreadystatechange = alertContents;
+                httpRequest.open('GET', 'test.html');
+                httpRequest.send();
+              }
+
+              function alertContents() {
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                  if (httpRequest.status === 200) {
+                    alert(httpRequest.responseText);
+                  } else {
+                    alert('There was a problem with the request.');
+                  }
+                }
+              }
+            })();
+
 
 
 // examples: 
