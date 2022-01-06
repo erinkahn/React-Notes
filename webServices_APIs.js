@@ -41,7 +41,8 @@
 
 
 // API vs Web Services
-    // web services provide APIs (example: Twitter api lets devs access tweets from a server and collects data in JSON format)
+    // web services faciliate interaction bt 2 machines over a network
+    // apis faciliate interaction bt two different applications
 
     // DIFFERENCES:
         // ALL web services can be APIS BUT not all APIs can be web services
