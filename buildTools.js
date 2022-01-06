@@ -26,8 +26,20 @@
   // package JS files, stylesheets, images, and fonts into bundled files. 
   // remove unused and duplicated code
   // improve download speed
+  // use dependency graphs to map out connected resources
 
 
 // dependency graphs
   // maps the connections between different files to tell the bundler what needs to be included in order to build the application
   // when one file depends on another etc
+
+
+source > compile > bundle > run > deploy
+
+
+// build tools use processes like:
+  // 1. code splitting - splitting up code into multiple files or chunks to be loaded on a as needed basis
+  // 2. minification - remove comments, whitespace, unneeded data to make the bundle smaller
+  // 3. dead code eliminitaion - removes any code not actually used
+  // 4. tree shaking - searches modules for files and functions not being used and removes them
+
