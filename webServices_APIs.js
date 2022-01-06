@@ -1,16 +1,16 @@
 // WEB SERVICES
-    // any software, app, or cloud technology that provides web protocols (HTTP or HTTPS) to communicate and exchange data throughout the internet
     // data exchange systems
     // NOT the same thing as an API *** 
+    // ANY software, app or cloud tech that uses HTTP or HTTPS (web protocols) to connect and exchange data
 
 
-    // supports communication among apps with HTML, XML, WSDL, SOAP
+    // Web Services platforms
         // XML tags the data
         // SOAP transfers the message
         // WSDL describes the service's accessibility
 
 
-    // web service types:
+    // web services use components like:
         // REST      - API based tasks using HTTP protocols
         // SOAP      - XML based tasks using HTTP or SMTP protocols
         // UDDI      - Unisersal description discovery and integration - XML based for detailsing publishing, basically an internet registry for businesses (ex: ecommerce)
