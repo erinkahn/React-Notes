@@ -61,13 +61,5 @@
       
  
     
-// creating tests
-      
-      
-      
-
-// testing asynchronous code
-
-    
-
-// creating / using mocks within tests
+// unit testing
+      // designed to set the smallest unit of your code, like a single function
