@@ -25,15 +25,15 @@
   // in the something.test.js file enter a test to make sure it's all working
     test("Jest properly installed and configured!", ()=>{})
 
-  // run the jest commmand to see an output with a passing test
-    jest
+  // run the jest commmand on the something.test file to see an output with a passing test
+    jest __tests__something.test.js
     
   // in the terminal a green PASS square should show up as well as these lines:
     Test Suites: 1 passed, 1 total
     Tests:       1 passed, 1 total
     Snapshots:   0 total
     Time:        1.059s
-    Ran all test suites.
+    Ran all test suites matching /__tests__\/something.test.js/i.
     
     
 // testing asynchronous code
