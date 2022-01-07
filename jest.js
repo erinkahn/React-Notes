@@ -21,8 +21,21 @@
   // if you want to run tests on ALL files that have the .test.js or .spec.js extension or are inside a __tests__/ folder
   // simply run the jest command on its own
     jest
-    
+     
+  // in the something.test.js file enter a test to make sure it's all working
+    test("Jest properly installed and configured!", ()=>{})
 
+  // run the jest commmand to see an output with a passing test
+    jest
+    
+  // in the terminal a green PASS square should show up as well as these lines:
+    Test Suites: 1 passed, 1 total
+    Tests:       1 passed, 1 total
+    Snapshots:   0 total
+    Time:        1.059s
+    Ran all test suites.
+    
+    
 // testing asynchronous code
 
     
