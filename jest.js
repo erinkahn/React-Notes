@@ -25,8 +25,8 @@
   // in the something.test.js file enter a test to make sure it's all working
     test("Jest properly installed and configured!", ()=>{})
 
-  // run the jest commmand on the something.test file to see an output with a passing test
-    jest __tests__something.test.js
+  // run the jest commmand on the something.test file to see the output with a passing test
+    jest __tests__/something.test.js
     
   // in the terminal a green PASS square should show up as well as these lines:
     Test Suites: 1 passed, 1 total
