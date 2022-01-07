@@ -49,6 +49,17 @@
       // 3. function coverage   (% of cuntions called during the test)
       // 4. line coverage       (% of executable lines in source file executed)
 
+    // if we want to avoid typing out the command each time, we can write it in package.json so we can run it quicker through npm
+      "scripts": {
+        // other scripts...
+        "test": "jest __tests__/ --coverage"
+      }
+
+    // then run
+    npm test
+
+    
+
 // testing asynchronous code
 
     
