@@ -35,7 +35,20 @@
     Time:        1.059s
     Ran all test suites matching /__tests__\/something.test.js/i.
     
+
+// best practices
+    // command line flags allow you to customize the terminal output from the test
     
+    // the --coverage flag allows you to get a report of what lines of code were actually tested
+    // it outputs in the terminal AND also is created in a directory called coverage/ at runtime
+     jest __tests__/ --coverage
+
+    // from the output report, you can see 4 categories the code is being analyzed in
+      // 1. statement coverage  (% of statements executed)
+      // 2. branch coverage     (% of edge cases executed)
+      // 3. function coverage   (% of cuntions called during the test)
+      // 4. line coverage       (% of executable lines in source file executed)
+
 // testing asynchronous code
 
     
