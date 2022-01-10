@@ -220,8 +220,6 @@
         // step 4: export the module
               
             // example:
-
-                  // create a folder inside of your utils folder called mocks and a file called api_request.js: 
                   // utils/__mocks__/api-request.js
                   const apiRequest = jest.fn(() => {  // callback function
                       return Promise.resolve({  // returns custom promise object
@@ -231,10 +229,46 @@
                   })
                   export default apiRequest;
 
-
-
-              
   // PART 2:
+    // steps to replace the actual apiRequest function with the mocked one we created:
+         // step 1: import
+            // in the test file, import the real function to test it as it would work if no mock existed
+              import apiRequest from './api-request.js';
 
+         // step 2: override
+            // use the jest.mock() function to override the value with the mocked one defined in the __mocks__/ folder
+              jest.mock('./api-request.js');
 
+      // controlling mocked functions with methods https://jestjs.io/docs/mock-function-api
+        .mockResolvedValueOnce() // a method that tells what the next call to the apiRequest() function will resolve to    
+
+        // example:
+
+            // file: __tests__/recipes.js
+            import { findRecipe } from './recipes.js'; 
+
+            // import the actual module
+            import apiRequest from './api-request.js';
+
+            // then tell Jest to use the mocked version!
+            jest.mock('./api-request.js');
+
+            test("get the full recipe for a dish", async () => {
+              // arrange  
+              const dish = "Pesto";
+              const expectedValue = { "Magical Deliciousness": "3 cups" };
+
+              // set the resolved value for the next call to apiRequest  
+              const mockResponse = {
+                status: "mock",
+                data: { "Magical Deliciousness": "3 cups" }
+              }
+              apiRequest.mockResolvedValueOnce(mockResponse);
+
+              // act  
+              const actualRecipe = await findRecipe(dish);
+
+              // assertion
+              expect(actualRecipe).toEqual(expectedValue);
+            });
 
