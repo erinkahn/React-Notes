@@ -266,6 +266,6 @@
                 
                 apiRequest.mockResolvedValueOnce(mockResponse);    
                 const actualRecipe = await findRecipe(dish); // act  
-                expect(actualRecipe).toEqual(expectedValue); // assertion
+                expect(actualRecipe).toEqual(expectedValue); // expect() assertion should now pass
             });
 
