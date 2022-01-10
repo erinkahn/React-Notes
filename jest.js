@@ -150,7 +150,7 @@
                 })
       
       
-// Complex Unit Testing with Asynchronous code 
+// Complex Unit Testing with Asynchronous code (the unsafe way)
     // Part 1: the done parameter
         // PROBLEM: Jest is not aware that it must wait for asynchronous callbacks to resolve before finishing a test therefore it wont see the failing expect() assertion
         // SOLUTION: You can add a done parameter in the test() callback function so JEST knows not to finish the test without the done function being called
@@ -198,3 +198,42 @@
             const actualRecipe = await findRecipe(dish); // act / await
             expect(actualRecipe).toEqual(expectedRecipe); // assertion
           });
+
+
+// Mock Functions (the safer more efficient way to test with REST APIs)
+  // PART 1:
+    // functions that bypass an API call and return values that we control instead
+    // in other words - creating a mock function and then replacing the real function with the mocked one
+
+    // 4 steps to create a mocked function:
+        // step 1: mock directory
+            // create a mocked directory __mocks__/ in the same directory as the module we want to mock
+            __mocks__/
+              
+        // step 2: mock file
+            // inside the directory, create a file with the same name as the module that will be mocked
+        
+        // step 3: mock function
+            // create a module with the functionality we want by using a mock function https://jestjs.io/docs/mock-function-api
+              jest.fn()
+
+        // step 4: export the module
+              
+            // example:
+
+                  // create a file called: utils/__mocks__api-request.js
+                  const apiRequest = jest.fn(() => {  // callback function
+                      return Promise.resolve({  // returns custom promise object
+                        status: '',
+                        data: {}
+                      })
+                  })
+                  export default apiRequest;
+
+
+
+              
+  // PART 2:
+
+
+
