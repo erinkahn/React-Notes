@@ -221,7 +221,8 @@
               
             // example:
 
-                  // create a file called: utils/__mocks__api-request.js
+                  // create a folder inside of your utils folder called mocks and a file called api_request.js: 
+                  // utils/__mocks__/api-request.js
                   const apiRequest = jest.fn(() => {  // callback function
                       return Promise.resolve({  // returns custom promise object
                         status: '',
