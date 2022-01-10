@@ -88,6 +88,9 @@
           // how we expect our progr am to run
           // used everytime we write a test
           // it's commonly used with a matcher method: .toBe() which is what the expected value is
+            toBe()    // - used to compare simple data types for equality
+            toEqual() // - used to perform deep equality comparisons ===
+            
           // syntax:
               expect().toBe()
 
