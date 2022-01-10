@@ -87,10 +87,34 @@
         // step 2. writing assertions (validate features of your code)
           // how we expect our progr am to run
           // used everytime we write a test
+          // it's commonly used with a matcher method: .toBe() which is what the expected value is
           // syntax:
-              expect()
+              expect().toBe()
 
-             
+              expect(2+2).toBe(4) // 2+2 is the expression you want to test and 4 is the expected value of the expression
+          
+          // Arrange, Act Assert pattern
+            // ARRANGE: first declare the input (pestoRecipe) to be passed to the functions being tested and the expected output (expectedIngredients)
+            // ACT:     next pass the input variables (actualIngredients) in the function tested and store the result in a new variable
+            // ASSERT:  last, compare the values of the expected output (expectedIngredients) with the actual output (actualIngredients) using expect() and .toEqual()
+              // example: 
+            
+                //inside file: __tests__/recipes.test.js
+                import { getIngredients } from "./recipes.js"; // import the function to test
+
+                test("Get only the ingredients list for Pesto", () => {
+                  //arrange
+                  const pestoRecipe = { // input
+                    'Basil': '2 cups',
+                    'Pine Nuts': '2 tablespoons',
+                    'Garlic': '2 cloves',
+                    'Olive Oil': '0.5 cups',
+                    'Grated Parmesan': '0.5 cups'
+                  }
+                  const expectedIngredients = ["Basil", "Pine Nuts", "Garlic", "Olive Oil", "Grated Parmesan"] // expected output
+                  const actualIngredients = getIngredients(pestoRecipe); //act
+                  expect(actualIngredients).toEqual(expectedIngredients) //assertions
+                });
 
 
 
