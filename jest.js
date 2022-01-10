@@ -151,7 +151,7 @@
       
       
 // Complex Unit Testing with Asynchronous code 
-    // Part 1:
+    // Part 1: the done parameter
         // PROBLEM: Jest is not aware that it must wait for asynchronous callbacks to resolve before finishing a test therefore it wont see the failing expect() assertion
         // SOLUTION: You can add a done parameter in the test() callback function so JEST knows not to finish the test without the done function being called
             // example:
@@ -176,5 +176,25 @@
                     });
                 });
       
-    // Part 2:
+    // Part 2: returning a promise
+      // you can use async and await for handling promises, 
+      // async is placed before the function that contains asynchronous code
+      // await is placed in front of the async function call
+      // JEST will wait for any await statements to resolve before continuing
       
+        // example:
+
+          test("get the full recipe for pesto", async () => { // async callback
+            // arrange
+            const dish = "Pesto"
+            const expectedRecipe = {
+              'Basil': '2 cups',
+              'Pine Nuts': '2 tablespoons',
+              'Garlic': '2 cloves',
+              'Olive Oil': '0.5 cups',
+              'Grated Parmesan': '0.5 cups'
+            }
+             
+            const actualRecipe = await findRecipe(dish); // act / await
+            expect(actualRecipe).toEqual(expectedRecipe); // assertion
+          });
