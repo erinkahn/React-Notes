@@ -6,8 +6,10 @@
   // used a lot for testing React apps
 
 
+
 // installing JEST
     npm install jest --save-dev
+
 
   
 // configuring JEST
@@ -37,6 +39,7 @@
     Ran all test suites matching /__tests__\/something.test.js/i.
     
 
+    
   // best practices
       // command line flags allow you to customize the terminal output from the test
 
@@ -149,6 +152,7 @@
                       expect(actualValue[3]).not.toBeDefined()
                 })
       
+
       
 // Complex Unit Testing with Asynchronous code (the unsafe way)
     // Part 1: the done parameter
@@ -200,6 +204,7 @@
           });
 
 
+
 // Mock Functions (the safer more efficient way to test with REST APIs)
   // PART 1:
     // functions that bypass an API call and return values that we control instead
@@ -246,29 +251,22 @@
 
             // file: __tests__/recipes.js
             import { findRecipe } from './recipes.js'; 
-
-            // import the actual module
-            import apiRequest from './api-request.js';
-
-            // then tell Jest to use the mocked version!
-            jest.mock('./api-request.js');
+            import apiRequest from './api-request.js'; // import the actual module
+            
+            jest.mock('./api-request.js'); // tell Jest to use the mocked version!
 
             test("get the full recipe for a dish", async () => {
               // arrange  
               const dish = "Pesto";
               const expectedValue = { "Magical Deliciousness": "3 cups" };
 
-              // set the resolved value for the next call to apiRequest  
-              const mockResponse = {
+             
+              const mockResponse = {  // set the resolved value for the next call to apiRequest  
                 status: "mock",
                 data: { "Magical Deliciousness": "3 cups" }
               }
-              apiRequest.mockResolvedValueOnce(mockResponse);
-
-              // act  
-              const actualRecipe = await findRecipe(dish);
-
-              // assertion
-              expect(actualRecipe).toEqual(expectedValue);
+              apiRequest.mockResolvedValueOnce(mockResponse);    
+              const actualRecipe = await findRecipe(dish); // act  
+              expect(actualRecipe).toEqual(expectedValue); // assertion
             });
 
