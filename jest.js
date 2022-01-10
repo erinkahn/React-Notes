@@ -1,4 +1,5 @@
-// JEST
+// JEST 
+  // https://jestjs.io/docs/getting-started
   // a testing framework library that provides:
     // 1. an assertion library  - functions that validate functionality
     // 2. a test runner         - executes test and provides test summaries
@@ -65,7 +66,7 @@
       // designed to set the smallest unit of your code, like a single function
       // each function should be tested in isolation by creating separate containers for our testing logic using 
    
-      // step 1. set up test  
+      // STEP 1. set up test  
           // syntax:
             test('string describing purpose of test, callbackfunction with test logic/assertions, optional timeout in milliseconds)
 
@@ -84,7 +85,7 @@
           // each time you create a test() function, it creates a separate entry in the terminal when we run 
             npm test
         
-        // step 2. writing assertions (validate features of your code)
+        // STEP 2. writing assertions (validate features of your code)
           // how we expect our progr am to run
           // used everytime we write a test
           // it's commonly used with a matcher method: .toBe() which is what the expected value is
@@ -119,8 +120,16 @@
                   expect(actualIngredients).toEqual(expectedIngredients) //assertions
                 });
 
+          // other Matcher methods: https://jestjs.io/docs/expect
+            .toBeDefined()   // verifies that a variable is not undefined 
+            .not             // verifies the opposite result is true, used before another matcher
+            .toContain()     // verifies that an item is in an array
+            .toBeTruthy()    // verifies whether the value is truthy or not
 
-
+            // example:
+              expect(actualIngredients).toBeDefined();
+              expect(actualIngredients[0] === "Basil").toBeTruthy();
+              expect(actualIngredients).not.toContain("Ice Cream");
 
       
       
