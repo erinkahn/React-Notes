@@ -131,7 +131,23 @@
               expect(actualIngredients[0] === "Basil").toBeTruthy();
               expect(actualIngredients).not.toContain("Ice Cream");
 
-      
+            // longer example:
+                test("convert array of country data objects to array of countries", ()=> {
+                    const inputObject = [ // arrange
+                      {name: "Argentina", capital: "Buenos Aires"},
+                      {name: "Belize", capital: "Belmopan"},
+                      {name: "Bolivia", capital: "Sucre"}
+                    ]
+                    const expectedValue = ["Argentina","Belize","Bolivia"]
+                    const actualValue = countryExtractor(inputObject)  //act
+
+                    //assertions
+                      expect(actualValue).toEqual(expectedValue);
+                      expect(actualValue[0]).toBe("Argentina");
+                      expect(actualValue).toContain("Belize");
+                      expect(actualValue[2] === "Bolivia").toBeTruthy();
+                      expect(actualValue[3]).not.toBeDefined()
+                })
       
       
       
