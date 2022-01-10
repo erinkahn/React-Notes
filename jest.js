@@ -63,3 +63,39 @@
     
 // unit testing
       // designed to set the smallest unit of your code, like a single function
+      // each function should be tested in isolation by creating separate containers for our testing logic using 
+      // syntax:
+        test('string describing purpose of test, callbackfunction with test logic/assertions, optional timeout in milliseconds)
+           
+      // example (inside the __tests__/recipes.test.js file:
+        
+        import {findRecipe, getIngredients} from './recipes.js';
+      
+        test('get recipe for pesto', async() => { // asynchronous callback from API
+          // testing logic for findRecipe() 
+        }, 10000);
+        
+        test('get only the ingredients list for pesto', () => { // not asynchronous and no timeout
+          // testing logic for getIngredients()
+        });
+      
+      // each time you create a test() function, it creates a separate entry in the terminal when we run 
+        npm test
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
