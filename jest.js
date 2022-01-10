@@ -256,17 +256,16 @@
             jest.mock('./api-request.js'); // tell Jest to use the mocked version!
 
             test("get the full recipe for a dish", async () => {
-              // arrange  
-              const dish = "Pesto";
-              const expectedValue = { "Magical Deliciousness": "3 cups" };
-
-             
-              const mockResponse = {  // set the resolved value for the next call to apiRequest  
-                status: "mock",
-                data: { "Magical Deliciousness": "3 cups" }
-              }
-              apiRequest.mockResolvedValueOnce(mockResponse);    
-              const actualRecipe = await findRecipe(dish); // act  
-              expect(actualRecipe).toEqual(expectedValue); // assertion
+                // arrange  
+                const dish = "Pesto";
+                const expectedValue = { "Magical Deliciousness": "3 cups" };
+                const mockResponse = {  // set the resolved value for the next call to apiRequest  
+                  status: "mock",
+                  data: { "Magical Deliciousness": "3 cups" }
+                }
+                
+                apiRequest.mockResolvedValueOnce(mockResponse);    
+                const actualRecipe = await findRecipe(dish); // act  
+                expect(actualRecipe).toEqual(expectedValue); // assertion
             });
 
