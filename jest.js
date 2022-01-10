@@ -75,7 +75,7 @@
           // testing logic for findRecipe() 
         }, 10000);
         
-        test('get only the ingredients list for pesto', () => { // not asynchronous and no timeout
+        test('get only the ingredients list for pesto', () => { // not asynchronous and uses default timeout
           // testing logic for getIngredients()
         });
       
