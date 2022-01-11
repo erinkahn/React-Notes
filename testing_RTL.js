@@ -5,11 +5,12 @@
     // installation
         npm install @testing-library/react --save-dev
 
-    // import 2 values into tests
+    // import 2 values into test file
        import { render, screen } from '@testing-library/react'
 
     // create a test
         test('should say hello') () => {
-            render(<Greeting/>);
+            const thought = {text: 'what up'}
+            render(<Greeting thought={thought}/>);
             screen.debug();
         })
