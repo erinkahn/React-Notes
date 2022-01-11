@@ -153,128 +153,78 @@
       
 
       
-// Complex Unit Testing with Asynchronous code ( Callbacks and Promises ) (the unsafe way)
+// Complex Unit Testing with Asynchronous code ( Callbacks and Promises )
 
-    // Part 1: the done parameter
-        // PROBLEM: Jest is not aware that it must wait for asynchronous callbacks to resolve before finishing a test therefore it wont see the failing expect() assertion
-        // SOLUTION: You can add a done parameter in the test() callback function so JEST knows not to finish the test without the done function being called
-           
-              // example:
+  // Mock Functions (test with REST APIs)
 
-                test('get the full recipe for pesto', (done) => {   // done parameter added (jest will now wait until it is called before finishing the test)
-                    const dish = "pesto";   // arrange
-                    const expectedRecipe = {
-                      'Basil': '2 cups',
-                      'Pine Nuts': '2 tablespoons',
-                      'Garlic': '2 cloves',
-                      'Olive Oil': '0.5 cups',
-                      'Grated Parmesan': '0.5 cups'
-                    };
-                  
-                    findRecipe(dish, (actualRecipe)=> {   // act
-                      try {
-                        expect(actualRecipe).toEqual(expectedRecipe);   // assertion made
-                        done();   // callback function is called - guarantees expect() to be seen and any errors will be caught
-                      } catch (error) {
-                        done(error);
-                      }
-                    });
-                });
-      
-
-    // Part 2: returning a promise
-      // you can use async and await for handling promises, 
-      // async is placed before the function that contains asynchronous code
-      // await is placed in front of the async function call
-      // JEST will wait for any await statements to resolve before continuing
-      
-        // example:
-
-          test("get the full recipe for pesto", async () => { // async callback
-            // arrange
-            const dish = "Pesto"
-            const expectedRecipe = {
-              'Basil': '2 cups',
-              'Pine Nuts': '2 tablespoons',
-              'Garlic': '2 cloves',
-              'Olive Oil': '0.5 cups',
-              'Grated Parmesan': '0.5 cups'
-            }
-             
-            const actualRecipe = await findRecipe(dish); // act / await
-            expect(actualRecipe).toEqual(expectedRecipe); // assertion
-          });
+    // PART 1:
+      // functions that bypass an API call and return values that we control instead
+      // in other words - creating a mock function and then replacing the real function with the mocked one
 
 
+      // 4 steps to create a mocked function:
+          // step 1: mock directory
+              // create a mocked directory __mocks__/ in the same directory as the module we want to mock
+              __mocks__/
 
-// Mock Functions (the safer more efficient way to test with REST APIs)
-
-  // PART 1:
-    // functions that bypass an API call and return values that we control instead
-    // in other words - creating a mock function and then replacing the real function with the mocked one
-
-
-    // 4 steps to create a mocked function:
-        // step 1: mock directory
-            // create a mocked directory __mocks__/ in the same directory as the module we want to mock
-            __mocks__/
-              
-        // step 2: mock file
-            // inside the directory, create a file with the same name as the module that will be mocked
-        
-        // step 3: mock function
-            // create a module with the functionality we want by using a mock function https://jestjs.io/docs/mock-function-api
-              jest.fn()
-
-        // step 4: export the module
-              
-            // example:
-                  // utils/__mocks__/api-request.js
-                  const apiRequest = jest.fn(() => {  // callback function
-                      return Promise.resolve({  // returns custom promise object
-                        status: '',
-                        data: {}
-                      })
-                  })
-                  export default apiRequest;
-
-
-  // PART 2:
-
-    // steps to replace the actual apiRequest function with the mocked one we created:
-
-       // step 1: import
-          // in the test file, import the real function to test it as it would work if no mock existed
-            import apiRequest from './api-request.js';
-
-
-       // step 2: override
-          // use the jest.mock() function to override the value with the mocked one defined in the __mocks__/ folder
-            jest.mock('./api-request.js');
-
-
-      // controlling mocked functions with methods https://jestjs.io/docs/mock-function-api
-        .mockResolvedValueOnce() // a method that tells what the next call to the apiRequest() function will resolve to    
-
-        // example:
-
-            // file: __tests__/recipes.js
-            import { findRecipe } from './recipes.js'; 
-            import apiRequest from './api-request.js'; // import the actual module
-            
-            jest.mock('./api-request.js'); // tell Jest to use the mocked version!
-
-            test("get the full recipe for a dish", async () => {
-                // arrange  
-                const dish = "Pesto";
-                const expectedValue = { "Magical Deliciousness": "3 cups" };
-                const mockResponse = {  // set the resolved value for the next call to apiRequest  
-                  status: "mock",
-                  data: { "Magical Deliciousness": "3 cups" }
-                }
                 
-                apiRequest.mockResolvedValueOnce(mockResponse);    
-                const actualRecipe = await findRecipe(dish); // act  
-                expect(actualRecipe).toEqual(expectedValue); // expect() assertion should now pass
-            });
+          // step 2: mock file
+              // inside the directory, create a file with the same name as the module that will be mocked
+
+                
+          // step 3: mock function
+              // create a module with the functionality we want by using a mock function https://jestjs.io/docs/mock-function-api
+                jest.fn()
+
+
+          // step 4: export the module
+
+              // example:
+                    // utils/__mocks__/api-request.js
+                    const apiRequest = jest.fn(() => {  // callback function
+                        return Promise.resolve({  // returns custom promise object
+                          status: '',
+                          data: {}
+                        })
+                    })
+                    export default apiRequest;
+
+
+    // PART 2:
+          // steps to replace the actual apiRequest function with the mocked one we created:
+
+           // step 1: import
+              // in the test file, import the real function to test it as it would work if no mock existed
+                import apiRequest from './api-request.js';
+
+
+           // step 2: override
+              // use the jest.mock() function to override the value with the mocked one defined in the __mocks__/ folder
+                jest.mock('./api-request.js');
+
+
+          // controlling mocked functions with methods https://jestjs.io/docs/mock-function-api
+            .mockResolvedValueOnce() // a method that tells what the next call to the apiRequest() function will resolve to    
+
+            // example:
+
+                // file: __tests__/recipes.js
+                import { findRecipe } from './recipes.js'; 
+                import apiRequest from './api-request.js'; // import the actual module
+
+                jest.mock('./api-request.js'); // tell Jest to use the mocked version!
+
+                test("get the full recipe for a dish", async () => {
+                    // arrange  
+                    const dish = "Pesto";
+                    const expectedValue = { "Magical Deliciousness": "3 cups" };
+                    const mockResponse = {  // set the resolved value for the next call to apiRequest  
+                      status: "mock",
+                      data: { "Magical Deliciousness": "3 cups" }
+                    }
+
+                    apiRequest.mockResolvedValueOnce(mockResponse);    
+                    const actualRecipe = await findRecipe(dish); // act  
+                    expect(actualRecipe).toEqual(expectedValue); // expect() assertion should now pass
+                });
 
