@@ -17,9 +17,7 @@
   // place the file in a folder called __tests__
   // to test this file, in the terminal write the command
     jest __tests__/something.test.js
-
   // the JEST API looks for files inside a __tests__/ directory or any file that ends in either .test.js or .specs.js
-
   // OR
   // if you want to run tests on ALL files that have the .test.js or .spec.js extension or are inside a __tests__/ folder
   // simply run the jest command on its own
@@ -42,7 +40,6 @@
     
   // best practices
       // command line flags allow you to customize the terminal output from the test
-
       // the --coverage flag allows you to get a report of what lines of code were actually tested
       // it outputs in the terminal AND also is created in a directory called coverage/ at runtime
        jest __tests__/ --coverage
@@ -58,7 +55,6 @@
           // other scripts...
           "test": "jest __tests__/ --coverage"
         }
-
       // then run
       npm test
 
@@ -69,18 +65,18 @@
       // designed to set the smallest unit of your code, like a single function
       // each function should be tested in isolation by creating separate containers for our testing logic using 
    
+      
       // STEP 1. set up test  
           // syntax:
             test('string describing purpose of test, callbackfunction with test logic/assertions, optional timeout in milliseconds)
 
-            // example (inside the __tests__/recipes.test.js file:
+            // example (inside __tests__/recipes.test.js)
 
               import {findRecipe, getIngredients} from './recipes.js';
 
               test('get recipe for pesto', async() => { // asynchronous callback from API
                 // testing logic for findRecipe() 
               }, 10000);
-
               test('get only the ingredients list for pesto', () => { // not asynchronous and uses default timeout
                 // testing logic for getIngredients()
               });
@@ -88,6 +84,7 @@
           // each time you create a test() function, it creates a separate entry in the terminal when we run 
             npm test
         
+            
         // STEP 2. writing assertions (validate features of your code)
           // how we expect our progr am to run
           // used everytime we write a test
@@ -97,15 +94,16 @@
             
           // syntax:
               expect().toBe()
-
               expect(2+2).toBe(4) // 2+2 is the expression you want to test and 4 is the expected value of the expression
           
+
           // Arrange, Act Assert pattern
-            // ARRANGE: first declare the input (pestoRecipe) to be passed to the functions being tested and the expected output (expectedIngredients)
-            // ACT:     next pass the input variables (actualIngredients) in the function tested and store the result in a new variable
-            // ASSERT:  last, compare the values of the expected output (expectedIngredients) with the actual output (actualIngredients) using expect() and .toEqual()
+            //  ARRANGE:  first declare the input (pestoRecipe) to be passed to the functions being tested and the expected output (expectedIngredients)
+            //  ACT:      next pass the input variables (actualIngredients) in the function tested and store the result in a new variable
+            //  ASSERT:   last, compare the values of the expected output (expectedIngredients) with the actual output (actualIngredients) using expect() and .toEqual()
+             
               // example: 
-            
+ 
                 //inside file: __tests__/recipes.test.js
                 import { getIngredients } from "./recipes.js"; // import the function to test
 
@@ -122,6 +120,7 @@
                   const actualIngredients = getIngredients(pestoRecipe); //act
                   expect(actualIngredients).toEqual(expectedIngredients) //assertions
                 });
+
 
           // other Matcher methods: https://jestjs.io/docs/expect
             .toBeDefined()   // verifies that a variable is not undefined 
@@ -154,11 +153,13 @@
       
 
       
-// Complex Unit Testing with Asynchronous code (the unsafe way)
+// Complex Unit Testing with Asynchronous code ( Callbacks and Promises ) (the unsafe way)
+
     // Part 1: the done parameter
         // PROBLEM: Jest is not aware that it must wait for asynchronous callbacks to resolve before finishing a test therefore it wont see the failing expect() assertion
         // SOLUTION: You can add a done parameter in the test() callback function so JEST knows not to finish the test without the done function being called
-            // example:
+           
+              // example:
 
                 test('get the full recipe for pesto', (done) => {   // done parameter added (jest will now wait until it is called before finishing the test)
                     const dish = "pesto";   // arrange
@@ -180,6 +181,7 @@
                     });
                 });
       
+
     // Part 2: returning a promise
       // you can use async and await for handling promises, 
       // async is placed before the function that contains asynchronous code
@@ -206,9 +208,11 @@
 
 
 // Mock Functions (the safer more efficient way to test with REST APIs)
+
   // PART 1:
     // functions that bypass an API call and return values that we control instead
     // in other words - creating a mock function and then replacing the real function with the mocked one
+
 
     // 4 steps to create a mocked function:
         // step 1: mock directory
@@ -234,15 +238,20 @@
                   })
                   export default apiRequest;
 
-  // PART 2:
-    // steps to replace the actual apiRequest function with the mocked one we created:
-         // step 1: import
-            // in the test file, import the real function to test it as it would work if no mock existed
-              import apiRequest from './api-request.js';
 
-         // step 2: override
-            // use the jest.mock() function to override the value with the mocked one defined in the __mocks__/ folder
-              jest.mock('./api-request.js');
+  // PART 2:
+
+    // steps to replace the actual apiRequest function with the mocked one we created:
+
+       // step 1: import
+          // in the test file, import the real function to test it as it would work if no mock existed
+            import apiRequest from './api-request.js';
+
+
+       // step 2: override
+          // use the jest.mock() function to override the value with the mocked one defined in the __mocks__/ folder
+            jest.mock('./api-request.js');
+
 
       // controlling mocked functions with methods https://jestjs.io/docs/mock-function-api
         .mockResolvedValueOnce() // a method that tells what the next call to the apiRequest() function will resolve to    
