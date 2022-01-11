@@ -85,7 +85,7 @@
             npm test
         
             
-        // STEP 2. writing assertions (validate features of your code)
+      // STEP 2. writing assertions (validate features of your code)
           // how we expect our progr am to run
           // used everytime we write a test
           // it's commonly used with a matcher method: .toBe() which is what the expected value is
@@ -97,7 +97,7 @@
               expect(2+2).toBe(4) // 2+2 is the expression you want to test and 4 is the expected value of the expression
           
 
-          // Arrange, Act Assert pattern
+       // Arrange, Act Assert pattern
             //  ARRANGE:  first declare the input (pestoRecipe) to be passed to the functions being tested and the expected output (expectedIngredients)
             //  ACT:      next pass the input variables (actualIngredients) in the function tested and store the result in a new variable
             //  ASSERT:   last, compare the values of the expected output (expectedIngredients) with the actual output (actualIngredients) using expect() and .toEqual()
@@ -122,7 +122,7 @@
                 });
 
 
-          // other Matcher methods: https://jestjs.io/docs/expect
+       // other Matcher methods: https://jestjs.io/docs/expect
             .toBeDefined()   // verifies that a variable is not undefined 
             .not             // verifies the opposite result is true, used before another matcher
             .toContain()     // verifies that an item is in an array
@@ -154,40 +154,95 @@
 
       
 // Complex Unit Testing with Asynchronous code ( Callbacks and Promises )
+// Mock Functions (test with REST APIs)
 
-  // Mock Functions (test with REST APIs)
+
+ // the UNSAFE way:
+
+    // Part 1: the done parameter
+        // PROBLEM: Jest is not aware that it must wait for asynchronous callbacks to resolve before finishing a test therefore it wont see the failing expect() assertion
+        // SOLUTION: You can add a done parameter in the test() callback function so JEST knows not to finish the test without the done function being called
+
+            // example:
+
+                test('get the full recipe for pesto', (done) => {   // done parameter added (jest will now wait until it is called before finishing the test)
+                    const dish = "pesto";   // arrange
+                    const expectedRecipe = {
+                      'Basil': '2 cups',
+                      'Pine Nuts': '2 tablespoons',
+                      'Garlic': '2 cloves',
+                      'Olive Oil': '0.5 cups',
+                      'Grated Parmesan': '0.5 cups'
+                    };
+
+                    findRecipe(dish, (actualRecipe)=> {   // act
+                      try {
+                        expect(actualRecipe).toEqual(expectedRecipe);   // assertion made
+                        done();   // callback function is called - guarantees expect() to be seen and any errors will be caught
+                      } catch (error) {
+                        done(error);
+                      }
+                    });
+                });
+
+    // Part 2: returning a promise
+        // you can use async and await for handling promises, 
+        // async is placed before the function that contains asynchronous code
+        // await is placed in front of the async function call
+        // JEST will wait for any await statements to resolve before continuing
+
+          // example:
+
+            test("get the full recipe for pesto", async () => { // async callback
+              // arrange
+              const dish = "Pesto"
+              const expectedRecipe = {
+                'Basil': '2 cups',
+                'Pine Nuts': '2 tablespoons',
+                'Garlic': '2 cloves',
+                'Olive Oil': '0.5 cups',
+                'Grated Parmesan': '0.5 cups'
+              }
+
+              const actualRecipe = await findRecipe(dish); // act / await
+              expect(actualRecipe).toEqual(expectedRecipe); // assertion
+            });
+  
+
+
+ // the SAFE way:
 
     // PART 1:
-      // functions that bypass an API call and return values that we control instead
-      // in other words - creating a mock function and then replacing the real function with the mocked one
+        // functions that bypass an API call and return values that we control instead
+        // in other words - creating a mock function and then replacing the real function with the mocked one
 
 
-      // 4 steps to create a mocked function:
-          // step 1: mock directory
-              // create a mocked directory __mocks__/ in the same directory as the module we want to mock
-              __mocks__/
-
-                
-          // step 2: mock file
-              // inside the directory, create a file with the same name as the module that will be mocked
-
-                
-          // step 3: mock function
-              // create a module with the functionality we want by using a mock function https://jestjs.io/docs/mock-function-api
-                jest.fn()
+        // 4 steps to create a mocked function:
+            // step 1: mock directory
+                // create a mocked directory __mocks__/ in the same directory as the module we want to mock
+                __mocks__/
 
 
-          // step 4: export the module
+            // step 2: mock file
+                // inside the directory, create a file with the same name as the module that will be mocked
 
-              // example:
-                    // utils/__mocks__/api-request.js
-                    const apiRequest = jest.fn(() => {  // callback function
-                        return Promise.resolve({  // returns custom promise object
-                          status: '',
-                          data: {}
-                        })
-                    })
-                    export default apiRequest;
+
+            // step 3: mock function
+                // create a module with the functionality we want by using a mock function https://jestjs.io/docs/mock-function-api
+                  jest.fn()
+
+
+            // step 4: export the module
+
+                // example:
+                      // utils/__mocks__/api-request.js
+                      const apiRequest = jest.fn(() => {  // callback function
+                          return Promise.resolve({  // returns custom promise object
+                            status: '',
+                            data: {}
+                          })
+                      })
+                      export default apiRequest;
 
 
     // PART 2:
