@@ -111,6 +111,8 @@
 
     // 2. .queryByX method
         // returns null if a DOM node is NOT found
+
+            // example: test to see if 'goodbye' isn't already in our header yet
         
             test('Header should not show Goodbye yet', () => {
 
