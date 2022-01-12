@@ -25,76 +25,122 @@
         
 // QUERY METHODS - https://testing-library.com/docs/queries/about/
    // check to see if the extracted DOM nodes from our components were rendered correctly
+        
+        
+  // 3 TYPES of query methods:
+       .getByX
+       .queryByX
+       .findByX
    
-   .getByText() // extracts a DOM element with text that matches a specific string
-   .getByRole() // extracts a DOM node by its role type    
-    
 
-    // getByText example:
-        import { render, screen } from '@testing-library/react';
- 
-        const Button = () => <button type="submit" disabled>Submit</button>;
+    // 1. .getByX method
+        // throws an error and test fails if returns null and DOM node is NOT found
 
-        test('A "Submit" button is rendered', () => {
-            
-          render(<Button/>); // Render the Button component
+       .getByText() // extracts a DOM element with text that matches a specific string
+       .getByRole() // extracts a DOM node by its role type    
+
+
+        // getByText example:
+            import { render, screen } from '@testing-library/react';
+
+            const Button = () => <button type="submit" disabled>Submit</button>;
+
+            test('A "Submit" button is rendered', () => {
+
+              render(<Button/>); // Render the Button component
+
+              const button = screen.getByText('Submit'); // Extract the <button>Submit</button> node
+            });
+
+
+        // getByRole example:
+            import { render } from '@testing-library/react';
+
+            const Button = () => <button type="submit" disabled>Submit</button>;
+
+            test('extracts the button DOM node', () => {
+
+              render(<Button/>);  // Render the Button component
+
+              const button = screen.getByRole('button'); // Extract the <button>Submit</button> node
+            });
+
+
+        // TESTING DOM NODES WITH ASSERTIONS
+            //install the jest dom library
+                npm install --save-dev @testing-library/jest-dom
+
+            // import it in the test file
+                @import '@testing-library/jest-dom';
+
+            // test the extracted DOM node with the method screen.getByRole() while using the jest matcher .toBeDisabled()
+
+                const Button = () => <button type="submit" disabled>Submit</button>;
+
+                test('should show the button as disabled', () => {
+
+                  render(<Button/>); // render Button component
+
+                  const button = screen.getByRole('button'); // Extract <button>Submit</button> Node
+
+                  expect(button).toBeDisabled(); // Assert button is disabled
+                });
+
+
+            // example:
+                test('Should have button enabled' , () => {
+
+                  render(<Thought thought={{text:'Hello'}} removeThought={()=>{}}/>)
+
+                  const button = screen.getByRole('button') // Test status of button here
+
+                  expect(button).toBeEnabled() // test to see if the button is enabled
+                });
+
+
+            // example:
+                test('Should have header text Passing Thoughts',() => {
+
+                  render(<App/>);
+
+                  const header = screen.getByText('Passing Thoughts') // Test App header text here  
+
+                  expect(header).toHaveTextContent('Passing Thoughts') // header contains passing thoughts as its text
+                });
+
+
+    // 2. .queryByX method
+        // returns null if a DOM node is NOT found
+        
+            test('Header should not show Goodbye yet', () => {
+
+              render(<App />); // Render App
+
+              const header = screen.queryByText('Goodbye!'); // Attempt to extract the header element
+
+              expect(header).toBeNull(); // Assert null as we have not clicked the button
+            });
+
+
+    // 3. .findByX method
+         // returns a promise that resolves after the queried elements eventually render in the DOM
+         // query asynchronous elements which will eventually appear in the DOM
+            // ex: if the user is waiting for the result of an API call to resolve before data is displayed.
+        // async and await can be used
+
+            // example: test to see if the header will display the text 'goodbye' after the button is clicked
+
+                test('should show text content as Goodbye', async () => { // the callback function must be identified as async 
                  
-          const button = screen.getByText('Submit'); // Extract the <button>Submit</button> node
-        });
+                  render(<App />);  // Render App
+                  
+                  const button = screen.getByRole('button'); // Extract button node 
+                  
+                  userEvent.click(button); // click button
+                  
+                  const header = await screen.findByText('Goodbye!'); // Wait for the text 'Goodbye!' to appear
+                  
+                  expect(header).toBeInTheDocument(); // Assert header to exist in the DOM
+                });
 
 
-    // getByRole example:
-        import { render } from '@testing-library/react';
- 
-        const Button = () => <button type="submit" disabled>Submit</button>;
-
-        test('extracts the button DOM node', () => {
-            
-          render(<Button/>);  // Render the Button component
-                 
-          const button = screen.getByRole('button'); // Extract the <button>Submit</button> node
-        });
-
-
-
-// TESTING DOM NODES WITH ASSERTIONS
-    //install the jest dom library
-        npm install --save-dev @testing-library/jest-dom
-
-    // import it in the test file
-        @import '@testing-library/jest-dom';
-
-    // test the extracted DOM node with the method screen.getByRole() while using the jest matcher .toBeDisabled()
-
-        const Button = () => <button type="submit" disabled>Submit</button>;
-
-        test('should show the button as disabled', () => {
-            
-          render(<Button/>); // render Button component
-                 
-          const button = screen.getByRole('button'); // Extract <button>Submit</button> Node
-            
-          expect(button).toBeDisabled(); // Assert button is disabled
-        });
-
-
-    // example:
-        test('Should have button enabled' , () => {
-            
-          render(<Thought thought={{text:'Hello'}} removeThought={()=>{}}/>)
-          
-          const button = screen.getByRole('button') // Test status of button here
-          
-          expect(button).toBeEnabled() // test to see if the button is enabled
-        });
-
-
-    // example:
-        test('Should have header text Passing Thoughts',() => {
-            
-          render(<App/>);
-          
-          const header = screen.getByText('Passing Thoughts') // Test App header text here  
-            
-          expect(header).toHaveTextContent('Passing Thoughts') // header contains passing thoughts as its text
-        });
