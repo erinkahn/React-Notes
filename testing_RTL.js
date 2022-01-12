@@ -149,6 +149,8 @@
 
 
 // MIMICKING USER INTERACTIONS
+    // list of userEvent methods - https://testing-library.com/docs/ecosystem-user-event
+
     // install the testing library for events
         npm install --save-dev @testing-library/user-event@12.0.4
 
@@ -157,7 +159,7 @@
 
     // syntax:
         userEvent.interactionType(nodeToInteractWith);
-
+    
         // example:
            import { render, screen } from '@testing-library/react';
            import userEvent from '@testing-library/user-event';
