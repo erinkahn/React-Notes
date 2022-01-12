@@ -189,3 +189,9 @@
             });
 
 
+        // example: use a method that mimics a user pressing a button
+            userEvent.click(button)
+
+
+        // example: mimic a user typing into an input element with the text 'Did I forget my keys?'
+            userEvent.type(input, 'Did I forget my keys?')
