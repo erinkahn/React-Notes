@@ -195,3 +195,43 @@
 
         // example: mimic a user typing into an input element with the text 'Did I forget my keys?'
             userEvent.type(input, 'Did I forget my keys?')
+
+
+
+// THE waitFor() METHOD
+    // test components that disappear asynchronolously
+
+    // import the waitFor function frmo the testing library in the testing file
+        import { waitFor } from '@testing-library/react';
+
+    // syntax:
+        await waitFor(() => {
+            //something happens   
+        }
+                      
+    // the method can also optionally accept an options object as a second argument which can be used to control how long to wait for before aborting and much more.
+        // options - https://testing-library.com/docs/dom-testing-library/api-async/#waitfor
+                      
+    // example: header is removed after 250 ms when the button is clicked
+        
+        import { waitFor, render, screen } from '@testing-library/react';
+        import '@testing-library/jest-dom';
+        import userEvent from '@testing-library/user-event';
+        import { Header } from './heaader.js'
+
+        test('should remove header display', async () => {
+          
+          render(<Header/>) // Render Header
+          
+          const button = screen.getByRole('button'); // Extract button node 
+          
+          userEvent.click(button); // click button
+
+          await waitFor(() => { // Wait for the element to be removed asynchronously
+              
+            const header = screen.queryByText('Hey Everybody');
+              
+            expect(header).toBeNull()
+          })
+        });
+
