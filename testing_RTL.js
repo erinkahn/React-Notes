@@ -211,6 +211,7 @@
                       
     // the method can also optionally accept an options object as a second argument which can be used to control how long to wait for before aborting and much more.
         // options - https://testing-library.com/docs/dom-testing-library/api-async/#waitfor
+                   
                       
     // example: header is removed after 250 ms when the button is clicked
         
@@ -235,3 +236,23 @@
           })
         });
 
+
+    // example: thought will eventually be removed from the dom
+
+        import {App} from '../App.js'
+        import { waitFor, render, screen } from '@testing-library/react'; 
+        import '@testing-library/jest-dom';
+        import userEvent from '@testing-library/user-event';
+
+        test('Should show Thought to be removed' , async () => {
+          render(<App/>);
+          const input = screen.getByRole('input');
+          const submit = screen.getByRole('submit')
+          userEvent.type(input, 'I have to call my mom.');
+          userEvent.click(submit)
+
+          await waitFor(() => // after the submit button was clicked, wait, then check if the text was removed
+            const thought = screen.queryByText('I have to call my mom.');
+            expect(thought).toBeNull();
+          })
+        });
