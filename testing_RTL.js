@@ -1,5 +1,6 @@
 // RTL = REACT TESTING LIBRARY  
     // UI-layer testing framework to make sure components are rendering and working properly
+    // tests components frmo end-user's perspective rather than testing the implementation and logic of the components
     // https://testing-library.com/docs/react-testing-library/intro/
 
 
