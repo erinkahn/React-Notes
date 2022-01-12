@@ -13,8 +13,11 @@
 
     // create a test
         test('should say hello') () => {
+            
             const thought = {text: 'what up'}
+            
             render(<Greeting thought={thought}/>);
+
             screen.debug();
         })
 
@@ -33,7 +36,9 @@
         const Button = () => <button type="submit" disabled>Submit</button>;
 
         test('A "Submit" button is rendered', () => {
+            
           render(<Button/>); // Render the Button component
+                 
           const button = screen.getByText('Submit'); // Extract the <button>Submit</button> node
         });
 
