@@ -2,6 +2,8 @@
     // UI-layer testing framework to make sure components are rendering and working properly
     // https://testing-library.com/docs/react-testing-library/intro/
 
+
+
 // SETUP:
     // installation
         npm install @testing-library/react --save-dev
@@ -16,6 +18,8 @@
             screen.debug();
         })
 
+        
+        
 // QUERY METHODS - https://testing-library.com/docs/queries/about/
    // check to see if the extracted DOM nodes from our components were rendered correctly
    
@@ -39,9 +43,12 @@
         const Button = () => <button type="submit" disabled>Submit</button>;
 
         test('extracts the button DOM node', () => {
+            
           render(<Button/>);  // Render the Button component
+                 
           const button = screen.getByRole('button'); // Extract the <button>Submit</button> node
         });
+
 
 
 // TESTING DOM NODES WITH ASSERTIONS
@@ -56,7 +63,10 @@
         const Button = () => return <button type="submit" disabled>Submit</button>;
 
         test('should show the button as disabled', () => {
+            
           render(<Button/>); // render Button component
+                 
           const button = screen.getByRole('button'); // Extract <button>Submit</button> Node
+            
           expect(button).toBeDisabled(); // Assert button is disabled
         });
