@@ -42,6 +42,7 @@
           const button = screen.getByText('Submit'); // Extract the <button>Submit</button> node
         });
 
+
     // getByRole example:
         import { render } from '@testing-library/react';
  
@@ -65,7 +66,7 @@
 
     // test the extracted DOM node with the method screen.getByRole() while using the jest matcher .toBeDisabled()
 
-        const Button = () => return <button type="submit" disabled>Submit</button>;
+        const Button = () => <button type="submit" disabled>Submit</button>;
 
         test('should show the button as disabled', () => {
             
@@ -74,4 +75,26 @@
           const button = screen.getByRole('button'); // Extract <button>Submit</button> Node
             
           expect(button).toBeDisabled(); // Assert button is disabled
+        });
+
+
+    // example:
+        test('Should have button enabled' , () => {
+            
+          render(<Thought thought={{text:'Hello'}} removeThought={()=>{}}/>)
+          
+          const button = screen.getByRole('button') // Test status of button here
+          
+          expect(button).toBeEnabled() // test to see if the button is enabled
+        });
+
+
+    // example:
+        test('Should have header text Passing Thoughts',() => {
+            
+          render(<App/>);
+          
+          const header = screen.getByText('Passing Thoughts') // Test App header text here  
+            
+          expect(header).toHaveTextContent('Passing Thoughts') // header contains passing thoughts as its text
         });
