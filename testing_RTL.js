@@ -23,7 +23,8 @@
 
         
         
-// QUERY METHODS - https://testing-library.com/docs/queries/about/
+// QUERY METHODS & EXTRACTING DOM NODES FROM COMPONENTS 
+   // list of query methods - https://testing-library.com/docs/queries/about/
    // check to see if the extracted DOM nodes from our components were rendered correctly
         
         
@@ -66,47 +67,47 @@
             });
 
 
-        // TESTING DOM NODES WITH ASSERTIONS
-            //install the jest dom library
-                npm install --save-dev @testing-library/jest-dom
+    // TESTING DOM NODES WITH ASSERTIONS
+        //install the jest dom library
+            npm install --save-dev @testing-library/jest-dom
 
-            // import it in the test file
-                @import '@testing-library/jest-dom';
+        // import it in the test file
+            @import '@testing-library/jest-dom';
 
-            // test the extracted DOM node with the method screen.getByRole() while using the jest matcher .toBeDisabled()
+        // test the extracted DOM node with the method screen.getByRole() while using the jest matcher .toBeDisabled()
 
-                const Button = () => <button type="submit" disabled>Submit</button>;
+            const Button = () => <button type="submit" disabled>Submit</button>;
 
-                test('should show the button as disabled', () => {
+            test('should show the button as disabled', () => {
 
-                  render(<Button/>); // render Button component
+              render(<Button/>); // render Button component
 
-                  const button = screen.getByRole('button'); // Extract <button>Submit</button> Node
+              const button = screen.getByRole('button'); // Extract <button>Submit</button> Node
 
-                  expect(button).toBeDisabled(); // Assert button is disabled
-                });
-
-
-            // example:
-                test('Should have button enabled' , () => {
-
-                  render(<Thought thought={{text:'Hello'}} removeThought={()=>{}}/>)
-
-                  const button = screen.getByRole('button') // Test status of button here
-
-                  expect(button).toBeEnabled() // test to see if the button is enabled
-                });
+              expect(button).toBeDisabled(); // Asserttion button is disabled
+            });
 
 
-            // example:
-                test('Should have header text Passing Thoughts',() => {
+        // example:
+            test('Should have button enabled' , () => {
 
-                  render(<App/>);
+              render(<Thought thought={{text:'Hello'}} removeThought={()=>{}}/>)
 
-                  const header = screen.getByText('Passing Thoughts') // Test App header text here  
+              const button = screen.getByRole('button') // Test status of button here
 
-                  expect(header).toHaveTextContent('Passing Thoughts') // header contains passing thoughts as its text
-                });
+              expect(button).toBeEnabled() // assertion - test to see if the button is enabled
+            });
+
+
+        // example:
+            test('Should have header text Passing Thoughts',() => {
+
+              render(<App/>);
+
+              const header = screen.getByText('Passing Thoughts') // Test App header text here  
+
+              expect(header).toHaveTextContent('Passing Thoughts') // assertion - header contains passing thoughts as its text
+            });
 
 
     // 2. .queryByX method
@@ -144,5 +145,45 @@
                   
                   expect(header).toBeInTheDocument(); // Assert header to exist in the DOM
                 });
+
+
+
+// MIMICKING USER INTERACTIONS
+    // install the testing library for events
+        npm install --save-dev @testing-library/user-event@12.0.4
+
+    // import the library in the test file
+        import userEvent from '@testing-library/user-event';
+
+    // syntax:
+        userEvent.interactionType(nodeToInteractWith);
+
+        // example:
+           import { render, screen } from '@testing-library/react';
+           import userEvent from '@testing-library/user-event';
+           import '@testing-library/jest-dom';
+
+            const GreetingForm = () => {
+              return(
+                <form>
+                  <label htmlFor="greeting">
+                    Greeting:
+                  </label>
+                  <input type="text" id="greeting" />
+                  <input type="submit" value="Submit" />
+                </form>
+              );
+            };
+
+            test('should show text content as Hey Mack!', () => {
+             
+              render(<GreetingForm />);  // Render the component to test
+             
+              const textbox = screen.getByRole('textbox');  // Extract the textbox component
+              
+              userEvent.type(textbox, 'Hey Mack!'); // Simulate typing 'Hey Mack!'
+              
+              expect(textbox).toHaveValue('Hey Mack!'); // Assert textbox has text content 'Hey Mack!'
+            });
 
 
