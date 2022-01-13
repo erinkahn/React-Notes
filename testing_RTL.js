@@ -12,15 +12,22 @@
     // import 2 values into test file
        import { render, screen } from '@testing-library/react'
 
-    // create a test
-        test('should say hello') () => {
-            
-            const thought = {text: 'what up'}
-            
-            render(<Greeting thought={thought}/>);
+    // create a test 
 
-            screen.debug();
+        // create a test description and callback function
+        test('renders learn react link', () => { 
+            
+            // render a component (possible to render props too)
+            render(<Component theme="dark"/>);
+                   
+           // use a query function for the test ( look for the text learn react on the page when we rendered <Component/>)
+           // assign it to a variable
+            const linkElement = screen.getByText(/learn react/i);  // '/learn react/i' is case insensitive so it will find the text no matter if its capitalized or not
+            
+           // assert the result by checking if the text was found or not in the <Component/>
+            expect(linkElement).toBeInTheDocument();
         })
+
 
         
         
