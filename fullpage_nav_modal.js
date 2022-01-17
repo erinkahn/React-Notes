@@ -1,6 +1,12 @@
 import React, { useState, useRef } from "react";
 import useLockBodyScroll from "../hooks/useLockBodyScroll";
 
+// lock body so you cant scroll when nav is open
+// toggle hide and show class
+// force focus (tab keys) to be inside the full page nav and not outside of it
+// hide the nav when you press the esc key
+
+
 const Navigation = () => {
 	const [hidden, setHidden] = useState(true);
 	const [locked, setLocked] = useLockBodyScroll();
