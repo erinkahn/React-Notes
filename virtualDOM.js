@@ -12,8 +12,12 @@
   // everytime state changes, the virtual COM updates INSTEADDDDD of the real DOM
 
   // the VD is muchhh faster and efficient...why?
-    // if the state of any elements change in an app, a new virtual DOM tree is created that's compared to the previous virtual DOM tree.
+    // if the state of any elements change in an app, a new virtual DOM tree is created 
+    // then the new VD tree is compared to the previous virtual DOM tree = called “diffing”
     // then the virtual DOM calculates the best possible method to make these changes to the real DOM. 
     // This means there are minimal operations on the real DOM. Hence, reducing the performance cost of updating the real DOM.
       // (so basicallly its creating a new tree, but it's only going to re-render what has changed and not what hasn't changed)
+    // updates to the real DOM are sent in BATCHES instead of sending updates for every single change in state
+
+
 
