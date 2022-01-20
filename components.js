@@ -21,10 +21,22 @@ ReactDOM.render(
 	//     3. Tree reconciliation (virtual Dom)
 
 
-// React components are either a:
-	// 1. Function component (simpler) - used to build React hooks (stateful logic)
-	// 2. Class component (more powerful - stateless but still can hold state data) - used for printing the UI
+// React components are either:
+	// 1. Functional component 
+	// 2. Class component 
 
-// - a class component that only has markup within the render() method can safely be converted to a function component.
+
+// IMPORTANT RULE:  If you ever have a class component with only a render method – you should always make it a *functional component.
 
 // - Component names must be CAPITALIZED
+
+
+// CLASS COMPONENTS VS FUNCTIONAL COMPONENTS:
+
+	// FUNCTIONAL   -  stateLESS & hooks
+		// easier to read / understand
+		// easier to test / debug
+		// more reusable
+
+	// CLASS  -  state & lifecycle methods
+		// https://medium.freecodecamp.org/7-reasons-to-outlaw-reacts-functional-components-ff5b5ae09b7c
