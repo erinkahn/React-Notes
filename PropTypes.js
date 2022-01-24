@@ -37,8 +37,6 @@
   
     
   // * DYNAMIC object outside the class
-    import PropTypes from 'prop-types';
-
     export default function Person {
        const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
        return (
