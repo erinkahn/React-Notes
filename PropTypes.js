@@ -27,20 +27,23 @@
   // * STATIC object inside the class
     import PropTypes from 'prop-types';
 
-    export default function State {
+    export default function State() {
        static propTypes = {
           optionalStateName: PropTypes.string, // string, NOT required to pass corresponding prop
           requiredOnChange: PropTypes.func.isRequired,  // takes a function and IS required
           optionalCity: PropTypes.instanceOf(City)  // takes a class isntance of a class named 'city'
        }
+      return (
+        <h1>test</h1>
+      )
     }
   
     
   // * DYNAMIC object outside the class
-    export default function Person {
-       const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
+    export default function Person(props) {
+       const pizzaPreference = (props.likesPizza) ? "does" : "does not";
        return (
-         <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>
+         <h1>{props.name} is {props.age} years old and {pizzaPreference} like pizza!<h1>
        )
     }
       
