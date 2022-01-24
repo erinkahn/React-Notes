@@ -16,12 +16,12 @@
 
 
 // terminology of Redux:
-  // action     - sends data to store
-  // reducers   - returns copy of state & action
-  // store      - where state lives (provider)
-  // dispatch   - method that updates Redux state
-  // connect    - connects react to redux
-  // container  - connected component from react to redux
+  // action creators  - requests sent to the store
+  // reducers         - returns copy of state & apply actions/updates to state
+  // store            - holds the state (provider)
+  // dispatch         - method that updates Redux state
+  // connect          - connects react to redux
+  // container        - connected component from react to redux
 
 
 // -------
