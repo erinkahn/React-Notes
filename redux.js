@@ -16,12 +16,12 @@
 
 
 // terminology of Redux:
-  // actions
-  // reducers
-  // store
-  // dispatch
-  // connect
-  // container
+  // action     - sends data to store
+  // reducers   - returns copy of state & action
+  // store      - where state lives (provider)
+  // dispatch   - method that updates Redux state
+  // connect    - connects react to redux
+  // container  - connected component from react to redux
 
 
 // -------
@@ -38,7 +38,7 @@
 
   const state = [ 'Take Five', 'Claire de Lune', 'Respect' ];
 
-  const addNewSong = {. // the action name
+  const addNewSong = { // the action name
     type: 'songs/addSong',  // the action
     payload: 'Halo'  // info about the action
   }
@@ -54,22 +54,39 @@
   
   
 // -------
+  
+  
+  
+// ACTION CREATORS
+  
+  // a function that returns an action
+  const deleteTodo = (id) => ({ type: DELETE_TODO, payload: id })
+
+  
+  
+// -------
 
   
 // REDUCERS
   // a function that ties state and actions together
   // determines the next state given a current state and action
   
-// ** rules of reducers
-//   1. they should only calculate the new state value based on the state and action args
-//   2. They are not allowed to modify the existing state. They must make immutable updates, by copying the existing state and making changes to the copied values like [...state].
-//   3. they should not do any asynchronous logic or other 'side effects' like (log a value to console, make AZAX HTTP request, mody some state existing outside of function, generate random numbers)
+// rules of reducers
+  // 1. they should only calculate the new state value based on the state and action args
+  // 2. They are not allowed to modify the existing state. They must make immutable updates, by copying the existing state and making changes to the copied values like [...state].
+  // 3. they should not do any asynchronous logic or other 'side effects' like (log a value to console, make AJAX HTTP request, mody some state existing outside of function, generate random numbers)
 
-// immutably - the reducer function doesn’t change, or mutate, the arguments, it makes a copy
+// the reducer function doesn’t change, or mutate, the arguments, it makes a copy
 
   // example: 
-
-    const initialState = [ 'Print trail map', 'Pack snacks', 'Summit the mountain' ];
+    const initialState = {
+      todos: [
+        { id: 1, text: 'Eat' },
+        { id: 2, text: 'Sleep' },
+      ],
+      loading: false,
+      hasErrors: false,
+    }
 
     const todoReducer = (state = initialState, action) => {
       switch (action.type) {   // checking what kind of action
@@ -174,22 +191,23 @@
 
       // (moving slice outside function, removing the 1st index in the array of a,b,c,d)
 
-      // before: (impure function / incorrect)
-        const removeItemAtIndex = (list, index) => {
-         list.slice(index, 1);
-         return list;
-        };
-        console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
+      // --before: (impure function / incorrect)
+          const removeItemAtIndex = (list, index) => {
+           list.slice(index, 1);
+           return list;
+          };
+          console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1));
 
-      // after: (pure function)
-        const removeItemAtIndex = (list, index) => {
-          return [
-            ...list.slice(0, index),  // start at 0 and move 1 (the index) to the right 
-            ...list.slice(index+1, list.length)   // index is now 1...so + 1 is 2, the length of the list is 4 
-                                                  // move 1, 2 to the right out of 4 items == b
-          ]
-        };
-        console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1)); // returns ['a', 'c', 'd']
+
+      // --after: (pure function)
+          const removeItemAtIndex = (list, index) => {
+            return [
+              ...list.slice(0, index),  // start at 0 and move 1 (the index) to the right 
+              ...list.slice(index+1, list.length)   // index is now 1...so + 1 is 2, the length of the list is 4 
+                                                    // move 1, 2 to the right out of 4 items == b
+            ]
+          };
+          console.log(removeItemAtIndex(['a', 'b', 'c', 'd'], 1)); // returns ['a', 'c', 'd']
 
 
 
@@ -198,7 +216,7 @@
 
 
 // STORE
-  // a container for state
+  // where the application state lives 
   // receives actions and calls the reducer function with the action and current state
   // https://www.codecademy.com/learn/learn-redux/modules/core-redux-api/cheatsheet
 
