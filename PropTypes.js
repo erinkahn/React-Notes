@@ -27,7 +27,7 @@
   // * STATIC object inside the class
     import PropTypes from 'prop-types';
 
-    export default class State extends Component {
+    export default function State {
        static propTypes = {
           optionalStateName: PropTypes.string, // string, NOT required to pass corresponding prop
           requiredOnChange: PropTypes.func.isRequired,  // takes a function and IS required
@@ -39,11 +39,11 @@
   // * DYNAMIC object outside the class
     import PropTypes from 'prop-types';
 
-    export default class Person extends Component {
-       render() {    
-          const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
-          return <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>;
-       }
+    export default function Person {
+       const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
+       return (
+         <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>
+       )
     }
       
     Person.propTypes = {  
