@@ -40,9 +40,9 @@
     import PropTypes from 'prop-types';
 
     export default class Person extends Component {
-       const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
-       render() {        
-          return <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>
+       render() {    
+          const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
+          return <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>;
        }
     }
       
