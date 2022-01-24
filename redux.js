@@ -1,9 +1,12 @@
 // REDUX
-  // is a State management library that you can use to manage state in large and complicated applications.
+  // is a State management library / state container that you can use to manage state at a component level in large and complicated applications.
+  // you can pass state via props
   // redux is a standalone library that can be used with any framework like Vue, React, Vanilla JS...
   // redux is separate from react so you use a UI binding library (react redux) to tie them together
 
-  // Shared information is stored in A SINGLE OBJECT and not in components
+  // Shared information is stored in A SINGLE IMMUTABLE OBJECT and not in components
+  // Redux helps SEPARATE the state, view and actions by requiring the state be managed by a SINGLE SOURCE
+
 
 // One way data flow: state > view > actions > … repeat
   // * The state holds the current data used by the app’s components.
@@ -11,16 +14,24 @@
   // * When a user interacts with the view, like clicking a button, the state will be updated in some way.
   // * The view is updated to display the new state.
 
-// Redux helps SEPARATE the state, view and actions by requiring the state be managed by a SINGLE SOURCE
+
+// terminology of Redux:
+  // actions
+  // reducers
+  // store
+  // dispatch
+  // connect
+  // container
 
 
 // -------
 
 
-// ACTION
+// ACTIONS
+  // sends data from your app to the Redux store
   // a JS object that describes what happened to the state (describes the action)
-  // every action must have a TYPE property with a string value
-  // an action can (optional) have a payload property that is related to the action
+  // every action has a TYPE property with a string value
+  // can have an (optional) payload property that is related to the action
   // when the action is generated, it notifies other parts of the app which means it is DISPATCHED
 
 // examples: 
@@ -45,7 +56,7 @@
 // -------
 
   
-// REDUCER
+// REDUCERS
   // a function that ties state and actions together
   // determines the next state given a current state and action
   
