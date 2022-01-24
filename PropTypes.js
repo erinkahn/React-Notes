@@ -14,13 +14,13 @@
 
 
 // PropType data types
-    // PropTypes.number 
-    // PropTypes.string
-    // PropTypes.bool
-    // PropTypes.array
-    // PropTypes.func
-    // PropTypes.object
-    // PropTypes.symbol
+    PropTypes.number 
+    PropTypes.string
+    PropTypes.bool
+    PropTypes.array
+    PropTypes.func
+    PropTypes.object
+    PropTypes.symbol
     // others: https://reactjs.org/docs/typechecking-with-proptypes.html
 
 
@@ -40,11 +40,12 @@
     import PropTypes from 'prop-types';
 
     export default class Person extends Component {
-       render() {
-          const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
+       const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
+       render() {        
           return <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>
        }
     }
+      
     Person.propTypes = {  
        name: PropTypes.string.isRequired,
        age: PropTypes.number.isRequired,
@@ -53,7 +54,8 @@
     
     // now you can use Person in multiple components 
     // you must keep the same props (name, age, likesPizza), but the values can be different
-        // ex: one component can say Jon is 28 years old and does like pizza while another component says Anna is 12 years old and does not like pizza
+        // example: one component can say Jon is 28 years old and does like pizza 
+          // while another component says Anna is 12 years old and does not like pizza
 
 
 
