@@ -42,9 +42,7 @@
     export default class Person extends Component {
        render() {
           const pizzaPreference = (this.props.likesPizza) ? "does" : "does not";
-          return (
-             <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>
-          )
+          return <h1>{this.props.name} is {this.props.age} years old and {pizzaPreference} like pizza!<h1>
        }
     }
     Person.propTypes = {  
@@ -52,7 +50,6 @@
        age: PropTypes.number.isRequired,
        likesPizza: PropTypes.bool.isRequired
     }
-  
     // now you can use Person in multiple components 
     // you must keep the same props (name, age, likesPizza), but the values can be different
         // ex: one component can say Jon is 28 years old and does like pizza while another component says Anna is 12 years old and does not like pizza
