@@ -38,15 +38,15 @@
 
           // example:
              // 1. create redux store
-                // inside src/ create a folder called app/ and inside that create a file called store.js
+                // inside src/ create a folder called redux/ and inside that create a file called store.js
                   import { configureStore } from '@reduxjs/toolkit'
 
                   export default configureStore({
-                    reducer: {},
+                    reducer: {}
                   })
 
 
-              // 2. make store available to react components 
+              // 2. connect redux and make store available to react components 
                  // inside main index.js
                   import React from 'react'
                   import ReactDOM from 'react-dom'
@@ -56,9 +56,11 @@
                   import { Provider } from 'react-redux' // wraps our app
 
                   ReactDOM.render(
-                    <Provider store={store}>    // our store as a prop 
-                      <App />
-                    </Provider>,
+                    <React.StrictMode>
+                      <Provider store={store}>    // our store as a prop 
+                        <App />
+                      </Provider>
+                      <React.StrictMode>,
                     document.getElementById('root')
                   )
               
