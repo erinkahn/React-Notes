@@ -17,7 +17,7 @@
 
 // terminology of Redux:
   // action creators  - requests sent to the store
-  // reducers         - returns copy of state & apply actions/updates to state
+  // reducers         - returns new state
   // store            - holds the state (provider)
   // dispatch         - method that updates Redux state
   // connect          - connects react to redux
@@ -67,9 +67,8 @@
 // -------
 
   
-// REDUCERS
-  // a function that ties state and actions together
-  // determines the next state given a current state and action
+// REDUCERS (like a conveyor belt - takes old stuff and spits out new stuff)
+  // functions that takes the current state and action from the store & combines things together to return the new state
   
 // rules of reducers
   // 1. they should only calculate the new state value based on the state and action args
@@ -261,7 +260,9 @@
         const store = createStore(lightSwitchReducer); //calling the reducer function & setting it to store variable
 
         console.log(store.getState());   // prints on 
+
         store.dispatch({type:'toggle'}); // update the state
+
         console.log(store.getState());   // prints off
 
 
