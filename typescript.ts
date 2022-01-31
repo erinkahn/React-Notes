@@ -24,8 +24,17 @@
   // if we try to assign it to a different value type then we get an error
     
     let order = 'first'; // order will always equal a string and can NEVER be a boolean or number or null etc
-    order = 1; // Incorrect - will error 'Type 1 is not assignable to type string'
-    order = '1'; // correct
+    order = 1;      // Incorrect - will error 'Type 1 is not assignable to type string'
+    order = '1';    // correct
 
+
+// ANY
+  // when a variable is declared but given no value, ts says it has a value type of ANY
+  // a ANY type variable can be reassigned to ANY value type without error
+  
+  let onOrOff; // no initial value set so ts considered it to be ANY type
+  onOrOff = 1;      // correct
+  onOrOff = false;  // also correct
+  
 
 
