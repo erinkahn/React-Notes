@@ -36,5 +36,17 @@
   onOrOff = 1;      // correct
   onOrOff = false;  // also correct
   
+  // this can cause problems and break our code if we assign it to a wrong type so don't use it alot
+
+
+// type annotation
+  // you tell ts what type something is or will be by using type annotation with a colon after the variable name
+  let name : strong;
+  name = 'sara';
+  name = 31; // error - type 'number' is not assignable to type 'string'
+  // these get automatically removed when it compiles to js
+
+
+
 
 
