@@ -18,3 +18,10 @@
 // why typescript instead of JS?
   // best for larger applications especially for run time
 
+// variables & value types    
+  // you can declare variables with an INITIAL value that can never be reassigned a different value type
+  // if we try to assign it to a different value type then we get an error
+    
+    let order = 'first'; // order will always equal a string and can NEVER be a boolean or number or null etc
+    order = 1; // Incorrect - will error 'Type 1 is not assignable to type string'
+    order = '1'; // correct
