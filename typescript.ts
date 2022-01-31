@@ -11,7 +11,7 @@
 // HOW IS CODE TRANSPILED ? 
   // code is transpiled into JS that checks if code has correct standards and shows errors if it doesnt
   // transpiles and outputs a JS file
-  // compile with command:
+  // compile and check for errors with command:
     tsc
 
 
@@ -47,6 +47,18 @@
   // these get automatically removed when it compiles to js
 
 
+//tsconfig.json 
+  // tells the typescript compiler what files to run on and allows you to choose what default rules to enforce
+  // lives in your project root folder
 
+    {
+      "compilerOptions": { // rules to enforce when compiling
+        "target": "es2017", // version of JS
+        "module": "commonjs", // uses commonjs syntax to import and export modules
+        "strictNullChecks": true // variables only can have null or undefined if they are explicitly assigned those values
+      },
+      "include": ["**/*.ts"] // what files to apply the rules to (this case is checking every single file with .ts at the end)
+    }
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
 
 
