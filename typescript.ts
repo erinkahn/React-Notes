@@ -18,6 +18,7 @@
 // why typescript instead of JS?
   // best for larger applications especially for run time
 
+    
 // variables & value types    
   // you can declare variables with an INITIAL value that can never be reassigned a different value type
   // if we try to assign it to a different value type then we get an error
