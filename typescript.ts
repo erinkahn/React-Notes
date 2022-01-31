@@ -26,3 +26,6 @@
     let order = 'first'; // order will always equal a string and can NEVER be a boolean or number or null etc
     order = 1; // Incorrect - will error 'Type 1 is not assignable to type string'
     order = '1'; // correct
+
+
+
