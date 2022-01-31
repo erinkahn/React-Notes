@@ -3,9 +3,12 @@
   // built by Microsoft in 2012
   // a programming language similar to JS but with new features and a type system
   // file type is .ts
+  // uses a type system
   
 
-// type system - shows bugs, clarifies structure, refactors code
+// why typescript?
+  // the type system shows bugs, clarifies structure, and refactors code
+  // helps with debugging
   
 
 // HOW IS CODE TRANSPILED ? 
@@ -13,12 +16,18 @@
   // transpiles and outputs a JS file
   // compile and check for errors with command:
     tsc
+  
+  // to read the file main.ts and execute the code you would use this command
+    tsc main.ts
+    // reads main.ts and then creates a new main.js file used for code execution
+
 
 
 // why typescript instead of JS?
   // best for larger applications especially for run time
 
     
+
 // variables & value types    
   // you can declare variables with an INITIAL value that can never be reassigned a different value type
   // if we try to assign it to a different value type then we get an error
@@ -26,6 +35,7 @@
     let order = 'first'; // order will always equal a string and can NEVER be a boolean or number or null etc
     order = 1;      // Incorrect - will error 'Type 1 is not assignable to type string'
     order = '1';    // correct
+
 
 
 // ANY
@@ -37,6 +47,7 @@
   onOrOff = false;  // also correct
   
   // this can cause problems and break our code if we assign it to a wrong type so don't use it alot
+
 
 
 // type annotation
