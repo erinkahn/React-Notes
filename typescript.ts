@@ -22,6 +22,20 @@
     // reads main.ts and then creates a new main.js file used for code execution
 
 
+// tsconfig.json file
+  // to create this file with already populated rules type the command
+  tsc --init
+  // you can comment out what you don't want or uncomment what you want to apply
+  
+  // inside compiler options object
+  "target" : "es2016" // compiles your tsc into es6 syntax javascript
+  "outDir" : "js" // will create a folder called js where the compiled ts files will be as js files inside
+  "watch" : true, // on save it will compile your tsc in watch mode without having to type tsc in the terminal after every change
+    
+  // after compiler options you can add
+  "files" : ["app/app.ts"] // tells compiler what files to compile everytime it's run
+
+
 
 // why typescript instead of JS?
   // best for larger applications especially for run time
