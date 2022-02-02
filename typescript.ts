@@ -153,34 +153,24 @@
 
 
 
-// default initialized parameters
+// default parameters
   function sendGetting(greeting: string = 'Good morning'): void {
     console.log(greeting);
   }
     // makes parameter optional and assigns it a default value if no value is passed to the function
     // void - return type - doesn't return a type so you can call the function with or without the parameter
 
+    function logPlayer(name) { // this has a ANY type
+    function logPlayer(name: string) { // now it has a string type (better way)
+    
 
-  // example:
-      //incorrect
-      function logPlayer(name) { // this has a ANY type
-      }
+  // for optional parameters you can use a ? or set a default parameter inside the ()s
+    // a ? is added after a parameter name to indicate it is optional and is allowed to be undefined
+    // params with default values don't need a ? since assigning them a def value means they are already optional
 
-      //fix
-      function logPlayer(name: string) { // now it has a string type
-      }
+    function greet(name?: string){
 
-
-
-// optional parameters use a ?
-  // a ? is added after a parameter name to indicate it is optional and is allowed to be undefined
-
-  function greet(name?: string){
-    console.log(`hello ${name || 'anonymous'|`)
-  }
-  greet() // hello anonymous
-  
-
+    function greet(name='Anonymous'){ // cleaner
 
 
 
