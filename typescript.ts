@@ -193,7 +193,12 @@
     }
   
 
-
+// documenting functions with comments
+  /**
+  * this is a documentation comment
+  *
+  * heres another comment
+  */
 
 
 
