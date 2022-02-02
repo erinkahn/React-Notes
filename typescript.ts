@@ -161,6 +161,7 @@
       // optional message parameter
       // will return a string
     } 
+      
 
   // example
       function proclaim(status = 'not ready...', repeat = 1) {
@@ -173,7 +174,23 @@
       proclaim('ready?'); // I'm ready?
       proclaim('ready!', 3); // I'm ready! I'm ready! I'm ready!
 
+      
+      
+  // example   
+   function repeatSyllableSong(syllable: string, repeatNumber: number): void {
+      let song: string = '';
+      for (let i = 0; i <= repeatNumber ; i++) {
+        song += syllable; 
+      } 
+      console.log(song); // returns nothing so you need void as the return function
+    }
 
+    repeatSyllableSong('la', 4);
+      
+      
+      
+      
+      
       
 // explicit returns
     // state a return type with a colon after the parameter
@@ -233,3 +250,6 @@
         console.log(`I'm ${status}`);
       }
     }
+
+      
+      
