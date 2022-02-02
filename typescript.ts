@@ -201,7 +201,7 @@
   */
 
       
-// example      
+  // example      
     /**
      * Returns the sum of two numbers.
      *
@@ -215,4 +215,21 @@
     }
   }
 
-
+      
+  // example
+    /**
+    * Loops the input value number of times logging a 
+    * string in the format: I'm [status]
+    *
+    * @param status - A string input 
+    * Default value: 'not ready'
+    * @param repeat - A number value. 
+    * Default value: 1
+    * @returns No return value
+    *
+    */
+    function proclaim(status = 'not ready...', repeat = 1) {
+      for (let i = 0; i < repeat; i += 1) {
+        console.log(`I'm ${status}`);
+      }
+    }
