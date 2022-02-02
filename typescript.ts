@@ -40,15 +40,61 @@
 // why typescript instead of JS?
   // best for larger applications especially for run time
 
-    
+
+
+// Types: optional feature
+  // boolean
+  // string
+  // number
+  // any (opt out of type checking, can be any value)
+  // void (absense of type)
+  // null
+  // undefined
+  // never (never occur)
+
+
 
 // variables & value types    
   // you can declare variables with an INITIAL value that can never be reassigned a different value type
   // if we try to assign it to a different value type then we get an error
+  // you tell ts what type something is or will be by using type annotation with a colon after the variable name
+  // these get automatically removed when it compiles to js 
     
-    let order = 'first'; // order will always equal a string and can NEVER be a boolean or number or null etc
+    let order: string = 'first'; // order will always equal a string and can NEVER be a boolean or number or null etc
     order = 1;      // Incorrect - will error 'Type 1 is not assignable to type string'
     order = '1';    // correct
+    
+
+
+// Union Types
+  // adding different types together to allow for assigned different types on the same variable
+
+  // example:
+    let someValue: number | string; // union of number and string type
+    someValue = 42; // correct
+    someValue = 'hello'; // correct
+    someValue = true; // error incorrect
+  
+  // example:
+    let mysteryString: string | null | undefined;
+    mysteryString = null; // correct
+    mysteryString = undefined; // correct
+
+
+
+// null and undefined 
+    // can be assigned to any type by default but leads to bugs in JS, so a solution to avoid that is adding the:
+    --stringNullChecks // compiler option needs to be set to true*
+
+  // example:
+    let basicString: string;
+    basicString = null; // incorrect error
+    basicString = undefined; // incorrect error
+
+  // example:
+    let nullableString: string | null; // value can only be string or null
+    nullableString = null;  // correct
+    nullableString = undefined; // incorrect error
 
 
 
@@ -62,14 +108,6 @@
   
   // this can cause problems and break our code if we assign it to a wrong type so don't use it alot
 
-
-
-// type annotation
-  // you tell ts what type something is or will be by using type annotation with a colon after the variable name
-  let name : strong;
-  name = 'sara';
-  name = 31; // error - type 'number' is not assignable to type 'string'
-  // these get automatically removed when it compiles to js
 
 
 //tsconfig.json 
