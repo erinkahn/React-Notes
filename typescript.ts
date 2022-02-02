@@ -151,19 +151,9 @@
   // turns off the any type values that are implicitly there by default
   // this will remind you to add a type to parameters so that you don't have 'any' types just laying around
 
-
-
-// default parameters
-  function sendGetting(greeting: string = 'Good morning'): void {
-    console.log(greeting);
-  }
-    // makes parameter optional and assigns it a default value if no value is passed to the function
-    // void - return type - doesn't return a type so you can call the function with or without the parameter
-
-    function logPlayer(name) { // this has a ANY type
-    function logPlayer(name: string) { // now it has a string type (better way)
+  
     
-
+// default parameters
   // for optional parameters you can use a ? or set a default parameter inside the ()s
     // a ? is added after a parameter name to indicate it is optional and is allowed to be undefined
     // params with default values don't need a ? since assigning them a def value means they are already optional
@@ -185,6 +175,23 @@
       proclaim('ready!', 3); // I'm ready! I'm ready! I'm ready!
 
 
+      
+// explicit returns
+    // state a return type with a colon after the parameter
+    const greet = (name?: string): string => { // explicit return is a string
+      if (name) {
+        return `hello ${name}`;
+      }
+      return undefined; // error - type is incorrect - must be a string
+    }
+
+    // void
+      // a return type that doesn't return a type so you can call the function with or without the parameter
+      // makes parameter optional and assigns it a default value if no value is passed to the function
+
+    function sendGetting(greeting: string = 'Good morning'): void {
+      console.log(greeting);
+    }
   
 
 
