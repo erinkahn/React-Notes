@@ -123,13 +123,6 @@
 
 
 
-// type annotations to functions
-  function funFunc(score: number, message?: string): string {
-    // ? means optional parameter - must be after all required parameters
-    // last : string means the function will return a string
-  } 
-
-
 
 //tsconfig.json 
   // tells the typescript compiler what files to run on and allows you to choose what default rules to enforce
@@ -153,15 +146,21 @@
 
   
     
-// default parameters
+// implicit returns & default params
   // for optional parameters you can use a ? or set a default parameter inside the ()s
     // a ? is added after a parameter name to indicate it is optional and is allowed to be undefined
+    // ? must be listed after all required parameters
     // params with default values don't need a ? since assigning them a def value means they are already optional
 
     function greet(name?: string){
 
     function greet(name='Anonymous'){ // cleaner
-
+      
+      
+    function funFunc(score: number, message?: string): string {
+      // optional message parameter
+      // will return a string
+    } 
 
   // example
       function proclaim(status = 'not ready...', repeat = 1) {
