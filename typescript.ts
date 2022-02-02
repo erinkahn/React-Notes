@@ -123,6 +123,14 @@
 
 
 
+// type annotations to functions
+  function funFunc(score: number, message?: string): string {
+    // ? means optional parameter - must be after all required parameters
+    // last : string means the function will return a string
+  } 
+
+
+
 //tsconfig.json 
   // tells the typescript compiler what files to run on and allows you to choose what default rules to enforce
   // lives in your project root folder
@@ -136,5 +144,33 @@
       "include": ["**/*.ts"] // what files to apply the rules to (this case is checking every single file with .ts at the end)
     }
   // https://www.typescriptlang.org/docs/handbook/compiler-options.html
+
+
+
+// --noImplicitAny compiler option
+  // turns off the any type values that are implicitly there by default
+  // this will remind you to add a type to parameters so that you don't have 'any' types just laying around
+
+
+
+// default initialized parameters
+  function sendGetting(greeting: string = 'Good morning'): void {
+    console.log(greeting);
+  }
+    // makes parameter optional and assigns it a default value if no value is passed to the function
+    // void - return type - doesn't return a type so you can call the function with or without the parameter
+
+  sendGreeting() // good morning
+  sendGreeting('Good afternoon') // Good afternoon!
+
+
+
+
+
+
+  
+
+
+
 
 
