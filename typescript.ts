@@ -173,7 +173,16 @@
     function greet(name='Anonymous'){ // cleaner
 
 
+  // example
+      function proclaim(status = 'not ready...', repeat = 1) {
+        for (let i = 0; i < repeat; i += 1) {
+          console.log(`I'm ${status}`);
+        }
+      }
 
+      proclaim(); // I'm not ready...
+      proclaim('ready?'); // I'm ready?
+      proclaim('ready!', 3); // I'm ready! I'm ready! I'm ready!
 
 
   
