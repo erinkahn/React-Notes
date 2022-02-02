@@ -71,13 +71,13 @@
 
   // example:
     let someValue: number | string; // union of number and string type
-    someValue = 42; // correct
-    someValue = 'hello'; // correct
-    someValue = true; // error incorrect
+    someValue = 42;       // correct
+    someValue = 'hello';  // correct
+    someValue = true;     // error incorrect
   
   // example:
     let mysteryString: string | null | undefined;
-    mysteryString = null; // correct
+    mysteryString = null;      // correct
     mysteryString = undefined; // correct
 
 
@@ -88,13 +88,13 @@
 
   // example:
     let basicString: string;
-    basicString = null; // incorrect error
+    basicString = null;      // incorrect error
     basicString = undefined; // incorrect error
 
   // example:
     let nullableString: string | null; // value can only be string or null
-    nullableString = null;  // correct
-    nullableString = undefined; // incorrect error
+    nullableString = null;             // correct
+    nullableString = undefined;        // incorrect error
 
 
 
@@ -102,11 +102,24 @@
   // when a variable is declared but given no value, ts says it has a value type of ANY
   // a ANY type variable can be reassigned to ANY value type without error
   
-  let onOrOff; // no initial value set so ts considered it to be ANY type
+  let onOrOff;      // no initial value set so ts considered it to be ANY type
   onOrOff = 1;      // correct
   onOrOff = false;  // also correct
   
   // this can cause problems and break our code if we assign it to a wrong type so don't use it alot
+
+
+
+// type Assertions
+  let value: any = 5;
+  
+  let fixedString: string = (<number>value).toFixed(4); // value variable is a number
+  console.log(fixedString) // 5.0000
+
+  // or another way to write it:
+
+  let fixedString: string = (value as number).toFixed(4); // value variable is a number
+  console.log(fixedString) // 5.0000
 
 
 
