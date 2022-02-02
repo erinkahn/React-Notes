@@ -160,8 +160,17 @@
     // makes parameter optional and assigns it a default value if no value is passed to the function
     // void - return type - doesn't return a type so you can call the function with or without the parameter
 
-  sendGreeting() // good morning
-  sendGreeting('Good afternoon') // Good afternoon!
+
+  // example:
+      //incorrect
+      function logPlayer(name) { // this has a ANY type
+        console.log(`New game starting for player ${name}`);
+      }
+
+      //fix
+      function logPlayer(name: string) { // now it has a string type
+        console.log(`New game starting for player ${name}`);
+      }
 
 
 
