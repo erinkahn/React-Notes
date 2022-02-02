@@ -164,13 +164,22 @@
   // example:
       //incorrect
       function logPlayer(name) { // this has a ANY type
-        console.log(`New game starting for player ${name}`);
       }
 
       //fix
       function logPlayer(name: string) { // now it has a string type
-        console.log(`New game starting for player ${name}`);
       }
+
+
+
+// optional parameters use a ?
+  // a ? is added after a parameter name to indicate it is optional and is allowed to be undefined
+
+  function greet(name?: string){
+    console.log(`hello ${name || 'anonymous'|`)
+  }
+  greet() // hello anonymous
+  
 
 
 
