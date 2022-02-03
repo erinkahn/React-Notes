@@ -267,3 +267,37 @@
 
       
       
+// Array Type Annotations []
+      
+  let names: string[] = ['Danny', 'Samantha'];
+      // or can write like:
+  let names: Array<string> = ['Danny', 'Samantha'];
+  
+  let names: string[] = [1,2,3]; // Type Error
+  names.push(566) // Type Error
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
