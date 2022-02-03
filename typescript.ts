@@ -205,9 +205,20 @@
       // a return type that doesn't return a type so you can call the function with or without the parameter
       // makes parameter optional and assigns it a default value if no value is passed to the function
 
-    function sendGetting(greeting: string = 'Good morning'): void {
-      console.log(greeting);
-    }
+    // example
+      function sendGetting(greeting: string = 'Good morning'): void {
+        console.log(greeting);
+      }
+      
+    // example
+      function sillyNameGenerator(index1: number, index2: number): void {
+        let firstName = ['Runny', 'Buttercup', 'Dinky'];
+        let lastName = ['Bubble', 'Buffalo', 'Gross'];
+
+        console.log(`${firstName[index1]} ${lastName[index2]}`)
+      }
+
+      sillyNameGenerator(2, 0)   // dinky bubble
   
 
 // documenting functions with comments
