@@ -282,9 +282,24 @@
       let bestBreakfasts: string[] = ['fasting', 'oatmeal', 'tamago kake gohan', 'any kind of soup'];
       let bestBooleans: boolean[] = [true, false];
       
+    
       
+// multi-dimensional Array Types
       
+    let arr: string[][] = [['str1', 'str2'], ['more', 'strings']]
+      // string[][] is short for (string[])[] which is an array where every element is a type string[]
       
+      let names: string[] = []; // No type errors.
+      names.push('Isabella');  // any type
+      
+      let numbers: number[] = []; // No type errors.
+      numbers.push(30); // any type 
+
+      
+      // examples
+      let bestMealPlan: string[][] = [['chicken soup', 'non-chicken soup'], ['baked potato', 'mashed potato']];
+      let bestBooleansTwice: boolean[][] = [[true, false], [true, false]]; // 2 dimensional
+      let numbersMulti: number[][][] = [ [[1],[2,3]], [[7],[7,77,4]] ]; // 3 dimensional
       
       
       
