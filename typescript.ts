@@ -303,7 +303,7 @@
       
       
       
-// tuple - an array with specific type elements
+// tuple - an array with specific type elements and fixed lengths
       
       let favoriteCoordinates: [number, number, string, number, number, string] = [40, 43.2, 'N', 73, 59.8, 'W'];
       
@@ -319,10 +319,40 @@
       
       
       
+// Array Type Inferences
+   // type inferences returns arrays
+   // we may not know exactly what type inference to expect when dealing with arrays so..
+   // when we want tuples, we need to use explicit type annotations.
+      
+      let examAnswers = [true, false, false]; // 3 booleans so boolean90 or [boolean, boolean, boolean]
+      examAnswers[3] = true; // correct
       
       
+      let tupleOfExamAnswers: [boolean, boolean, boolean] = [true, false, false];
+      tupleOfExamAnswers[3] = true; // Type error! The tuple only has 3 elements.
       
       
+      let tup: [number, number, number] = [1,2,3];
+      let concatResult = tup.concat([4,5,6]); // concatResult has the value [1,2,3,4,5,6].
+      
+      
+// rest parameter types
+      
+      smush('a','h','h','H','H','H','!','!'); // Returns: 'ahhHHH!!'.
+  
+      function smush(firstString, ...otherStrings: string[]){ 
+          //otherStrings is an array of strings
+      }
+      
+      // example
+      function addPower(p: number, ...numsToAdd: number[]):number{
+        let answer = 0; 
+        for(let i = 0; i < numsToAdd.length; i++){
+          answer += numsToAdd[i] ** p;
+        }
+        return answer;
+      }
+      addPower(4, 5, 6)
       
       
       
