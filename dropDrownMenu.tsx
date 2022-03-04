@@ -1,6 +1,9 @@
 // button dropdown menu
 // with focus + tab functionality enabled
 
+import React, { useEffect, useState, useRef } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+
 const NavigationBar: React.FC = () => {
   const dropdownContainer = useRef(null);
 
