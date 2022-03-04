@@ -1,4 +1,5 @@
-//dropdown button with menu
+// button dropdown menu
+// with focus + tab functionality enabled
 
 const NavigationBar: React.FC = () => {
   const dropdownContainer = useRef(null);
@@ -9,18 +10,21 @@ const NavigationBar: React.FC = () => {
     { label: 'contact', route: '/contact' }
   ];
 
-  const [inputValue, setInputValue] = useState<string>('Navigate to');
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const handleClick = () => setIsVisible(!isVisible);
 
-  const onOptionClicked = value => () => {
-    setSelectedOption(value);
-    setIsVisible(false);
-  };
+  useEffect(() => {
+    window.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const handleClickOutside = e => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setIsVisible(false);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) =>
@@ -30,18 +34,16 @@ const NavigationBar: React.FC = () => {
       <>
         <div className="dropdown-container"
          ref={dropdownContainer}
-         onMouseLeave={() => setIsVisible(false)}
+         //onMouseLeave={() => setIsVisible(false)}
         >
           <button
             type="button"
-            value={inputValue}
-            onChange={e => handleInputChange}
             onClick={handleClick}
             onKeyDown={handleKeyPress}
             className="dropdown-button"
             tabIndex={0}
           >
-            {inputValue}
+            Navigate to
           </button>
 
           <nav className={`${isVisible ? 'd-block dropdown-menu' : 'd-none'} `}>
@@ -50,7 +52,6 @@ const NavigationBar: React.FC = () => {
                 <li>
                   <NavLink to className="nav-item"
                    tabIndex={isVisible && 0}
-                   onClick={onOptionClicked(nav)}
                    to={nav.route}
                    activeClassName="active-breadcrumb-nav"
                    className="text-center text-decoration-none f-heavy fs-14"
