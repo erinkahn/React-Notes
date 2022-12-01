@@ -1,0 +1,53 @@
+.sol-tab-container{
+  position: relative;
+
+  .solution-tabs{
+    position: relative;
+    justify-content: center;
+    border-bottom: none;
+    z-index: 3;
+
+    .nav-item button.nav-link{
+      color: $primary;
+      font-size: 1.5em;
+      width: 300px;
+      height: 90px;
+      background-color: $gray;
+      border-color: #dee2e6 #dee2e6 $white;
+      border-radius: 15px 15px 0 0;
+
+      @media screen and (max-width: $sm) {
+        font-size: 1.25em;
+        width: 100%;
+        padding: 0 1em;
+      }
+
+      @media screen and (max-width: $xxs) {
+        padding: 0 0.5em;
+      }
+
+      &.active{
+        color: $accent1;
+        background-color: $white2;
+      }
+    }
+  }
+  
+  .sol-tab-content{
+    background-color: $white2;
+  }
+
+  .cards-wrapper {
+    padding: 10em 0;
+
+    @media screen and (max-width: $sm) {
+      padding: 8em 0 5em 0;
+    }
+  }
+
+  .bkg-squares {
+    position: absolute;
+    left: 0;
+    top: 35%;
+  }
+}

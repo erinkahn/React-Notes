@@ -1,0 +1,121 @@
+.contactus-container {
+  position: relative;
+  padding: 7em 0 1em 0;
+  background-color: $white;
+  
+  @media screen and (max-width: $sm) {
+    padding-top: 1em;
+    overflow: hidden;
+  }
+  
+  .section-title {
+    color: $primary;
+    font-size: 7.5em;
+    line-height: 0.9;
+    font-weight: $xbold;
+
+    @media screen and (max-width: $medium) {
+      font-size: 5em;
+    }
+
+    @media screen and (max-width: $sm) {
+      font-size: 4em;
+    }
+
+    @media screen and (max-width: $xs) {
+      font-size: 3em;
+    }
+  }
+
+  .col {
+    width: 100%;
+    max-width: 700px;
+
+    @media screen and (max-width: $sm) {
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+    }
+  }
+
+  .content {
+    font-weight: $light;
+    color: $accent1;
+    font-size: 2.125em;
+
+    @media screen and (max-width: $medium) {
+      font-size: 2em;
+    }
+
+    @media screen and (max-width: $sm) {
+      font-size: 1.5em;
+    }
+
+    @media screen and (max-width: $xs) {
+      font-size: 1.25em;
+    }
+  }
+
+  .columns-container {
+    padding-bottom: 5em;
+
+    @media screen and (max-width: $medium) {
+      padding-bottom: 4em;
+    }
+  }
+
+  .to-top {
+    position: relative;
+    width: 10em;
+    margin-right: 1em;
+    padding-bottom: 2em;
+    text-align: center;
+    z-index: 3;
+
+    @media screen and (max-width: $sm) {
+      margin-right: 0;
+    }
+
+    &::after {
+      content: 'Back To Top';
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      text-transform: uppercase;
+      color: $primary;
+      font-weight: $bold;
+      font-size: 0.75em;
+      transform: translate(50%, 30%);
+    }
+
+    img {
+      padding: 1.5em 0;
+      transition: transform 200ms ease-in-out;
+
+      &:hover,
+      &:focus {
+        transform: translateY(-5px);
+      }
+    }
+  }
+
+  .contact-bkg-squares {
+    position: absolute;
+    right: -4em;
+    bottom: -1em;
+    width: 80%;
+
+    @media screen and (max-width: $large) {
+      right: -3em;
+    }
+
+    @media screen and (max-width: $medium) {
+      width: 100%;
+    }
+  }
+
+  .btn {
+    @media screen and (max-width: $xs) {
+      font-size: 1em;
+    }
+  }
+}

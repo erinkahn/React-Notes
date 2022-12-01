@@ -1,0 +1,334 @@
+.info-card {
+  position: relative;
+  padding-bottom: 18em;
+
+  @media screen and (max-width: $medium) {
+    padding-bottom: 14em;
+  }
+
+  @media screen and (max-width: $sm) {
+    padding-bottom: 8em;
+  }
+
+  .question-box {
+    position: absolute;
+    top: -2em;
+    padding: 1.5em 1em;
+    background: $primary;
+    mix-blend-mode: hard-light;
+    color: $white;
+    font-size: 2em;
+    font-weight: $bold;
+    line-height: 1;
+    z-index: 3;
+
+    @media screen and (max-width: $largeTwo) {
+      font-size: 1.875em;
+    }
+
+    @media screen and (max-width: $medium) {
+      font-size: 1.5em;
+      padding: 1em;
+      top: 2em;
+    }
+
+    @media screen and (max-width: $sm) {
+      top: -2em;
+    }
+  }
+
+  .columns-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
+    align-items: center;
+
+    @media screen and (max-width: $largeTwo) {
+      max-height: 420px;
+    }
+
+    @media screen and (max-width: $large) {
+      max-height: 410px;
+    }
+
+    @media screen and (max-width: $medium) {
+      max-height: 365px;
+    }
+
+    @media screen and (max-width: $sm) {
+      grid-template-columns: 1fr;
+      max-height: none;
+      grid-gap: 0em;
+    }
+  }
+
+  .col-img {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 70%;
+    z-index: 1;
+
+    @media screen and (max-width: $sm) {
+      border-bottom: 1em solid $accent2;
+    }
+  }
+
+  .green-box {
+    position: absolute;
+    bottom: -2em;
+    background-color: $accent2;
+    width: calc(100% - 51%);
+    height: calc(100% - 2em);
+    z-index: 0;
+    transform: translate(0, -6em);
+    transition: transform 500ms ease-in-out;
+
+    &.slide-up {
+      transform: translate(0em, 0em);
+    }
+
+    @media screen and (max-width: $medium) {
+      bottom: 0;
+      height: calc(100% - 6em);
+      width: calc(100% - 53%);
+    }
+
+    @media screen and (max-width: $sm) {
+      display: none;
+    }
+  }
+
+  .col-content {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+
+  .col-text {
+    padding: 3em 4em;
+    color: $primary;
+
+    @media screen and (max-width: $medium) {
+      padding: 2em;
+    }
+
+    @media screen and (max-width: $sm) {
+      padding: 1em;
+    }
+
+    .col-title {
+      padding-bottom: 0.5em;
+      font-size: 3.125em;
+      font-weight: $bold;
+      line-height: 1;
+
+      @media screen and (max-width: $medium) {
+        font-size: 2.5em;
+      }
+    }
+
+    p{
+      font-size: 1.5em;
+
+      @media screen and (max-width: $sm) {
+        font-size: 1.25em;
+      }
+    }
+
+    &.slide-up {
+      .col-content {
+        opacity: 1!important;
+      }
+    }
+  }
+
+  // --------------TAB ONE CARDS
+  &.tabOneCard {
+    &.odd { 
+      .green-box {
+        left: 2em;
+        box-shadow: -25px 25px 25px rgba(0, 0, 0, 0.25);
+      }
+    }
+    
+    &.even {
+      .col-img {
+        grid-column: 2;
+
+        @media screen and (max-width: $sm) {
+          grid-column: 1;
+        }
+      }
+
+      .green-box {
+        right: 2em;
+        box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.25);
+        transform: translate(0, -6em);
+
+        &.slide-up {
+          transform: translate(0em, 0em);
+        }
+      }
+
+      .col-text {
+        grid-column: 1;
+        grid-row: 1;
+        padding-left: 6em;
+        padding-right: 2em;
+
+        @media screen and (max-width: $medium) {
+          padding-left: 3em;
+        }
+
+        @media screen and (max-width: $sm) {
+          padding: 1em;
+          grid-row: 2;
+        }
+      }
+    }
+
+    &:nth-child(3n+1) { //every first
+      .question-box {
+        width: 34%;
+        left: 22%;
+
+        @media screen and (max-width: 1320px) {
+          width: 40%;
+          left: 6%;
+        }
+
+        @media screen and (max-width: $medium) {
+          top: 0;
+        }
+        
+        @media screen and (max-width: $sm) {
+          width: 85%;
+          left: 10%;
+          top: -2em;
+        }
+      }
+    }
+
+    &:nth-child(3n+2) { //every second
+      .question-box {
+        width: 34%;
+        right: 20%;
+
+        @media screen and (max-width: $xlargeTwo) {
+          right: 12%;
+        }
+
+        @media screen and (max-width: $sm) {
+          width: 85%;
+          right: 10%;
+          top: -2em;
+        }
+      }
+    }
+
+    &:nth-child(3n+3){ //every third
+      .question-box {
+        left: 25%; 
+        width: 42%;
+        top: -3em;
+
+        @media screen and (max-width: $xlargeTwo) {
+          width: 40%;
+          left: 7%;
+        }
+
+        @media screen and (max-width: $sm) {
+          width: 85%;
+          left: 10%;
+          top: -2em;
+        }
+      }
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  // -------------TAB TWO CARDS
+  &.tabTwoCard {
+    &.odd { 
+      .col-img {
+        grid-column: 2;
+
+        @media screen and (max-width: $sm) {
+          grid-column: 1;
+        }
+      }
+
+      .green-box {
+        right: 2em;
+        box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.25);
+      }
+
+      .col-text {
+        grid-column: 1;
+        grid-row: 1;
+
+        @media screen and (max-width: $sm) {
+          grid-row: 2;
+        }
+      }
+    }
+
+    &.even {
+      .green-box {
+        left: 2em;
+        box-shadow: -25px 25px 25px rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    &:nth-child(3n+1) { //every first
+      .question-box {
+        width: 38%;
+        left: 33%;
+
+        @media screen and (max-width: $xlargeTwo) {
+          left: 43%;
+        }
+
+        @media screen and (max-width: $largeTwo) {
+          left: 58%;
+          width: 40%;
+        }
+
+        @media screen and (max-width: $sm) {
+          width: 85%;
+          left: 10%;
+        }
+      }
+    }
+
+    &:nth-child(3n+2) { //every second
+      .question-box {
+        width: 42%;
+        left: 25%;
+
+        @media screen and (max-width: 1380px) {
+          left: 5%;
+        }
+
+        @media screen and (max-width: $medium) {
+          top: 0;
+        }
+
+        @media screen and (max-width: $sm) {
+          width: 85%;
+          left: 10%;
+          top: -2em;
+        }
+      }
+    }   
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

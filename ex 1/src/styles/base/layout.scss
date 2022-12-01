@@ -1,0 +1,45 @@
+// ***********************************************//
+// global and component layout styles
+// ***********************************************//
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+  font-family: sofia-pro, sans-serif;
+	font-weight: $regular;
+	color: $white;
+	background-color: $primary;
+	font-size: 16px;
+	line-height: 1.5;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+	margin: 0;
+	-webkit-text-size-adjust: 100%;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1, p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.section-title { // use this for component titles
+  font-weight: $xbold;
+}
+
+.green-border {
+	border-left: 29px solid $accent2;
+
+	@media screen and (max-width: 767px) {
+		border-left: 12px solid $accent2;
+	}
+}
+
+.orange-border {
+    border-left: 29px solid $accent1;
+
+		@media screen and (max-width: 767px) {
+			border-left: 12px solid $accent1;
+		}
+}

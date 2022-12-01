@@ -1,0 +1,34 @@
+.info-column {
+  &.benefits {
+    padding: 0 4em;
+
+    @media screen and (max-width: $xlarge) {
+      padding: 0 2em;
+    }
+
+    @media screen and (max-width: $sm) {
+      padding: 0 1em 2em 1em;
+    }
+  
+    .col-title {
+      padding: 1.5em 0;
+      color: $accent1;
+      font-size: 1.875em;
+      font-weight: $xbold;
+  
+      @media screen and (max-width: $medium) {
+        padding: 1em 0;
+      }
+    }
+  
+    .col-content {
+      font-size: 1.25em;
+      font-weight: $light;
+  
+      @media screen and (max-width: $xxs) {
+        font-size: 1.2em;
+        text-align: left;
+      }
+    }
+  }
+}

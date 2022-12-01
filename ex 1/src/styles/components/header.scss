@@ -1,0 +1,167 @@
+.header {
+  position: -webkit-sticky;
+  width: 100%;
+  z-index: 100000000;
+  left: 0;
+  padding: 10px;
+  padding-right: 0px;
+  background-color: transparent;
+
+  &.desktop-nav{
+    @media screen and (max-width: $medium) {
+      display: none;
+    }
+  }
+
+  &.mobile-nav{
+    @media screen and (min-width: $aboveMedium) {
+      display: none;
+    }
+
+    .logo {
+      max-width: 115px;
+      width: 100%;
+    }
+
+    .hamburger{
+      border-color: $white;
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:hover,
+      &:focus {
+        border-width: 2px;
+      }
+
+      &-scroll{
+        border-color: $primary;
+      }
+    }
+
+    .mobile-links-container{
+      .header-links{
+        color: $white;
+        font-weight: $ultralight;
+        font-size: 18px;
+        padding: 0.5rem 1.5rem;
+        text-align: end;
+        text-stroke: 0px $white;
+        letter-spacing: 0.06em;
+        -webkit-text-stroke: 0px $white;
+        transition: text-stroke 200ms ease-in-out;
+
+        &.active,
+        &:hover,
+        &:focus {
+          text-stroke: 2px $white;
+          -webkit-text-stroke: 2px $white;
+        }
+  
+        &.link-scroll{
+          color: $primary;
+
+          &.active,
+          &:hover,
+          &:focus {
+            text-stroke: 2px $primary;
+            -webkit-text-stroke: 2px $primary;
+          }
+        }
+      }
+
+      .contact-us-btn{
+        @include button($accent1, $white, 10px, 2px solid $accent1, transparent, $accent1, 2px solid $accent1);
+        font-weight: $light;
+        font-size: 15px;
+        padding: .3em 1em;
+        width: 120px;
+        margin-left: auto;
+        margin-bottom: 10px;
+        top: 10px;
+        right: 20px;
+      }
+    }
+  }
+
+  &.nav-scroll {
+    background-color: $white;
+    opacity: 0.98;
+    box-shadow: 0px 1px 20px 1px rgba($black, 0.5);
+  }
+
+  .header-container {
+    padding: 0.5em 0 0.5em 0.5em;
+
+    @media screen and (max-width: $xxs) {
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .header-logo {
+    @media screen and (max-width: $xxs) {
+      padding-bottom: 1.5em;
+    }
+
+    .logo {
+      width: 100%;
+      max-width: 130px;
+      cursor: pointer;
+    }
+  }
+
+  .links-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 25px;
+
+    .header-links{
+      color: $white;
+      font-weight: $ultralight;
+      font-size: 18px;
+      padding: 0.5rem 1.5rem;
+      letter-spacing: 0.06em;
+      transition: text-stroke 200ms ease-in-out;
+
+      &:hover,
+      &:focus,
+      &.active {
+        text-stroke: 2px $white;
+        -webkit-text-stroke: 2px $white;
+      }
+  
+      &.login{
+        margin-left: 0.5em;
+        border-left: 1px solid $accent1;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      &.link-scroll{
+        color: $primary;
+
+        &:hover,
+        &:focus,
+        &.active {
+          text-stroke: 2px $primary;
+          -webkit-text-stroke: 2px $primary;
+        }
+      }
+  
+      @media screen and (max-width: $xxs) {
+        justify-content: center;
+      }
+    }
+
+    .contact-us-btn{
+      @include button($accent1, $white, 10px, 2px solid $accent1, transparent, $accent1, 2px solid $accent1);
+      font-weight: $light;
+      font-size: 16px;
+      padding: .3em 1em;
+    }
+  }
+}

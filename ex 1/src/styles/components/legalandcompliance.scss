@@ -1,0 +1,60 @@
+.legal-and-compliance {
+  position: relative;
+  background-color: $secondary;
+
+  .content-container{
+    max-width: 870px;
+    width: 100%;
+  }
+
+  .title {
+    color: $accent2;
+    font-size: 4.0625em;
+    font-weight: $xbold;
+
+    @media screen and (max-width: $large) {
+      font-size: 3em;
+    }
+
+    @media screen and (max-width: $medium) {
+      font-size: 2.5em;
+    }
+  }
+
+  .content {
+    font-size: 1.5em;
+
+    @media screen and (max-width: $medium) {
+      font-size: 1.25em;
+    }
+  }
+
+  .bkg-squares {
+    position: absolute;
+    right: 0;
+    bottom: -83%;
+    transform: scaleX(0.5);
+    transform-origin: right;
+    transition: transform 500ms ease-in-out;
+
+    @media screen and (max-width: $large) {
+      bottom: -89%;
+    }
+
+    @media screen and (max-width: $medium) {
+      bottom: -95%;
+    }
+
+    @media screen and (max-width: 815px) {
+      bottom: -90%;
+    }
+
+    @media screen and (max-width: $sm) {
+      opacity: 0.3;
+    }
+
+    &.scale-in {
+      transform: scaleX(1);
+    }
+  }
+}

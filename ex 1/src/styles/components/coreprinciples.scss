@@ -1,0 +1,72 @@
+.core-principles {
+  background-color: $primary;
+  color: $white;
+  position: relative;
+
+  .content-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .title {
+    color: $white;
+    font-size: 3.75em;
+    font-weight: $xbold;
+    max-width: 25ch;
+
+    @media screen and (max-width: $medium) {
+      font-size: 2.5em;
+    }
+
+    &::before {
+      content : "";
+      position: absolute;
+      left    : 25%;
+      bottom  : 0;
+      height  : 1px;
+      width   : 50%;  /* or 100px */
+      border-bottom: 1px solid $accent2;
+    }
+  }
+
+  .content {
+    font-size: 1.5em;
+  }
+
+  .core-principles-col {
+    position: relative;
+    padding-right: 50px;
+
+    @media screen and (max-width: $medium) {
+      padding-right: 0;
+    }
+
+    .col-title {
+      font-size: 1.25em;
+      color: $tertiary;
+      font-weight: $regular;
+      font-size: 1.5em;
+      padding: 1.5em 0;
+      max-width: 18ch;
+    }
+
+    .col-content {
+      font-weight: $regular;
+      font-size: 1.125em;
+      margin-bottom: 5em;
+
+      @media screen and (max-width: $medium) {
+        margin-bottom: 1.5em;
+      }
+    }
+  }
+
+  .columns-container {
+    &.inview-cascade-fade-up {
+      .info-column{
+        @include transition;
+      }
+    }
+  }
+}

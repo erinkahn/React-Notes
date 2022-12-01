@@ -1,0 +1,45 @@
+.benefits-container {
+  position: relative;
+  padding: 7em 0 15em 0;
+
+  @media screen and (max-width: $medium) {
+    padding-bottom: 10em;
+  }
+
+  @media screen and (max-width: $sm) {
+    padding-top: 3em;
+  }
+
+  .columns-container {
+    padding-bottom: 8em;
+
+    @media screen and (max-width: $medium) {
+      padding-bottom: 4em;
+    }
+
+    @media screen and (max-width: $sm) {
+      padding-bottom: 2em;
+    }
+
+    &.inview-cascade-fade-up {
+      .info-column{
+        @include transition;
+      }
+    }
+  }
+
+  .cta {
+    margin: 0 auto;
+    width: auto!important;
+    text-align: center;
+
+    @media screen and (max-width: $medium) {
+      margin-left: 2.25em;
+      text-align: left;
+    }
+
+    @media screen and (max-width: $sm) {
+      margin-left: 1.5em;
+    }
+  }
+}

@@ -1,0 +1,172 @@
+.contact-form, .login-form {
+  position: relative;
+  overflow: hidden;
+
+  .inner-wrapper {
+    padding-top: 5em;
+    padding-bottom: 10em;
+    z-index: 2;
+  
+    @media screen and (max-width: $medium) {
+      padding-bottom: 5em;
+    }
+  }
+
+  .title-container {
+    padding-bottom: 5em;
+
+    @media screen and (max-width: $medium) {
+      padding-bottom: 3em;
+    }
+  }
+
+  .section-title {
+    color: $accent1;
+    font-size: 3.25em;
+
+    @media screen and (max-width: $sm) {
+      font-size: 2.5em;
+    }
+  }
+
+  .card {
+    border-radius: 0;
+  }
+
+  .card-body {
+    padding: 6em 4em;
+    box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.25);
+
+    @media screen and (max-width: $medium) {
+      padding: 5em 3em;
+    }
+
+    @media screen and (max-width: $sm) {
+      padding: 4em 2em;
+    }
+  }
+
+  .form-label {
+    margin-bottom: 0.875rem;
+    color: $black;
+    $font-weight: $ultralight;
+    font-size: 1.25em;
+  }
+
+  .form-control {
+    padding: 1em;
+    $font-weight: $light;
+    border: 1px solid $accent1;
+    border-radius: 0;
+
+    &::placeholder {
+      color: $placeholdergray;
+      font-size: 1.125em;
+      $font-weight: $light;
+    }
+  }
+
+  .dropdown-toggle {
+    padding: 1em;
+    width: 100%;
+    color: $placeholdergray;
+    font-size: 1em;
+    $font-weight: $light;
+    text-align: left;
+    -webkit-appearance: none!important;
+    border-radius: 0;
+    border: 1px solid $accent1;
+    background-color: $white;
+
+    &:focus {
+      box-shadow: none;
+      background-color: $white;
+      border-color: $accent1;
+      color: $placeholdergray;
+    }
+
+    &::after {
+      position: absolute;
+      color: $accent1;
+      top: 40%;
+      right: 1em;
+      border-top: 0.85em solid;
+      border-right: 0.5em solid transparent;
+      border-left: 0.5em solid transparent;
+    }
+  }
+
+  .dropdown-menu {
+    width: 100%;
+  }
+
+  .dropdown-item {
+    &:active, &.active {
+      background-color: $white!important;
+      color: $black;
+    }
+  }
+
+  .show > .btn-primary.dropdown-toggle {
+    background-color: $white!important;
+    color: $black;
+    border-color: $accent1;
+  }
+
+  .form-floating > label {
+    position: relative;
+    margin-bottom: 0.5em;
+    padding: 0;
+    color: $black;
+    font-size: 1.25em;
+    line-height: 2;
+  }
+
+  .password {
+    color: $formtextblue;
+    text-decoration: none;
+    font-size: 1.125em;
+    font-weight: $light;
+    transition: color 300ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $secondary;
+    }
+  }
+
+  .submit-btn {
+    border-radius: 0px!important;
+    padding: 0.5em 4em;
+    font-size: 1.125em;
+  }
+
+  .login-bkg-squares,
+  .contact-squares-left, 
+  .contact-squares-right {
+    position: absolute;
+    z-index: -1;
+    width: 70%;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+  }
+
+  .login-bkg-squares {
+    right: -20px;
+    top: 250px;
+  }
+
+  .contact-squares-left {
+    left: -20px;
+    top: 180px;
+  }
+
+  .contact-squares-right {
+    right: -20px;
+    bottom: 80px;
+  }
+}

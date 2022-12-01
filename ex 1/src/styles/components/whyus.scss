@@ -1,0 +1,100 @@
+.whyus-container {
+  position: relative;
+  padding: 7em 0 15em 0;
+
+  .section-title {
+      color: $accent2;
+      font-size: 9.375em;
+
+      @media screen and (max-width: $medium) {
+        font-size: 7em;
+      }
+
+      @media screen and (max-width: $xs) {
+        font-size: 4em;
+      }
+  }
+
+  .section-content {
+      font-size: 2.5em;
+
+      @media screen and (max-width: $medium) {
+        font-size: 2em;
+      }
+
+      @media screen and (max-width: $xs) {
+        font-size: 1.25em;
+      }
+  }
+
+  @media screen and (max-width: $medium) {
+    padding-bottom: 10em;
+  }
+
+  @media screen and (max-width: $sm) {
+    padding-top: 3em;
+  }
+
+  .content-container {
+    padding-bottom: 4em;
+
+    @media screen and (max-width: $medium) {
+      padding-bottom: 2em;
+    }
+  }
+
+  .columns-container {
+    &.inview-cascade-fade-up {
+      .info-column{
+        @include transition;
+      }
+    }
+  }
+
+  .info-column {
+    padding: 0 1em;
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+
+    @media screen and (max-width: $largeTwo) {
+      &:nth-of-type(odd) {
+        padding-left: 0;
+      }
+      &:nth-of-type(even) {
+        padding-right: 0;
+      }
+    }
+
+    @media screen and (max-width: $sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .col-title {
+    padding: 1.5em 0;
+    color: $accent1;
+    font-size: 1.875em;
+    font-weight: $xbold;
+
+    @media screen and (max-width: $medium) {
+      padding: 1em 0;
+    }
+  }
+
+  .col-content {
+    font-size: 1.25em;
+    font-weight: $light;
+
+    @media screen and (max-width: $xxs) {
+      font-size: 1.2em;
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.sidebar-container {
+  position: relative;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  background: $primary;
+  // overflow: hidden;
+
+  @media screen and (max-width: $sm) {
+    padding-top: 1em;
+  }
+
+  .sidebar {
+    background-color: $secondary;
+    box-shadow: 50px 50px 50px 0px rgba($black, 0.25);
+    transform: translate(0, 0%);
+    transition: 500ms ease-in-out;
+
+    &.translate {
+      transform: translate(0, -3em);
+      transition: 600ms ease-in-out;
+    }
+
+    .sidebar-content {
+      font-weight: $regular;
+      line-height: 1.3;
+    }
+
+    &.home-bar {
+      .sidebar-content {
+        padding: 1.25em 0.5em;
+        font-size: 2.5em;
+  
+        @media screen and (max-width: $medium) {
+          font-size: 2em;
+        }
+  
+        @media screen and (max-width: $sm) {
+          font-size: 1.5em;
+        }
+      }
+    }
+
+    &.dm-bar {
+      .sidebar-content {
+        padding: 1.5em 2em;
+        font-size: 1.5em;
+        
+        @media screen and (max-width: $medium) {
+          font-size: 1.25em;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,364 @@
+.keyattributes-container {
+  position: relative;
+  background-color: $keyattributesbg;
+  padding-bottom: 3em;
+  overflow: hidden;
+
+  @media screen and (max-width: $medium) {
+    padding-bottom: 3em;
+  }
+
+  @media screen and (max-width: $sm) {
+    padding-top: 3em;
+  }
+
+  // metrics section -------- starts here
+  .columns-container {
+    &.inview-cascade-fade-up {
+      .info-column{
+        @include transition;
+      }
+    }
+  }
+
+  .column {
+    padding: 0 4em;
+
+    @media screen and (max-width: $xlarge) {
+      padding: 0 2em;
+    }
+
+    @media screen and (max-width: $sm) {
+      padding: 0 1em;
+      text-align: center;
+    }
+  }
+  
+  .col-title {
+    padding: 1.5em 0;
+    color: $white;
+    font-size: 3.5em;
+    font-weight: $xbold;
+
+    @media screen and (max-width: $medium) {
+      padding: 1em 0;
+    }
+    @media screen and (max-width: $sm) {
+      font-size: 2.5em;
+    }
+  }
+
+   // metrics section -------- ends here
+
+  .stats-info {
+    display: flex;
+
+    @media screen and (max-width: $xs) {
+      flex-direction: column;
+
+      .metric-title-padding {
+        padding-left: 0px !important;
+        padding-top: 2em;
+      }
+
+      .metric-title-border::before {
+        right: auto;
+        top: auto;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 100%!important;
+        border-right: none!important;
+        border-bottom: 2px solid $accent2;
+      }
+    }
+  }
+
+  .info-column.key-attributes {
+    position: relative;
+    
+    &:last-of-type {
+      &:after  {
+        border-bottom: none;
+        border-right: none;
+      }
+    }
+
+    @media screen and (min-width: $sm) {
+      padding: 0 50px;
+
+    }
+
+    @media screen and (max-width: 1199px) {
+      &:nth-of-type(even) {
+        &:after {
+          border: none;
+        }
+      }
+    }
+
+    @media screen and (max-width: $sm) {
+      padding-bottom: 10px;
+      margin-bottom: 1em;
+
+      &:nth-of-type(odd) {
+        padding-right: 0;
+      }
+
+      &:nth-of-type(even) {
+        &:after {
+          border-bottom: 2px solid $accent1;
+        }
+      }
+
+      &:last-of-type {
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        &:after {
+          border-bottom:none;
+        }
+      }
+    }
+
+    &:after  {
+      content: "";
+      position: absolute;
+      top: 30%;
+      right: 0;
+      height: 50%;
+      border-right: 2px solid $accent1;
+
+      @media screen and (max-width: $sm) {
+        top: auto;
+        right: auto;
+        left: 1em;
+        bottom: -2em;
+        border-bottom: 2px solid $accent1;
+        border-right: none;
+        width: 3em; 
+      }
+    }
+
+    .col-title {
+      font-size: 28px;
+      color: $tertiary;
+      font-weight: $xbold;
+      font-size: 28px;
+    }
+
+    .col-content {
+      font-weight: $regular;
+      font-size: 20px;;
+    }
+  }
+
+  .metrics-container {
+    position: relative;
+    margin: 200px auto;
+    z-index: 2;
+
+    @media screen and (max-width: $large) {
+      margin: 125px auto;
+    }
+
+    @media screen and (max-width: $sm) {
+      margin: 80px auto;
+    }
+
+    @media screen and (max-width: $xs) {
+      margin: 40px auto;
+    }
+
+    &.img-left {
+      .row {
+        flex-direction: row-reverse;
+      }
+
+      .image-column {
+        &::after {
+          box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.25);
+          transform: translate(4.5em, 2em);
+
+          @media screen and (max-width: $medium) {
+            transform: translate(2.5em, 1em);
+          }
+        }
+      }
+
+      .text-column {
+        padding-right: 2em;
+
+        @media screen and (max-width: $xs) {
+          padding-right: calc(var(--bs-gutter-x) * .5);
+        }
+      }
+    }
+
+    &.img-right {
+      .image-column {
+        &::after {
+          box-shadow: -25px 25px 25px rgba(0, 0, 0, 0.25);
+          transform: translate(-1.5em, 2em);
+
+          @media screen and (max-width: $medium) {
+            transform: translate(-0.5em, 1em);
+          }
+        }
+      }
+
+      .text-column {
+        padding-left: 2em;
+
+        @media screen and (max-width: $xs) {
+          padding-left: calc(var(--bs-gutter-x) * .5);
+        }
+      }
+    }
+  }
+
+  .metric-alt {
+    @media screen and (max-width: $xs) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media screen and (max-width: $xs) {
+    margin: 0;
+  }
+
+  .metric {
+    align-items: center;
+    
+    .image-column {
+      position: relative;
+
+      @media screen and (max-width: $xs) {
+        margin-bottom: 1em!important;
+      }
+
+      &::after {
+        @include pseudo;
+        background-color: $accent2;
+        width: calc(100% - 2em);
+        height: 100%;
+
+        @media screen and (max-width: $sm) {
+          content: none;
+        }
+      }
+    }
+
+    .metric-image {
+      position: relative;
+      z-index: 100;
+      max-width: 100%;
+      display: block;
+      width: 100%;
+
+      @media screen and (max-width: $sm) {
+        border-bottom: 1em solid $accent2;
+      }
+    }
+
+    .two-stats {
+      @media screen and (max-width: $xs) {
+        flex-direction: column;
+      }
+    }
+
+    .metric-title {
+      position: relative;
+      color: $accent1;
+      font-size: 5.625em;
+      font-weight: $xbold;
+      max-width: 700px;
+      margin-right: 50px;
+      display: flex;
+      justify-content: space-between;
+      line-height: 1;
+
+      @media screen and (max-width: $xlarge) {
+        font-size: 4em;
+        margin-right: 25px;
+      }
+
+      @media screen and (max-width: $medium) {
+        font-size: 3em;
+      }
+    }
+
+    .metric-title-padding {
+      padding-left: 50px;
+
+      @media screen and (max-width: $xlarge) {
+        padding-left: 25px;
+      }
+    }
+
+    .metric-title-border {
+      position: relative;
+
+      &::before  {
+        content: "";
+        position: absolute;
+        top: 35%;
+        right: 0;
+        height: 50%;
+        border-right: 2px solid $accent2;
+      }
+    }
+
+    .metric-subtitle {
+      color: $tertiary;
+      font-size: 3.75em;
+      font-weight: $ultralight;
+      line-height: 1;
+
+      @media screen and (max-width: $xlarge) {
+        font-size: 2.875em;
+      }
+
+      @media screen and (max-width: $medium) {
+        font-size: 2.25em;
+      }
+
+      @media screen and (max-width: $xs) {
+        font-size: 2em;
+       }
+    }
+
+    .metric-content {
+      font-size: 1.5em;
+
+      @media screen and (max-width: $xs) {
+       font-size: 1.25em;
+      }
+    }
+  }
+
+  .bkg-squares,
+  .bkg-squares-two {
+    position: absolute;
+    left: -7em;
+
+    @media screen and (max-width: $medium) {
+      left: -3em;
+    }
+    
+    img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+  }
+
+  .bkg-squares {
+    top: 35%;
+  }
+
+  .bkg-squares-two {
+    bottom: 0;
+  }
+}

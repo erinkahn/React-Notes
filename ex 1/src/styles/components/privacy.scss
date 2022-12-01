@@ -1,0 +1,36 @@
+.privacy-container {
+  background-color: $white;
+
+  .inner-wrapper {
+    padding-top: 8em;
+    padding-bottom: 10em;
+
+    @media screen and (max-width: $medium) {
+      padding-top: 5em;
+      padding-bottom: 5em;
+    }
+  }
+
+  .section-title {
+    font-size: 3.25em;
+    color: $accent1;
+    font-weight: $bold;
+    padding-bottom: 1.5em;
+
+    @media screen and (max-width: $medium) {
+      padding-bottom: 1em;
+      font-size: 2.875em;
+    }
+
+    @media screen and (max-width: $sm) {
+      font-size: 2.5em;
+    }
+  }
+
+  .content {
+    padding-bottom: 2em;
+    color: $privacygray;
+    font-size: 1em;
+    line-height: 2.4;
+  }
+}
