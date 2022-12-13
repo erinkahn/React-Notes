@@ -70,27 +70,25 @@
                 // With this approach, we completely remove the variable logic that we had inside of the Header and now can use composition to put there literally anything we want without modifying the component itself. 
                 // A good way of thinking about it is that we provide a placeholder in the component that we can plug into. 
 
-                const Header = ({children}) => {
-                    return (
-                        <header>
-                            <Actions>
-                                {children}
-                            </Actions>
-                        </header>
-                    )
-                }
-                const HomePage = () => {
+                const Header = ({children}) => (
+                     <header>
+                         <Actions>
+                             {children}
+                         </Actions>
+                     </header>
+                )
+                const HomePage = () => (<>
                     <Header>
                       <Link to="/dashboard">Go to Dash</Link>
                     <Header/>
                     <HomeStuff/>
-                }
-                const DashboardPage = () => {
+                </>)
+                const DashboardPage = () => (<>
                     <Header>
                       <Link to="/events/new">New Event</Link>
                     <Header/>
                     <DashboardStuff/>
-                }
+                </>)
         
 
         
