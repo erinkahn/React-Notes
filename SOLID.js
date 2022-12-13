@@ -57,14 +57,18 @@
                         </header>
                     )
                 }
-                const HomePage = () => {
+                const HomePage = () => (
+                   <>
                     <Header/>
                     <HomeStuff/>
-                }
-                const DashboardPage = () => {
+                   </>
+                )
+                const DashboardPage = () => (
+                   <>
                     <Header/>
                     <DashboardStuff/>
-                }
+                   </>
+                )
 
             // RIGHT APPROACH:
                 // With this approach, we completely remove the variable logic that we had inside of the Header and now can use composition to put there literally anything we want without modifying the component itself. 
@@ -77,18 +81,22 @@
                          </Actions>
                      </header>
                 )
-                const HomePage = () => (<>
+                const HomePage = () => (
+                   <>
                     <Header>
                       <Link to="/dashboard">Go to Dash</Link>
                     <Header/>
                     <HomeStuff/>
-                </>)
-                const DashboardPage = () => (<>
+                   </>
+                )
+                const DashboardPage = () => (
+                   <>
                     <Header>
                       <Link to="/events/new">New Event</Link>
                     <Header/>
                     <DashboardStuff/>
-                </>)
+                   </>
+                 )
         
 
         
