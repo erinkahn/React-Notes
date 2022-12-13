@@ -94,12 +94,12 @@
         
 
         
-   // 3. liskov substitution - subtype/supertype relationship (inheritance), basing one component on another while retaining similar implementation
+   // 3. liskov substitution - subtype,supertype relationship (inheritance), basing one component on another while retaining similar implementation
         
         // example 1: StyledButton component is created based on the Button component 
             // new css classes are added but it retains the original implementation of the Button so the Button and StyledButton are supertype and subtype components
                   
-            import styled from 'styled-components'
+            import styled from 'styled-components';
                 
             const Button = (props) => { ... }
             const StyledButton = styled(Button)`
