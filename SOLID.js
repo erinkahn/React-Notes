@@ -89,16 +89,15 @@
                     <HomeStuff/>
                    </>
                 )
-                const DashboardPage = () => (
-                   <>
+                const DashboardPage = () => {
+                   return (
                     <Header>
                       <Link to="/events/new">New Event</Link>
                     <Header/>
                     <DashboardStuff/>
-                   </>
-                 )
+                   )
+                }
         
-
         
    // 3. liskov substitution - subtype,supertype relationship (inheritance), basing one component on another while retaining similar implementation
         
